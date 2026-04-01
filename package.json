@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "Mule Digital — Digital Solutions for Real Communities",
   "main": "index.html",
-  "type": "module",
   "scripts": {
     "dev": "python -m http.server 8000",
-    "dev:node": "npx http-server",
-    "deploy": "vercel",
-    "deploy:prod": "vercel --prod"
+    "dev:node": "npx http-server"
   },
   "keywords": [
     "web design",
@@ -22,11 +19,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jnrns1/MuleDigital.git"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "devDependencies": {
-    "vercel": "^latest"
   }
 }
