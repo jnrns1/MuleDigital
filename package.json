@@ -1,0 +1,32 @@
+{
+  "name": "mule-digital",
+  "version": "1.0.0",
+  "description": "Mule Digital — Digital Solutions for Real Communities",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "dev:node": "npx http-server",
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod"
+  },
+  "keywords": [
+    "web design",
+    "digital agency",
+    "branding",
+    "web development",
+    "rural business"
+  ],
+  "author": "Mule Digital Group",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jnrns1/MuleDigital.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^latest"
+  }
+}
