@@ -1,5 +1,4 @@
 {
-  "name": "Mule Digital",
   "version": 2,
   "buildCommand": "echo 'Static site - no build needed'",
   "outputDirectory": ".",
