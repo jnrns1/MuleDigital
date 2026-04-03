@@ -133,6 +133,20 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
 .btn-home:hover{background:var(--accent2)}
 #form-wrapper{}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Project Questionnaire - Mule Digital",
+  "description": "Start your project with Mule Digital. Answer a quick questionnaire about your business goals, and we'll get back to you with a custom proposal.",
+  "url": "https://mule.digital/project",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Mule Digital",
+    "url": "https://mule.digital"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -143,7 +157,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   </a>
   <ul>
     <li><a href="/#about">About</a></li>
-    <li><a href="/learn" class="page-link">Learn</a></li>
+    <li><a href="/learn" title="Learn about our services and pricing" class="page-link">Learn</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -178,10 +192,10 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
       <input type="text" id="name" name="name" placeholder="Your name" required>
 
       <label for="email">Email address *</label>
-      <input type="email" id="email" name="email" placeholder="hello@yourbusiness.com" required oninput="document.getElementById('hidden_email').value=this.value">
+      <input type="email" id="email" name="email" placeholder="hello@yourbusiness.com" required oninput="document.getElementById('hidden_email').value=this.value" autocomplete="email">
 
       <label for="phone">Phone / WhatsApp (optional)</label>
-      <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000">
+      <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000" autocomplete="tel">
 
       <label for="company">Business or organisation name *</label>
       <input type="text" id="company" name="company" placeholder="Your business name" required>
@@ -385,7 +399,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   </div>
   <div class="foot-links">
     <a href="/" class="page-link">Home</a>
-    <a href="/learn" class="page-link">Learn</a>
+    <a href="/learn" title="Learn about our services and pricing" class="page-link">Learn</a>
     <a href="mailto:info@mule-digital.com">Contact</a>
   </div>
 </footer>
