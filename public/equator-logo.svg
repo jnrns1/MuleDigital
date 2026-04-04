@@ -1,6 +1,0 @@
-<svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outer ring -->
-  <ellipse cx="70" cy="70" rx="50" ry="50" stroke="white" stroke-width="12" fill="none" stroke-linecap="round"/>
-  <!-- Inner swash line -->
-  <path d="M20 100 Q50 70 110 40" stroke="white" stroke-width="12" fill="none" stroke-linecap="round"/>
-</svg>
