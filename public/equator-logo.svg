@@ -1,0 +1,13 @@
+<svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer oval/circle -->
+  <ellipse cx="70" cy="70" rx="58" ry="58" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Inner swash/arc line going through the center -->
+  <path d="M 20 100 Q 50 75 100 45" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round"/>
+  
+  <!-- Connecting line on left side -->
+  <line x1="22" y1="98" x2="28" y2="92" stroke="currentColor" stroke-width="11" stroke-linecap="round"/>
+  
+  <!-- Connecting line on right side -->
+  <line x1="98" y1="47" x2="105" y2="40" stroke="currentColor" stroke-width="11" stroke-linecap="round"/>
+</svg>
