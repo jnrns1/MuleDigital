@@ -35,3 +35,5 @@ out/
 Thumbs.db
 .AppleDouble
 .LSOverride
+.vercel
+.env*.local
