@@ -79,7 +79,24 @@ nav ul li a.active{color:var(--accent)}
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
 .nav-cta{border:1px solid var(--muted2);color:var(--fg);padding:.5rem 1.3rem;font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;white-space:nowrap;background:transparent}
 .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-@media(max-width:768px){nav{padding:1rem 1.5rem}nav ul{display:none}}
+/* HAMBURGER */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:transparent;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--fg);transition:all .3s;transform-origin:center}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+/* MOBILE DRAWER */
+.nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;transition:background .5s}
+.nav-drawer.open{display:flex}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:2rem;padding:0}
+.nav-drawer ul li a{font-size:1.1rem;text-transform:uppercase;letter-spacing:.2em;font-weight:500;color:var(--muted);transition:color .3s}
+.nav-drawer ul li a:hover{color:var(--fg)}
+.nav-drawer-cta{border:1px solid var(--muted2);color:var(--fg);padding:.85rem 2.5rem;font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;background:transparent}
+.nav-drawer-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(max-width:768px){nav{padding:1rem 1.5rem}nav ul{display:none
+  .nav-cta{display:none}
+  .nav-hamburger{display:flex}
+}
 
 /* HERO */
 .page-hero{min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
@@ -178,8 +195,23 @@ footer{padding:3rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);disp
   <div class="nav-right">
     <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9788;</button>
     <a href="/project" class="nav-cta page-link">Start a project</a>
+  
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="navDrawer" aria-hidden="true">
+  <ul>
+    <li><a href="/#about" class="drawer-link  page-link">About</a></li>
+    <li><a href="/#services" class="drawer-link  page-link">Services</a></li>
+    <li><a href="/learn" class="drawer-link  page-link">Learn</a></li>
+    <li><a href="/students" class="drawer-link  page-link">Students</a></li>
+    <li><a href="/#contact" class="drawer-link  page-link">Contact</a></li>
+  </ul>
+  <a href="/project" class="nav-drawer-cta page-link">Start a project</a>
+</div>
 
 <!-- HERO -->
 <section class="page-hero">
@@ -359,6 +391,28 @@ window.addEventListener('load', () => {
   document.body.style.transition = 'opacity .5s ease';
   document.body.style.opacity = '1';
 });
+
+// HAMBURGER MENU
+const hamburgerBtn=document.getElementById('hamburgerBtn');
+const navDrawer=document.getElementById('navDrawer');
+if(hamburgerBtn&&navDrawer){
+  hamburgerBtn.addEventListener('click',()=>{
+    const open=navDrawer.classList.toggle('open');
+    hamburgerBtn.classList.toggle('open',open);
+    hamburgerBtn.setAttribute('aria-expanded',open);
+    navDrawer.setAttribute('aria-hidden',!open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  document.querySelectorAll('.drawer-link').forEach(link=>{
+    link.addEventListener('click',()=>{
+      navDrawer.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded','false');
+      navDrawer.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+    });
+  });
+}
 </script>
 </body>
 </html>
