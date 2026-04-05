@@ -62,9 +62,9 @@ nav.scrolled{background:rgba(245,245,240,.92);backdrop-filter:blur(20px);border-
 .nav-logo{display:flex;align-items:center;gap:.65rem}
 .nav-logo img{width:30px;height:30px;filter:var(--logo-filter);transition:filter .5s}
 .nav-logo-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--fg)}
-nav ul{list-style:none;display:flex;gap:2rem}
-nav ul li a{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;font-weight:500;color:var(--muted);transition:color .3s}
-nav ul li a:hover,nav ul li a.active{color:var(--accent)}
+#nav ul{list-style:none;display:flex;gap:2rem}
+#nav ul li a{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;font-weight:500;color:var(--muted);transition:color .3s}
+#nav ul li a:hover,#nav ul li a.active{color:var(--accent)}
 .nav-right{display:flex;align-items:center;gap:1rem}
 .theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--muted2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .3s;color:var(--fg);flex-shrink:0;line-height:1}
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
@@ -85,8 +85,8 @@ nav ul li a:hover,nav ul li a.active{color:var(--accent)}
 .nav-drawer-cta{border:1px solid var(--muted2);color:var(--fg);padding:.85rem 2.5rem;font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;background:transparent}
 .nav-drawer-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 @media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  nav ul{display:none}
+  #nav{padding:1rem 1.5rem}
+  #nav ul{display:none}
   .nav-cta{display:none}
   .nav-hamburger{display:flex}
 }
@@ -302,12 +302,12 @@ footer{padding:3rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);disp
 <!-- FOOTER -->
 <footer>
   <p class="footer-copy">&copy; 2026 Mule Digital Group. All rights reserved.</p>
-  <nav class="footer-links" aria-label="Footer navigation">
+  <div class="footer-links">
     <a href="/">Home</a>
     <a href="/learn">Services</a>
     <a href="/students">Students</a>
     <a href="/project">Start a Project</a>
-  </nav>
+  </div>
 </footer>
 
 <script>
