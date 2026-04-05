@@ -652,7 +652,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add page-transition overlay
   const overlay = document.createElement('div');
   overlay.id = 'page-overlay';
-  overlay.style.cssText = 'position:fixed;inset:0;background:var(--bg);z-index:99999;pointer-events:none;opacity:0;transition:opacity .45s cubic-bezier(.4,0,.2,1)';
+  const bgColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#080808' : '#f5f5f0';
+  overlay.style.cssText = `position:fixed;inset:0;background:${bgColor};z-index:99999;pointer-events:none;opacity:0;transition:opacity .45s cubic-bezier(.4,0,.2,1)`;
   document.body.appendChild(overlay);
 
   // Intercept internal page-link clicks
