@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mule Digital Students — Learn how to build a brand, manage your online presence, and use digital tools to launch your own business. Coming soon for teens and young adults.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#D32F2F">
+<title>Students — Start Your Brand — Mule Digital</title>
+<link rel="canonical" href="https://mule.digital/students">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="favicon.ico">
+<meta property="og:title" content="Students — Start Your Brand — Mule Digital">
+<meta property="og:description" content="Learn how to build a brand, manage your online presence, and use digital tools to launch your own business. A space for ambitious teens and young adults.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mule.digital/students">
+<meta property="og:image" content="https://mule.digital/og-image.png">
+<meta property="og:site_name" content="Mule Digital">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Students — Start Your Brand — Mule Digital">
+<meta name="twitter:description" content="Learn how to build a brand, manage your online presence, and use digital tools to launch your own business.">
+<meta name="twitter:image" content="https://mule.digital/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Students — Start Your Brand",
+  "description": "Mule Digital's student program for teens and young adults interested in entrepreneurship, branding, and digital skills.",
+  "url": "https://mule.digital/students",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Mule Digital",
+    "url": "https://mule.digital"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root,[data-theme="light"]{
+  --bg:#f5f5f0;--bg2:#eaeae6;--bg3:#dfdfdb;
+  --fg:#0a0a0a;--fg2:#1a1a1a;
+  --muted:#888;--muted2:#ccc;--border:#d5d5d0;
+  --accent:#D32F2F;--accent2:#C68642;
+  --logo-filter:brightness(0);
+  --client-filter:brightness(0);
+}
+[data-theme="dark"]{
+  --bg:#080808;--bg2:#0f0f0f;--bg3:#141414;
+  --fg:#f2f0eb;--fg2:#dddbd5;
+  --muted:#666;--muted2:#2e2e2e;--border:#1c1c1c;
+  --accent:#D32F2F;--accent2:#C68642;
+  --logo-filter:brightness(0) invert(1);
+  --client-filter:brightness(0) invert(1);
+}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .5s,color .5s}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.026;pointer-events:none;z-index:9998}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,border-color .4s}
+nav.scrolled{background:rgba(245,245,240,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+[data-theme="dark"] nav.scrolled{background:rgba(8,8,8,.9)}
+.nav-logo{display:flex;align-items:center;gap:.65rem}
+.nav-logo img{width:30px;height:30px;filter:var(--logo-filter);transition:filter .5s}
+.nav-logo-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--fg)}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav ul li a{font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;color:var(--muted);transition:color .3s}
+nav ul li a:hover,nav ul li a.active{color:var(--fg)}
+nav ul li a.active{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:1.25rem}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--muted2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .3s;color:var(--fg);flex-shrink:0;line-height:1}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.nav-cta{border:1px solid var(--muted2);color:var(--fg);padding:.5rem 1.3rem;font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;white-space:nowrap;background:transparent}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(max-width:768px){nav{padding:1rem 1.5rem}nav ul{display:none}}
+
+/* HERO */
+.page-hero{min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.page-hero-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
+.page-hero-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.3em;color:var(--accent);font-weight:600;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem}
+.page-hero-tag::before,.page-hero-tag::after{content:'';display:block;width:28px;height:1px;background:var(--accent)}
+.page-hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:.95;letter-spacing:-.04em;color:var(--fg);margin-bottom:1.5rem}
+.page-hero-title em{font-style:italic;color:var(--accent)}
+.page-hero-sub{font-size:clamp(.95rem,1.6vw,1.15rem);color:var(--muted);font-weight:300;line-height:1.8;max-width:560px;margin:0 auto 2.5rem}
+
+/* Hero accent shapes */
+.hero-float{position:absolute;pointer-events:none;opacity:.08}
+.hero-float svg{display:block}
+
+/* SECTION */
+.section{padding:clamp(5rem,10vw,9rem) clamp(2rem,5vw,6rem)}
+.section-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.28em;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.section-tag::before{content:'';display:block;width:28px;height:1px;background:var(--accent)}
+.section-heading{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,4rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;margin-top:1rem;color:var(--fg)}
+.section-heading em{font-style:italic;color:var(--accent)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.08s}.rd2{transition-delay:.16s}.rd3{transition-delay:.24s}
+.rd4{transition-delay:.32s}.rd5{transition-delay:.4s}.rd6{transition-delay:.48s}
+
+/* INTRO */
+#intro{background:var(--bg)}
+.intro-inner{max-width:980px;margin:0 auto}
+.intro-lead{font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:300;line-height:1.85;color:var(--fg2);margin-bottom:2rem}
+.intro-rule{width:48px;height:2px;background:var(--accent);margin:2.5rem 0}
+.intro-body{font-size:clamp(.9rem,1.4vw,1.05rem);color:var(--muted);line-height:1.9;font-weight:300}
+
+/* PILLARS */
+#pillars{background:var(--bg2);transition:background .5s}
+.pillars-header{max-width:700px;margin-bottom:4rem}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+@media(max-width:900px){.pillars-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pillars-grid{grid-template-columns:1fr}}
+.pillar-card{background:var(--bg2);padding:clamp(2rem,3vw,3rem);position:relative;overflow:hidden;transition:background .5s}
+.pillar-card:hover{background:var(--bg3)}
+.pillar-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--accent);transition:width .7s cubic-bezier(.16,1,.3,1)}
+.pillar-card:hover::after{width:100%}
+.pillar-num{font-size:.62rem;letter-spacing:.2em;color:var(--muted2);margin-bottom:.9rem;text-transform:uppercase}
+.pillar-icon{width:44px;height:44px;margin-bottom:1.4rem;color:var(--accent)}
+.pillar-icon svg{width:100%;height:100%}
+.pillar-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:.6rem;font-weight:700;color:var(--fg)}
+.pillar-card p{font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300}
+
+/* COMING SOON */
+#coming-soon{background:var(--bg);border-top:1px solid var(--border);transition:background .5s,border-color .5s}
+.cs-inner{max-width:760px;margin:0 auto;text-align:center}
+.cs-badge{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--accent);color:var(--accent);font-size:.68rem;text-transform:uppercase;letter-spacing:.22em;font-weight:600;padding:.5rem 1.2rem;margin-bottom:2.5rem}
+.cs-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.cs-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:700;line-height:.95;letter-spacing:-.04em;color:var(--fg);margin-bottom:1.5rem}
+.cs-title em{font-style:italic;color:var(--accent)}
+.cs-body{font-size:clamp(.9rem,1.5vw,1.1rem);color:var(--muted);font-weight:300;line-height:1.85;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto}
+.cs-notify{display:inline-flex;align-items:center;gap:.75rem;border:1px solid var(--muted2);color:var(--fg);padding:.85rem 2rem;font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;cursor:pointer;background:transparent}
+.cs-notify:hover{border-color:var(--accent);color:var(--accent)}
+.cs-divider{width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--border),transparent);margin:3.5rem auto}
+
+/* WHAT YOU LEARN */
+.learn-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem}
+@media(max-width:600px){.learn-list{grid-template-columns:1fr}}
+.learn-item{display:flex;align-items:flex-start;gap:1rem;padding:1.5rem;border:1px solid var(--border);background:var(--bg2);transition:background .5s,border-color .5s}
+.learn-item:hover{background:var(--bg3)}
+.learn-bullet{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:.45em}
+.learn-item p{font-size:.9rem;color:var(--muted);line-height:1.7;font-weight:300}
+.learn-item strong{display:block;font-size:.95rem;font-weight:600;color:var(--fg);margin-bottom:.25rem}
+
+/* FOOTER */
+footer{padding:3rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;transition:border-color .5s}
+.footer-copy{font-size:.72rem;color:var(--muted);letter-spacing:.05em}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;transition:color .3s}
+.footer-links a:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo page-link">
+    <img src="public/mule-logo.png" alt="Mule Digital logo" width="30" height="30">
+    <span class="nav-logo-name">Mule</span>
+  </a>
+  <ul>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/learn" class="page-link">Learn</a></li>
+    <li><a href="/students" class="active page-link">Students</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9788;</button>
+    <a href="/project" class="nav-cta page-link">Start a project</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <!-- Floating background shapes -->
+  <div class="hero-float" style="top:15%;left:5%;width:60px">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1" color="var(--accent)"><circle cx="20" cy="20" r="18"/></svg>
+  </div>
+  <div class="hero-float" style="bottom:20%;right:8%;width:40px">
+    <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1" color="var(--accent)"><rect x="3" y="3" width="24" height="24"/></svg>
+  </div>
+  <div class="hero-float" style="top:30%;right:12%;width:24px">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" color="var(--accent)"><line x1="10" y1="0" x2="10" y2="20"/><line x1="0" y1="10" x2="20" y2="10"/></svg>
+  </div>
+  <div class="hero-float" style="bottom:30%;left:10%;width:32px">
+    <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1" color="var(--accent)"><polygon points="15,2 28,28 2,28"/></svg>
+  </div>
+
+  <div class="page-hero-inner">
+    <div class="page-hero-tag">Mule Digital — Students</div>
+    <h1 class="page-hero-title">Build something<br><em>real.</em></h1>
+    <p class="page-hero-sub">A learning space for teens and young adults who want to start a business, build a brand, and stand out online — with the tools pros actually use.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section" id="intro">
+  <div class="intro-inner">
+    <div class="reveal">
+      <div class="section-tag">Who this is for</div>
+      <p class="intro-lead">You don't need a degree or a big budget to start building something. You need a direction, the right tools, and someone to show you how.</p>
+    </div>
+    <div class="intro-rule reveal rd1"></div>
+    <p class="intro-body reveal rd2">Mule Digital Students is designed for ambitious young people — teens and young adults — who are curious about entrepreneurship, personal branding, and the digital world. Whether you want to launch a small business, grow a following, or create polished presentations that actually get noticed, this is where you start.</p>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="section" id="pillars">
+  <div class="pillars-header reveal">
+    <div class="section-tag">What you'll learn</div>
+    <h2 class="section-heading">Skills that<br><em>translate.</em></h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card reveal rd1">
+      <div class="pillar-num">01</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/>
+        </svg>
+      </div>
+      <h3>Online Presence</h3>
+      <p>Learn how to own your name online. Build a professional presence across the platforms that matter — and understand why consistency is your biggest asset.</p>
+    </div>
+    <div class="pillar-card reveal rd2">
+      <div class="pillar-num">02</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <h3>Branding & Identity</h3>
+      <p>Understand what makes a brand feel premium. Learn how to define your voice, choose visuals intentionally, and create an identity that people remember.</p>
+    </div>
+    <div class="pillar-card reveal rd3">
+      <div class="pillar-num">03</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        </svg>
+      </div>
+      <h3>Presentations That Land</h3>
+      <p>Master the digital tools — Canva, Figma, Google Slides, and more — to create beautifully crafted presentations that communicate ideas with clarity and style.</p>
+    </div>
+    <div class="pillar-card reveal rd4">
+      <div class="pillar-num">04</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <h3>Starting a Business</h3>
+      <p>From idea to action — learn how to validate a business concept, find your first customers, and set up the digital foundation that makes you look legit from day one.</p>
+    </div>
+    <div class="pillar-card reveal rd5">
+      <div class="pillar-num">05</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>
+        </svg>
+      </div>
+      <h3>Content & Strategy</h3>
+      <p>Content is currency. Learn how to plan, create, and schedule content that builds an audience — and how to think strategically about what you post and why.</p>
+    </div>
+    <div class="pillar-card reveal rd6">
+      <div class="pillar-num">06</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+      </div>
+      <h3>Tools of the Trade</h3>
+      <p>Get hands-on with the tools professionals rely on every day — from design software to AI writing assistants — so you can work smarter and create faster.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="section" id="coming-soon">
+  <div class="cs-inner">
+    <div class="reveal">
+      <div class="cs-badge">
+        <span class="cs-badge-dot"></span>
+        Coming Soon
+      </div>
+    </div>
+    <h2 class="cs-title reveal rd1"><em>Classes</em> are<br>on the way.</h2>
+    <div class="cs-divider reveal rd2"></div>
+    <p class="cs-body reveal rd3">We're building something worth waiting for. Mule Digital Students will launch with live sessions, guided modules, and real projects — taught by people who actually do this work. Stay tuned.</p>
+    <div class="reveal rd4">
+      <a href="/#contact" class="cs-notify">Get notified when we launch</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-copy">&copy; 2026 Mule Digital Group. All rights reserved.</p>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="/">Home</a>
+    <a href="/learn">Services</a>
+    <a href="/students">Students</a>
+    <a href="/project">Start a Project</a>
+  </nav>
+</footer>
+
+<script>
+// Theme toggle
+const themeBtn = document.getElementById('themeBtn');
+const root = document.documentElement;
+const saved = localStorage.getItem('theme') || 'light';
+root.setAttribute('data-theme', saved);
+themeBtn.addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Page link transitions
+document.querySelectorAll('.page-link').forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('mailto')) {
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity .35s ease';
+      setTimeout(() => { window.location.href = href; }, 350);
+    }
+  });
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(r => io.observe(r));
+
+// Fade in on load
+document.body.style.opacity = '0';
+window.addEventListener('load', () => {
+  document.body.style.transition = 'opacity .5s ease';
+  document.body.style.opacity = '1';
+});
+</script>
+</body>
+</html>

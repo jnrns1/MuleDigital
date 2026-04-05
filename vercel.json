@@ -8,7 +8,8 @@
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/learn", "destination": "/learn.html" },
-    { "source": "/project", "destination": "/project.html" }
+    { "source": "/project", "destination": "/project.html" },
+    { "source": "/students", "destination": "/students.html" }
   ],
   "redirects": [
     {
