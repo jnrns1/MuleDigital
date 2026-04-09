@@ -750,13 +750,11 @@ const TRANSLATIONS = {
     const t = TRANSLATIONS[lang];
     if (!t) return;
 
-    // Plain text nodes (data-i18n)
+    // All translations use innerHTML so <br> and <em> render correctly
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
+      if (t[key] !== undefined) el.innerHTML = t[key];
     });
-
-    // HTML content (data-i18n-html) — for markup like <em>, <br>
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const key = el.getAttribute('data-i18n-html');
       if (t[key] !== undefined) el.innerHTML = t[key];
