@@ -41,7 +41,7 @@
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "Customer Service",
-    "email": "justin@mule-digital.com",
+    "email": "info@mule-digital.com",
     "url": "https://www.mule-digital.com"
   },
   "founder": [
@@ -250,7 +250,9 @@ nav ul li a:hover{color:var(--fg)}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);position:relative;z-index:1}
 @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.services-grid{grid-template-columns:1fr}}
-.svc-card{background:var(--bg2);padding:clamp(2rem,3vw,3rem);position:relative;overflow:hidden;transition:background .5s;cursor:default}
+.svc-card{background:var(--bg2);padding:clamp(2rem,3vw,3rem);position:relative;overflow:hidden;transition:background .5s;cursor:pointer;display:block;text-decoration:none;color:inherit}
+.svc-arrow{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-top:1.5rem;font-weight:600;transition:letter-spacing .3s}
+.svc-card:hover .svc-arrow{letter-spacing:.25em}
 .svc-card:hover{background:var(--bg3)}
 .svc-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--accent);transition:width .7s cubic-bezier(.16,1,.3,1)}
 .svc-card:hover::after{width:100%}
@@ -347,6 +349,34 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
 .foot-links{display:flex;gap:2rem}
 .foot-links a{font-size:.68rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);transition:color .3s}
 .foot-links a:hover{color:var(--accent)}
+
+/* ═══ MOBILE FIXES ═══ */
+@media(max-width:600px){
+  .hero-cta-row{flex-direction:column;align-items:center;width:100%;gap:.75rem}
+  .btn-primary,.btn-outline{width:100%;max-width:280px;text-align:center;padding:.9rem 1.5rem}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:2rem 1.25rem}
+  .about-founder{flex-direction:column;gap:1rem;padding:1.5rem}
+  .founder-avatar{width:48px;height:48px}
+  .pull-quote-inner blockquote{font-size:clamp(1.5rem,7vw,2.5rem)}
+  .contact-heading{font-size:clamp(2rem,10vw,4rem)}
+  .contact-email-link{font-size:clamp(1rem,5vw,1.8rem);word-break:break-all}
+  footer{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .foot-links{flex-wrap:wrap;gap:1rem}
+  .tiers-label{margin-bottom:1.5rem}
+  .pricing-intro{margin-bottom:3rem}
+  .clients-grid{grid-template-columns:repeat(2,1fr)}
+  .client-card{padding:2rem 1rem;min-height:120px}
+  .jr-watermark{font-size:clamp(8rem,30vw,14rem);right:-2rem;top:-1rem}
+  .nav-logo-name{font-size:.95rem}
+  section{padding-left:clamp(1rem,4vw,2rem);padding-right:clamp(1rem,4vw,2rem)}
+  #about,#services,#clients,#pricing,#contact{padding-left:1.25rem;padding-right:1.25rem}
+}
+@media(max-width:400px){
+  .stats{grid-template-columns:1fr}
+  .stat{border-right:none;border-bottom:1px solid var(--border)}
+  .hero-title{font-size:clamp(4.5rem,22vw,17rem)}
+}
 </style>
 </head>
 <body>
@@ -470,7 +500,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
         <div class="founder-info">
           <h4>Justin Reynolds &mdash; Founder &amp; Creative Director</h4>
           <p>Raised in Detroit. Trained in Applied Computer Science and Multimedia Creative Technologies. Currently based in Antwerp, Belgium. Built Mule to give businesses around the world the same digital voice that big-city brands take for granted.</p>
-          <div class="founder-loc">&#9993; justin@mule-digital.com</div>
+          <div class="founder-loc">&#9993; info@mule-digital.com</div>
         </div>
       </div>
       <div class="about-founder reveal rd6" style="margin-top:1rem">
@@ -502,12 +532,12 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <h2 class="section-heading reveal rd1">Everything your business needs to own the web.</h2>
   </div>
   <div class="services-grid">
-    <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Icon for Social Media Management service - three connected network nodes with linking lines"><rect x="4" y="8" width="40" height="30" rx="2"/><line x1="4" y1="16" x2="44" y2="16"/><circle cx="10" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="22" cy="12" r="1.5" fill="currentColor" stroke="none"/><line x1="24" y1="38" x2="24" y2="43"/><line x1="16" y1="43" x2="32" y2="43"/><path d="M14 25 Q19 21 24 25 Q29 29 34 25"/><line x1="14" y1="30" x2="34" y2="30"/></svg></div><div class="svc-num">01</div><h3>Web Design &amp; Development</h3><p>Beautiful, fast, mobile-first websites that actually represent who you are. Custom design, clean code, a product that works as hard as you do.</p></div>
-    <div class="svc-card reveal rd1"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="38" cy="10" r="5"/><circle cx="10" cy="24" r="5"/><circle cx="38" cy="38" r="5"/><line x1="33.5" y1="12.5" x2="14.5" y2="21.5"/><line x1="14.5" y1="26.5" x2="33.5" y2="35.5"/><circle cx="38" cy="10" r="2" fill="currentColor" stroke="none"/><circle cx="10" cy="24" r="2" fill="currentColor" stroke="none"/><circle cx="38" cy="38" r="2" fill="currentColor" stroke="none"/></svg></div><div class="svc-num">02</div><h3>Social Media Management</h3><p>Consistent, authentic content across the platforms your audience uses. Strategy, posting, engagement — handled so you can focus on your business.</p></div>
-    <div class="svc-card reveal rd2"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="22" height="28" rx="1"/><circle cx="32" cy="18" r="8"/><path d="M29 18 L31 20 L35 15"/><line x1="12" y1="20" x2="22" y2="20"/><line x1="12" y1="25" x2="22" y2="25"/><line x1="12" y1="30" x2="18" y2="30"/></svg></div><div class="svc-num">03</div><h3>Content Production</h3><p>Photography direction, video, copywriting — real content that captures the humanity of your business. Not stock. Not generic. Yours.</p></div>
-    <div class="svc-card reveal rd3"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5 L44 18 L44 42 L4 42 L4 18 Z"/><circle cx="24" cy="28" r="7"/><line x1="24" y1="21" x2="24" y2="18"/><line x1="24" y1="35" x2="24" y2="38"/><line x1="17" y1="28" x2="14" y2="28"/><line x1="31" y1="28" x2="34" y2="28"/></svg></div><div class="svc-num">04</div><h3>Branding &amp; Strategy</h3><p>Identity systems built around your story — logos, colour, voice, guidelines that make you immediately recognisable and deeply memorable.</p></div>
-    <div class="svc-card reveal rd4"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="21" r="13"/><line x1="30.5" y1="30.5" x2="43" y2="43"/><line x1="14" y1="16" x2="28" y2="16"/><line x1="14" y1="21" x2="26" y2="21"/><line x1="14" y1="26" x2="22" y2="26"/></svg></div><div class="svc-num">05</div><h3>SEO &amp; Search Visibility</h3><p>When someone searches for what you do, they should find you first. Audits, local SEO, keyword strategy, and monthly reporting.</p></div>
-    <div class="svc-card reveal rd5"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38 L8 28 L18 22 L28 30 L40 14"/><polyline points="32 14 40 14 40 22"/><circle cx="8" cy="38" r="2.5" fill="currentColor" stroke="none" opacity=".6"/><circle cx="18" cy="22" r="2.5" fill="currentColor" stroke="none" opacity=".6"/><circle cx="28" cy="30" r="2.5" fill="currentColor" stroke="none" opacity=".6"/><circle cx="40" cy="14" r="2.5" fill="currentColor" stroke="none" opacity=".6"/></svg></div><div class="svc-num">06</div><h3>Marketing Strategy</h3><p>Big-picture thinking sized for small-business reality. Plans you can actually execute — real budgets, real timelines, measurable outcomes.</p></div>
+    <a href="/learn#web-design" class="svc-card reveal page-link"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="40" height="30" rx="2"/><line x1="4" y1="16" x2="44" y2="16"/><circle cx="10" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="22" cy="12" r="1.5" fill="currentColor" stroke="none"/><line x1="24" y1="38" x2="24" y2="43"/><line x1="16" y1="43" x2="32" y2="43"/><path d="M14 25 Q19 21 24 25 Q29 29 34 25"/><line x1="14" y1="30" x2="34" y2="30"/></svg></div><div class="svc-num">01</div><h3>Web Design &amp; Development</h3><p>Beautiful, fast, mobile-first websites that actually represent who you are. Custom design, clean code, a product that works as hard as you do.</p><div class="svc-arrow">Start a project &#8594;</div></a>
+    <a href="/learn#social-media" class="svc-card reveal rd1 page-link"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="38" cy="10" r="5"/><circle cx="10" cy="24" r="5"/><circle cx="38" cy="38" r="5"/><line x1="33.5" y1="12.5" x2="14.5" y2="21.5"/><line x1="14.5" y1="26.5" x2="33.5" y2="35.5"/><circle cx="38" cy="10" r="2" fill="currentColor" stroke="none"/><circle cx="10" cy="24" r="2" fill="currentColor" stroke="none"/><circle cx="38" cy="38" r="2" fill="currentColor" stroke="none"/></svg></div><div class="svc-num">02</div><h3>Social Media Management</h3><p>Consistent, authentic content across the platforms your audience uses. Strategy, posting, engagement — handled so you can focus on your business.</p><div class="svc-arrow">Learn more &#8594;</div></a>
+    <a href="/learn#content" class="svc-card reveal rd2 page-link"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="22" height="28" rx="1"/><circle cx="32" cy="18" r="8"/><path d="M29 18 L31 20 L35 15"/><line x1="12" y1="20" x2="22" y2="20"/><line x1="12" y1="25" x2="22" y2="25"/><line x1="12" y1="30" x2="18" y2="30"/></svg></div><div class="svc-num">03</div><h3>Content Production</h3><p>Photography direction, video, copywriting — real content that captures the humanity of your business. Not stock. Not generic. Yours.</p><div class="svc-arrow">Learn more &#8594;</div></a>
+    <a href="/learn#branding" class="svc-card reveal rd3 page-link"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5 L44 18 L44 42 L4 42 L4 18 Z"/><circle cx="24" cy="28" r="7"/><line x1="24" y1="21" x2="24" y2="18"/><line x1="24" y1="35" x2="24" y2="38"/><line x1="17" y1="28" x2="14" y2="28"/><line x1="31" y1="28" x2="34" y2="28"/></svg></div><div class="svc-num">04</div><h3>Branding &amp; Strategy</h3><p>Identity systems built around your story — logos, colour, voice, guidelines that make you immediately recognisable and deeply memorable.</p><div class="svc-arrow">Learn more &#8594;</div></a>
+    <a href="/learn#seo" class="svc-card reveal rd4 page-link"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="21" r="13"/><line x1="30.5" y1="30.5" x2="43" y2="43"/><line x1="14" y1="16" x2="28" y2="16"/><line x1="14" y1="21" x2="26" y2="21"/><line x1="14" y1="26" x2="22" y2="26"/></svg></div><div class="svc-num">05</div><h3>SEO &amp; Search Visibility</h3><p>When someone searches for what you do, they should find you first. Audits, local SEO, keyword strategy, and monthly reporting.</p><div class="svc-arrow">Learn more &#8594;</div></a>
+    <a href="/learn#marketing" class="svc-card reveal rd5 page-link"><div class="svc-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38 L8 28 L18 22 L28 30 L40 14"/><polyline points="32 14 40 14 40 22"/><circle cx="8" cy="38" r="2.5" fill="currentColor" stroke="none" opacity=".6"/><circle cx="18" cy="22" r="2.5" fill="currentColor" stroke="none" opacity=".6"/><circle cx="28" cy="30" r="2.5" fill="currentColor" stroke="none" opacity=".6"/><circle cx="40" cy="14" r="2.5" fill="currentColor" stroke="none" opacity=".6"/></svg></div><div class="svc-num">06</div><h3>Marketing Strategy</h3><p>Big-picture thinking sized for small-business reality. Plans you can actually execute — real budgets, real timelines, measurable outcomes.</p><div class="svc-arrow">Learn more &#8594;</div></a>
   </div>
 </section>
 
@@ -620,7 +650,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   <div class="contact-inner">
     <div class="section-tag reveal" style="justify-content:center">Let&#39;s talk</div>
     <h2 class="contact-heading reveal rd1">Ready to be<br><em style="font-style:italic;color:var(--accent)">heard?</em></h2>
-    <a href="mailto:justin@mule-digital.com" class="contact-email-link reveal rd2">justin@mule-digital.com</a>
+    <a href="mailto:info@mule-digital.com" class="contact-email-link reveal rd2">info@mule-digital.com</a>
     <p class="contact-note reveal rd3">Drop us a line for a free 30-minute discovery call. No pressure. Just a real conversation about your business and your story.</p>
     <p class="contact-loc reveal rd4">Available Worldwide</p>
   </div>
@@ -636,7 +666,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
-    <a href="mailto:justin@mule-digital.com">Email</a>
+    <a href="mailto:info@mule-digital.com">Email</a>
   </div>
 </footer>
 
