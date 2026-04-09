@@ -134,6 +134,25 @@ footer{padding:3rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);disp
 .footer-links a{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;transition:color .3s}
 .footer-links a:hover{color:var(--fg)}
 @media(max-width:600px){footer{flex-direction:column;text-align:center}.footer-links{justify-content:center}}
+
+/* ═══ MOBILE FIXES ═══ */
+@media(max-width:600px){
+  #nav{padding:1rem 1.25rem}
+  .page-hero{padding:6rem 1.25rem 3rem}
+  .page-hero-title{font-size:clamp(2.5rem,14vw,4rem)}
+  .section{padding:3rem 1.25rem}
+  .intro-inner{padding:0}
+  .pillars-grid{grid-template-columns:1fr}
+  .pillar-card{padding:1.5rem}
+  .cs-inner{padding:3rem 1.25rem}
+  .cs-title{font-size:clamp(2rem,10vw,3.5rem)}
+  footer{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .footer-links{flex-wrap:wrap;gap:1rem}
+  .reveal{display:flex;flex-direction:column;align-items:center}
+}
+@media(max-width:768px){
+  .pillars-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
@@ -262,8 +281,7 @@ footer{padding:3rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);disp
   <div class="footer-links">
     <a href="/">Home</a>
     <a href="/learn">Services</a>
-    <a href="/students">Students</a>
-    <a href="/project">Start a Project</a>
+    <a href="/project" class="page-link">Start a Project</a>
   </div>
 </footer>
 

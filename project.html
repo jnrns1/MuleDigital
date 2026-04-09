@@ -165,6 +165,24 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
 .btn-home{background:var(--accent);color:#fff;padding:.9rem 2.4rem;font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;display:inline-block;transition:background .3s}
 .btn-home:hover{background:var(--accent2)}
 #form-wrapper{}
+
+/* ═══ MOBILE FIXES ═══ */
+@media(max-width:600px){
+  .page-hero{padding:6rem 1.25rem 3rem}
+  .page-hero h1{font-size:clamp(2.5rem,12vw,4rem)}
+  .form-section{padding:2rem 1.25rem 4rem}
+  .form-block{padding:2rem 1.25rem}
+  .option-grid{grid-template-columns:1fr !important}
+  .option-card{padding:.75rem 1rem}
+  .submit-btn{width:100%;padding:1rem 1.5rem;font-size:.8rem}
+  footer{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .foot-links{flex-wrap:wrap;gap:1rem}
+  nav{padding:1rem 1.25rem}
+  input,textarea,select{font-size:16px}
+}
+@media(max-width:768px){
+  .option-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 <script type="application/ld+json">
 {
