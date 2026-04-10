@@ -164,6 +164,14 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
 .foot-links a{font-size:.68rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);transition:color .3s}
 .foot-links a:hover{color:var(--accent)}
 
+
+/* DEMO REQUEST SECTION */
+.demo-section{overflow:hidden;max-height:0;opacity:0;transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .4s ease,margin .4s ease;margin-top:0}
+.demo-section.open{max-height:2000px;opacity:1;margin-top:0}
+.demo-section .form-block{border-top:2px solid var(--accent)}
+.demo-reveal-note{font-size:.78rem;color:var(--accent);margin-top:.75rem;font-weight:500;letter-spacing:.04em;display:none}
+#need_demo:checked ~ label .demo-reveal-note{display:block}
+
 /* CONFIRMATION (hidden by default) */
 #confirmation{display:none;min-height:80vh;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:clamp(4rem,10vw,10rem) clamp(2rem,5vw,6rem)}
 #confirmation.show{display:flex}
@@ -375,6 +383,13 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
             <span class="option-label-sub">Tell us below</span>
           </label>
         </div>
+        <div class="option-card" style="border-color:var(--accent);grid-column:1/-1">
+          <input type="checkbox" id="need_demo" name="needs[]" value="Demo website">
+          <label for="need_demo" style="gap:.75rem">
+            <span class="option-label-text" style="color:var(--accent)">&#10024; Request a demo website</span>
+            <span class="option-label-sub">We mock up a free demo of your site — answer a few design questions below</span>
+          </label>
+        </div>
       </div>
     </div>
 
@@ -451,6 +466,115 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
         <option>Google search</option>
         <option>Other</option>
       </select>
+    </div>
+
+    <!-- SECTION 6: Demo Website Request (reveals when demo checkbox checked) -->
+    <div class="demo-section" id="demoSection">
+      <div class="form-block">
+        <div class="form-block-label">06 — Demo website</div>
+        <h2>Let's sketch your site.</h2>
+        <p>Answer these questions and we'll build a free demo of what your website could look like. No obligation — just a taste of what's possible.</p>
+
+        <label for="demo_site_name">What's the name of your business / site? *</label>
+        <input type="text" id="demo_site_name" name="demo_site_name" placeholder="e.g. Cedar Ridge Farm">
+
+        <label for="demo_tagline">Do you have a tagline or short description?</label>
+        <input type="text" id="demo_tagline" name="demo_tagline" placeholder="e.g. Fresh produce, straight from the field.">
+
+        <label for="demo_pages">What pages do you need?</label>
+        <div class="option-grid" style="grid-template-columns:1fr 1fr;margin-top:.75rem">
+          <div class="option-card">
+            <input type="checkbox" id="page_home" name="demo_pages[]" value="Home">
+            <label for="page_home"><span class="option-label-text">Home</span></label>
+          </div>
+          <div class="option-card">
+            <input type="checkbox" id="page_about" name="demo_pages[]" value="About">
+            <label for="page_about"><span class="option-label-text">About</span></label>
+          </div>
+          <div class="option-card">
+            <input type="checkbox" id="page_services" name="demo_pages[]" value="Services / Menu">
+            <label for="page_services"><span class="option-label-text">Services / Menu</span></label>
+          </div>
+          <div class="option-card">
+            <input type="checkbox" id="page_gallery" name="demo_pages[]" value="Gallery / Portfolio">
+            <label for="page_gallery"><span class="option-label-text">Gallery / Portfolio</span></label>
+          </div>
+          <div class="option-card">
+            <input type="checkbox" id="page_contact" name="demo_pages[]" value="Contact">
+            <label for="page_contact"><span class="option-label-text">Contact</span></label>
+          </div>
+          <div class="option-card">
+            <input type="checkbox" id="page_booking" name="demo_pages[]" value="Booking / Reservations">
+            <label for="page_booking"><span class="option-label-text">Booking / Reservations</span></label>
+          </div>
+          <div class="option-card">
+            <input type="checkbox" id="page_shop" name="demo_pages[]" value="Shop / E-commerce">
+            <label for="page_shop"><span class="option-label-text">Shop / E-commerce</span></label>
+          </div>
+          <div class="option-card">
+            <input type="checkbox" id="page_blog" name="demo_pages[]" value="Blog / News">
+            <label for="page_blog"><span class="option-label-text">Blog / News</span></label>
+          </div>
+        </div>
+
+        <label for="demo_style" style="margin-top:2rem">What visual style feels right for your brand?</label>
+        <div class="option-grid" style="grid-template-columns:1fr 1fr;margin-top:.75rem">
+          <div class="option-card">
+            <input type="radio" id="style_clean" name="demo_style" value="Clean & minimal">
+            <label for="style_clean">
+              <span class="option-label-text">Clean &amp; minimal</span>
+              <span class="option-label-sub">Lots of white space, simple typography</span>
+            </label>
+          </div>
+          <div class="option-card">
+            <input type="radio" id="style_bold" name="demo_style" value="Bold & expressive">
+            <label for="style_bold">
+              <span class="option-label-text">Bold &amp; expressive</span>
+              <span class="option-label-sub">Strong colours, big headlines</span>
+            </label>
+          </div>
+          <div class="option-card">
+            <input type="radio" id="style_warm" name="demo_style" value="Warm & rustic">
+            <label for="style_warm">
+              <span class="option-label-text">Warm &amp; rustic</span>
+              <span class="option-label-sub">Earthy tones, organic feel</span>
+            </label>
+          </div>
+          <div class="option-card">
+            <input type="radio" id="style_elegant" name="demo_style" value="Elegant & professional">
+            <label for="style_elegant">
+              <span class="option-label-text">Elegant &amp; professional</span>
+              <span class="option-label-sub">Refined, polished, trustworthy</span>
+            </label>
+          </div>
+          <div class="option-card">
+            <input type="radio" id="style_playful" name="demo_style" value="Playful & friendly">
+            <label for="style_playful">
+              <span class="option-label-text">Playful &amp; friendly</span>
+              <span class="option-label-sub">Approachable, fun, community feel</span>
+            </label>
+          </div>
+          <div class="option-card">
+            <input type="radio" id="style_unsure" name="demo_style" value="Not sure — surprise me">
+            <label for="style_unsure">
+              <span class="option-label-text">Not sure — surprise me</span>
+              <span class="option-label-sub">We'll make a recommendation</span>
+            </label>
+          </div>
+        </div>
+
+        <label for="demo_colours" style="margin-top:2rem">Do you have brand colours? (optional)</label>
+        <input type="text" id="demo_colours" name="demo_colours" placeholder="e.g. Forest green + cream, or #2d6a4f — or leave blank and we'll choose">
+
+        <label for="demo_fonts">Any font preferences? (optional)</label>
+        <input type="text" id="demo_fonts" name="demo_fonts" placeholder="e.g. Serif, modern sans-serif, handwritten — or leave blank">
+
+        <label for="demo_inspiration">Any websites you love the look of? (optional)</label>
+        <textarea id="demo_inspiration" name="demo_inspiration" placeholder="Paste URLs or describe what you like about them — style, layout, feeling." style="min-height:100px"></textarea>
+
+        <label for="demo_must_have">Anything that must be on the site?</label>
+        <textarea id="demo_must_have" name="demo_must_have" placeholder="e.g. Our address, phone number, a photo of the team, a map, a booking form..." style="min-height:100px"></textarea>
+      </div>
     </div>
 
     <div class="submit-wrap">
@@ -636,6 +760,7 @@ const TRANSLATIONS = {
     "services.heading": "Everything your business needs to own the web.",
     // Clients
     "clients.tag": "Previous work",
+    "clients.more":  "More stories coming",
     // Quote
     "quote.text": "We don&#39;t just build brands.<br>We build <em>voices.</em>",
     // Pricing
@@ -645,6 +770,10 @@ const TRANSLATIONS = {
     "pricing.ot1label":   "Standard Website",
     "pricing.ot2label":   "Advanced Build",
     "pricing.getstarted": "Get started",
+    "demo.tag":     "Not sure where to start?",
+    "demo.heading": "Request a free website demo.",
+    "demo.sub":     "Tell us about your business and we'll mock up what your site could look like — no commitment, no cost.",
+    "demo.cta":     "Request a demo",
     // Contact
     "contact.tag":     "Let's talk",
     "contact.heading": "Ready to be<br><em style=\"font-style:italic;color:var(--accent)\">heard?</em>",
@@ -677,6 +806,7 @@ const TRANSLATIONS = {
     "services.heading": "Tout ce dont votre entreprise a besoin pour dominer le web.",
     // Clients
     "clients.tag": "Travaux précédents",
+    "clients.more":  "D'autres histoires à venir",
     // Quote
     "quote.text": "On ne construit pas seulement des marques.<br>On construit des <em>voix.</em>",
     // Pricing
@@ -686,6 +816,10 @@ const TRANSLATIONS = {
     "pricing.ot1label":   "Site Web Standard",
     "pricing.ot2label":   "Développement Avancé",
     "pricing.getstarted": "Commencer",
+    "demo.tag":     "Vous ne savez pas par où commencer ?",
+    "demo.heading": "Demandez une démo gratuite.",
+    "demo.sub":     "Parlez-nous de votre entreprise et nous créerons une maquette de votre site — sans engagement, sans frais.",
+    "demo.cta":     "Demander une démo",
     // Contact
     "contact.tag":     "Parlons-en",
     "contact.heading": "Prêt à être<br><em style=\"font-style:italic;color:var(--accent)\">entendu&#160;?</em>",
@@ -718,6 +852,7 @@ const TRANSLATIONS = {
     "services.heading": "Alles wat uw bedrijf nodig heeft om het web te domineren.",
     // Clients
     "clients.tag": "Eerder werk",
+    "clients.more":  "Meer verhalen komen eraan",
     // Quote
     "quote.text": "Wij bouwen niet alleen merken.<br>Wij bouwen <em>stemmen.</em>",
     // Pricing
@@ -727,6 +862,10 @@ const TRANSLATIONS = {
     "pricing.ot1label":   "Standaard Website",
     "pricing.ot2label":   "Geavanceerde Ontwikkeling",
     "pricing.getstarted": "Aan de slag",
+    "demo.tag":     "Weet u niet waar u moet beginnen?",
+    "demo.heading": "Vraag een gratis website demo aan.",
+    "demo.sub":     "Vertel ons over uw bedrijf en wij maken een schets van hoe uw site eruit kan zien — geen verplichting, geen kosten.",
+    "demo.cta":     "Demo aanvragen",
     // Contact
     "contact.tag":     "Laten we praten",
     "contact.heading": "Klaar om<br><em style=\"font-style:italic;color:var(--accent)\">gehoord</em> te worden?",
@@ -815,6 +954,23 @@ const TRANSLATIONS = {
     init();
   }
 })();
+
+
+// DEMO SECTION TOGGLE
+const demoCheckbox = document.getElementById('need_demo');
+const demoSection = document.getElementById('demoSection');
+if (demoCheckbox && demoSection) {
+  function toggleDemo() {
+    if (demoCheckbox.checked) {
+      demoSection.classList.add('open');
+      // Scroll to it smoothly
+      setTimeout(() => demoSection.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+    } else {
+      demoSection.classList.remove('open');
+    }
+  }
+  demoCheckbox.addEventListener('change', toggleDemo);
+}
 
 </script>
 </body>
