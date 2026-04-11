@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!-- Made by Justin -->
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Our work — Mule Digital Group. Real websites built for real businesses.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#e8445a">
+<title>Our Work — Mule Digital Group</title>
+<link rel="canonical" href="https://www.mule-digital.com/work">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ──────────────────────────────────────────────────────────── */
+:root{
+  --bg:#f7f4ef;--bg2:#edeae3;--bg3:#e3dfd8;--border:#d6d0c8;
+  --fg:#0a0a0a;--fg2:#1a1a1a;--muted:#7a7268;--muted2:#a09890;
+  --accent:#e8445a;--accent2:#C68642;
+  --logo-filter:none;
+}
+[data-theme="dark"]{
+  --bg:#080808;--bg2:#0f0f0f;--bg3:#141414;--border:#252525;
+  --fg:#f2f0eb;--fg2:#dddbd5;--muted:#857d74;--muted2:#5a5550;
+  --accent:#e8445a;--accent2:#C68642;
+  --logo-filter:invert(1);
+}
+
+/* ── RESET ───────────────────────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .5s,color .5s}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ── NAV ─────────────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,border-color .4s}
+nav.scrolled{background:var(--bg);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:.65rem}
+.nav-logo img{width:28px;height:28px;filter:var(--logo-filter)}
+.nav-logo-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--fg)}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav ul li a{font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;color:var(--muted);transition:color .3s}
+nav ul li a:hover,nav ul li a.active{color:var(--fg)}
+.nav-right{display:flex;align-items:center;gap:1.25rem}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--muted2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .3s;color:var(--fg)}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.nav-cta{border:1px solid var(--muted2);color:var(--fg);padding:.5rem 1.3rem;font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;white-space:nowrap;background:transparent}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:transparent;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--fg);transition:all .3s}
+.nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;transition:background .5s}
+.nav-drawer.open{display:flex}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.nav-drawer ul li a{font-size:1.1rem;text-transform:uppercase;letter-spacing:.2em;font-weight:500;color:var(--muted);transition:color .3s}
+.nav-drawer ul li a:hover{color:var(--fg)}
+.nav-drawer-cta{border:1px solid var(--muted2);color:var(--fg);padding:.85rem 2.5rem;font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;background:transparent}
+.nav-drawer-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(max-width:768px){nav{padding:1rem 1.5rem}nav ul,.nav-cta{display:none}.nav-hamburger{display:flex}}
+
+/* ── HERO ────────────────────────────────────────────────────────────── */
+.work-hero{padding:clamp(8rem,14vw,13rem) clamp(2rem,5vw,6rem) clamp(4rem,7vw,7rem);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.work-hero-inner{max-width:860px}
+.work-hero-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.3em;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s .2s forwards}
+.work-hero-tag::before{content:'';display:block;width:28px;height:1px;background:var(--accent)}
+.work-hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:1.0;letter-spacing:-.04em;color:var(--fg);opacity:0;animation:fadeUp .8s .4s forwards}
+.work-hero-title em{font-style:italic;color:var(--accent)}
+.work-hero-sub{margin-top:2rem;font-size:clamp(.9rem,1.4vw,1.1rem);font-weight:300;color:var(--muted);max-width:520px;line-height:1.85;opacity:0;animation:fadeUp .8s .6s forwards}
+.work-hero-count{margin-top:3rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.28em;color:var(--muted2);opacity:0;animation:fadeUp .8s .8s forwards}
+.work-hero-count strong{color:var(--accent);font-weight:600}
+/* floating decorative shapes */
+.hero-shape{position:absolute;pointer-events:none;opacity:.07}
+.hero-shape-1{right:-4rem;top:4rem;width:clamp(18rem,35vw,36rem)}
+.hero-shape-2{right:20%;bottom:-2rem;width:clamp(8rem,15vw,16rem);opacity:.05}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── PROJECTS ────────────────────────────────────────────────────────── */
+.projects{padding:clamp(5rem,10vw,9rem) clamp(2rem,5vw,6rem)}
+.project{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:center;margin-bottom:clamp(6rem,12vw,12rem);position:relative}
+.project:last-child{margin-bottom:0}
+.project.reverse{direction:rtl}
+.project.reverse>*{direction:ltr}
+
+/* Screenshot area */
+.project-visual{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--bg3);cursor:pointer}
+.project-visual img{width:100%;height:100%;object-fit:cover;object-position:top;
+  filter:grayscale(100%) contrast(1.08) brightness(.92);
+  transition:filter .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+/* grain overlay via SVG data URI */
+.project-visual::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  opacity:.55;mix-blend-mode:multiply;transition:opacity .8s}
+/* accent line bottom */
+.project-visual::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--accent);transition:width .7s cubic-bezier(.16,1,.3,1);z-index:2}
+.project-visual:hover::before{width:100%}
+.project-visual:hover img{filter:grayscale(0%) contrast(1) brightness(1);transform:scale(1.025)}
+.project-visual:hover::after{opacity:0}
+
+/* Project number watermark */
+.project-num-bg{position:absolute;bottom:-2rem;right:-1rem;font-family:'Playfair Display',serif;font-size:clamp(7rem,14vw,14rem);font-weight:700;color:transparent;-webkit-text-stroke:1px var(--border);line-height:1;pointer-events:none;user-select:none;z-index:0;transition:-webkit-text-stroke-color .5s}
+
+/* Info */
+.project-info{position:relative;z-index:1}
+.project-tag{font-size:.68rem;text-transform:uppercase;letter-spacing:.28em;color:var(--accent);font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:.75rem}
+.project-tag::before{content:'';display:block;width:20px;height:1px;background:var(--accent)}
+.project-name{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:var(--fg);margin-bottom:1.5rem}
+.project-desc{font-size:clamp(.875rem,1.2vw,1rem);line-height:1.9;color:var(--muted);font-weight:300;margin-bottom:2rem}
+.project-services{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.project-service{font-size:.65rem;text-transform:uppercase;letter-spacing:.16em;padding:.35rem .85rem;border:1px solid var(--border);color:var(--muted);font-weight:500;transition:border-color .3s,color .3s}
+.project-service:hover{border-color:var(--accent);color:var(--accent)}
+.project-link{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;font-weight:600;color:var(--fg);display:inline-flex;align-items:center;gap:.6rem;transition:color .3s,gap .3s}
+.project-link::after{content:'→';transition:transform .3s}
+.project-link:hover{color:var(--accent);gap:.9rem}
+
+@media(max-width:900px){
+  .project{grid-template-columns:1fr;gap:2.5rem}
+  .project.reverse{direction:ltr}
+  .project-num-bg{display:none}
+}
+
+/* ── REVEAL ANIMATIONS ───────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.rd1{transition-delay:.12s}
+.rd2{transition-delay:.22s}
+.rd3{transition-delay:.32s}
+
+/* ── DIVIDER ─────────────────────────────────────────────────────────── */
+.section-divider{border:none;border-top:1px solid var(--border);margin:0 clamp(2rem,5vw,6rem)}
+
+/* ── WHY US ──────────────────────────────────────────────────────────── */
+.why-section{padding:clamp(5rem,10vw,10rem) clamp(2rem,5vw,6rem);background:var(--bg2);transition:background .5s;position:relative;overflow:hidden}
+.why-inner{max-width:900px;margin:0 auto;text-align:center}
+.why-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.3em;color:var(--accent);font-weight:600;margin-bottom:1.5rem}
+.why-heading{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:2.5rem;color:var(--fg)}
+.why-heading em{font-style:italic;color:var(--accent)}
+.why-body{font-size:clamp(.93rem,1.3vw,1.05rem);line-height:2;color:var(--muted);font-weight:300;max-width:640px;margin:0 auto 4rem}
+.why-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:5rem}
+@media(max-width:700px){.why-pillars{grid-template-columns:1fr}}
+.pillar{background:var(--bg2);padding:clamp(2rem,3vw,2.8rem);text-align:left;transition:background .5s}
+.pillar:hover{background:var(--bg3)}
+.pillar-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--accent);opacity:.3;line-height:1;margin-bottom:1rem}
+.pillar h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:.75rem;color:var(--fg)}
+.pillar p{font-size:.875rem;color:var(--muted);line-height:1.8;font-weight:300}
+
+/* ── CTA STRIP ───────────────────────────────────────────────────────── */
+.cta-strip{padding:clamp(5rem,10vw,10rem) clamp(2rem,5vw,6rem);text-align:center;position:relative;overflow:hidden}
+.cta-bg-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:clamp(8rem,20vw,20rem);font-weight:700;color:transparent;-webkit-text-stroke:1px var(--border);white-space:nowrap;pointer-events:none;user-select:none;opacity:.35;letter-spacing:-.05em;transition:-webkit-text-stroke-color .5s}
+.cta-inner{position:relative;z-index:1}
+.cta-heading{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:var(--fg);margin-bottom:1.5rem}
+.cta-heading em{font-style:italic;color:var(--accent)}
+.cta-sub{font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--muted);font-weight:300;line-height:1.85;max-width:480px;margin:0 auto 3rem}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:.95rem 2.4rem;border:none;font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;cursor:pointer;transition:background .3s;display:inline-block}
+.btn-primary:hover{background:var(--accent2)}
+.btn-outline{background:transparent;color:var(--fg);padding:.95rem 2.4rem;border:1px solid var(--muted2);font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;cursor:pointer;transition:all .3s;display:inline-block}
+.btn-outline:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ── FOOTER ──────────────────────────────────────────────────────────── */
+footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;transition:border-color .5s}
+.foot-brand{display:flex;align-items:center;gap:.75rem}
+.foot-brand img{width:22px;height:22px;filter:var(--logo-filter)}
+.foot-brand span{font-size:.75rem;color:var(--muted);font-weight:300}
+.foot-links{display:flex;gap:2rem}
+.foot-links a{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);font-weight:500;transition:color .3s}
+.foot-links a:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo page-link">
+    <img src="logo-nav.png" alt="Mule logo">
+    <span class="nav-logo-name">Mule</span>
+  </a>
+  <ul>
+    <li><a href="/#about" class="page-link">About</a></li>
+    <li><a href="/#services" class="page-link">Services</a></li>
+    <li><a href="/work" class="active">Work</a></li>
+    <li><a href="/#pricing" class="page-link">Pricing</a></li>
+    <li><a href="/learn" class="page-link">Learn</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9790;</button>
+    <a href="/project" class="nav-cta page-link">Start a project</a>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/#about" class="page-link">About</a></li>
+    <li><a href="/#services" class="page-link">Services</a></li>
+    <li><a href="/work">Work</a></li>
+    <li><a href="/#pricing" class="page-link">Pricing</a></li>
+    <li><a href="/learn" class="page-link">Learn</a></li>
+  </ul>
+  <a href="/project" class="nav-drawer-cta page-link">Start a project</a>
+</div>
+
+<!-- HERO -->
+<section class="work-hero">
+  <!-- decorative shapes -->
+  <svg class="hero-shape hero-shape-1" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="199" stroke="currentColor" stroke-width="1"/>
+    <circle cx="200" cy="200" r="140" stroke="currentColor" stroke-width="1"/>
+    <circle cx="200" cy="200" r="80" stroke="currentColor" stroke-width="1"/>
+    <line x1="0" y1="200" x2="400" y2="200" stroke="currentColor" stroke-width=".5"/>
+    <line x1="200" y1="0" x2="200" y2="400" stroke="currentColor" stroke-width=".5"/>
+  </svg>
+
+  <div class="work-hero-inner">
+    <div class="work-hero-tag">Our work</div>
+    <h1 class="work-hero-title">Real websites.<br>Real <em>results.</em></h1>
+    <p class="work-hero-sub">Every project here started with a business that needed a stronger digital presence. We built it — and stayed around to grow it.</p>
+    <p class="work-hero-count"><strong>11</strong> projects shipped &nbsp;·&nbsp; <strong>100%</strong> client retention &nbsp;·&nbsp; <strong>Est. 2026</strong></p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects">
+
+  <!-- PROJECT 1: Rochester Car Rental -->
+  <div class="project reveal">
+    <div class="project-visual">
+      <img src="work/rochester-car-rental.png" alt="Rochester Car Rental website screenshot"
+           onerror="this.parentElement.style.background='var(--bg3)';this.style.display='none'">
+      <span class="project-num-bg">01</span>
+    </div>
+    <div class="project-info">
+      <div class="project-tag">Web Design &amp; Development</div>
+      <h2 class="project-name">Rochester Car Rental</h2>
+      <p class="project-desc">A high-converting booking site for a Turo Power Host operating out of DTW Airport. Bold, dark aesthetic with a fleet showcase, real reviews, and a frictionless "Book Now" flow that drives direct reservations. 5.0 rating. 1,371+ trips.</p>
+      <div class="project-services">
+        <span class="project-service">Web Design</span>
+        <span class="project-service">Copywriting</span>
+        <span class="project-service">Branding</span>
+        <span class="project-service">Conversion Strategy</span>
+      </div>
+      <a href="https://www.rochester.rentals" target="_blank" rel="noopener" class="project-link">View live site</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 2: Equator Advocaten -->
+  <div class="project reverse reveal rd1">
+    <div class="project-visual">
+      <img src="work/equator-advocaten.png" alt="Equator Advocaten website screenshot"
+           onerror="this.parentElement.style.background='var(--bg3)';this.style.display='none'">
+      <span class="project-num-bg">02</span>
+    </div>
+    <div class="project-info">
+      <div class="project-tag">Branding &amp; Web Design</div>
+      <h2 class="project-name">Equator Advocaten</h2>
+      <p class="project-desc">A premium law firm website for a Belgian advocacy practice working across public and private law. Sophisticated dark-gold identity with an interactive practice area globe, trilingual content, and a design that commands trust the moment it loads.</p>
+      <div class="project-services">
+        <span class="project-service">Identity Design</span>
+        <span class="project-service">Web Development</span>
+        <span class="project-service">Multilingual</span>
+        <span class="project-service">Strategy</span>
+      </div>
+      <a href="https://eqtr.be" target="_blank" rel="noopener" class="project-link">View live site</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 3: Alpha Solutions Management -->
+  <div class="project reverse reveal rd1">
+    <div class="project-visual">
+      <img src="work/alpha-solutions.png" alt="Alpha Solutions Management website screenshot"
+           onerror="this.parentElement.style.background='var(--bg3)';this.style.display='none'">
+      <span class="project-num-bg">03</span>
+    </div>
+    <div class="project-info">
+      <div class="project-tag">Web Design &amp; Agent Portal</div>
+      <h2 class="project-name">Alpha Solutions Management</h2>
+      <p class="project-desc">A B2B web platform for a financial services management company. Clean agent tooling dashboard, product showcase, and carrier portal integrations — designed to streamline operations and project credibility to both agents and carriers.</p>
+      <div class="project-services">
+        <span class="project-service">Web Design</span>
+        <span class="project-service">Portal Design</span>
+        <span class="project-service">B2B Strategy</span>
+        <span class="project-service">Branding</span>
+      </div>
+      <a href="https://alphasolutionsmgt.com" target="_blank" rel="noopener" class="project-link">View live site</a>
+    </div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="why-inner">
+    <p class="why-tag reveal">Why Mule</p>
+    <h2 class="why-heading reveal rd1">We don't just build websites.<br>We build <em>businesses.</em></h2>
+    <p class="why-body reveal rd2">Every one of these projects came from a real conversation with a real business owner who needed more than a template and a domain name. We listened, we designed, we built — and every single client came back.</p>
+
+    <div class="why-pillars">
+      <div class="pillar reveal">
+        <div class="pillar-num">01</div>
+        <h3>Made for your market</h3>
+        <p>We don't copy-paste solutions. Every project is designed around who your customers are and what they need to feel confident booking you.</p>
+      </div>
+      <div class="pillar reveal rd1">
+        <div class="pillar-num">02</div>
+        <h3>You own everything</h3>
+        <p>Your website, your code, your domain, your content. No lock-in, no hostage fees. You could walk away and it still works — but we think you'll stay.</p>
+      </div>
+      <div class="pillar reveal rd2">
+        <div class="pillar-num">03</div>
+        <h3>We stay in it with you</h3>
+        <p>A website is never truly done. Our subscription plans mean we're available — updating, optimizing, and growing your presence alongside your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="cta-bg-text" aria-hidden="true">MULE</div>
+  <div class="cta-inner">
+    <h2 class="cta-heading reveal">Your business<br>could be <em>next.</em></h2>
+    <p class="cta-sub reveal rd1">Starting at $349 for a one-time build. Subscription plans from $49/mo. No jargon, no surprises — just a real website that works as hard as you do.</p>
+    <div class="cta-buttons reveal rd2">
+      <a href="/project" class="btn-primary page-link">Start your project →</a>
+      <a href="/#pricing" class="btn-outline page-link">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">
+    <img src="logo-nav.png" alt="Mule logo">
+    <span>&copy; 2026 Mule Digital Group</span>
+  </div>
+  <div class="foot-links">
+    <a href="/" class="page-link">Home</a>
+    <a href="/work">Work</a>
+    <a href="/learn" class="page-link">Learn</a>
+    <a href="/project" class="page-link">Start a project</a>
+  </div>
+</footer>
+
+<script>
+// THEME
+const html=document.documentElement,btn=document.getElementById('themeBtn');
+const stored=localStorage.getItem('mule-theme')||'light';
+html.setAttribute('data-theme',stored);
+btn.innerHTML=stored==='dark'?'&#9788;':'&#9790;';
+btn.addEventListener('click',()=>{
+  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  btn.innerHTML=next==='dark'?'&#9788;':'&#9790;';
+  localStorage.setItem('mule-theme',next);
+});
+
+// NAV SCROLL
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)},{ passive:true });
+
+// HAMBURGER
+const hamburgerBtn=document.getElementById('hamburgerBtn');
+const navDrawer=document.getElementById('navDrawer');
+if(hamburgerBtn&&navDrawer){
+  hamburgerBtn.addEventListener('click',()=>{
+    const open=navDrawer.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded',open);
+  });
+  document.addEventListener('click',(e)=>{
+    if(navDrawer.classList.contains('open')&&!navDrawer.contains(e.target)&&!hamburgerBtn.contains(e.target)){
+      navDrawer.classList.remove('open');
+    }
+  });
+}
+
+// REVEAL ON SCROLL
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting)e.target.classList.add('in');
+}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// SPA page links
+document.querySelectorAll('.page-link').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(href&&href.startsWith('/')){e.preventDefault();window.location.href=href;}
+  });
+});
+</script>
+</body>
+</html>

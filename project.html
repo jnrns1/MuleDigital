@@ -9,7 +9,9 @@
 <title>Start a Project — Mule Digital</title>
 <link rel="canonical" href="https://www.mule-digital.com/project">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta property="og:title" content="Start Your Project — Mule Digital">
 <meta property="og:description" content="Answer a quick questionnaire about your business goals and get a custom proposal from our team.">
 <meta property="og:type" content="website">
@@ -30,14 +32,14 @@
   --fg:#0a0a0a;--fg2:#1a1a1a;
   --muted:#888;--muted2:#ccc;--border:#d6d0c8;
   --accent:#e94560;--accent2:#c4300d;
-  --logo-filter:brightness(0);
+  --logo-filter:invert(1);
 }
 [data-theme="dark"]{
   --bg:#080808;--bg2:#0f0f0f;--bg3:#141414;
   --fg:#f2f0eb;--fg2:#dddbd5;
   --muted:#666;--muted2:#2e2e2e;--border:#1c1c1c;
   --accent:#e94560;--accent2:#ff6b35;
-  --logo-filter:brightness(0) invert(1);
+  --logo-filter:none;
 }
 html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .5s,color .5s;min-height:100vh}
@@ -97,6 +99,15 @@ nav ul li a:hover{color:var(--fg)}
 .form-section{padding:clamp(4rem,8vw,8rem) clamp(2rem,5vw,6rem);max-width:820px;margin:0 auto}
 .form-block{margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid var(--border)}
 .form-block:last-of-type{border-bottom:none}
+
+/* Sticky bottom bar holding the two action buttons */
+.submit-wrap{
+  position:sticky;bottom:0;z-index:100;
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:1.25rem 0;margin-top:1rem;
+  display:flex;flex-direction:column;align-items:center;gap:.75rem;
+  transition:background .5s,border-color .5s;
+}
 .form-block-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.25em;color:var(--accent);font-weight:600;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem}
 .form-block-label::before{content:'';display:block;width:22px;height:1px;background:var(--accent)}
 .form-block h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:.5rem;color:var(--fg)}
@@ -154,6 +165,60 @@ input[type="range"]::-moz-range-thumb{width:20px;height:20px;background:var(--ac
 .submit-btn{background:var(--accent);color:#fff;padding:1.1rem 3.5rem;border:none;font-family:'Inter',sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;font-weight:600;cursor:pointer;transition:background .3s;display:inline-block}
 .submit-btn:hover{background:var(--accent2)}
 .submit-note{font-size:.78rem;color:var(--muted);margin-top:1rem;font-weight:300}
+
+
+/* CHECKOUT FLOW */
+#checkout-wrapper{display:none}
+#checkout-wrapper.show{display:block}
+.checkout-hero{padding:clamp(6rem,12vw,10rem) clamp(2rem,5vw,6rem) 2rem;text-align:center}
+.checkout-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:var(--fg)}
+.checkout-hero h1 em{font-style:italic;color:var(--accent)}
+.checkout-hero p{font-size:.95rem;color:var(--muted);margin-top:1rem;font-weight:300;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75}
+.checkout-section{max-width:860px;margin:0 auto;padding:0 clamp(2rem,5vw,6rem) 6rem}
+.checkout-block{margin-bottom:3rem}
+.checkout-block-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.28em;color:var(--accent);font-weight:600;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem}
+.checkout-block-label::before{content:'';display:block;width:20px;height:1px;background:var(--accent)}
+.checkout-block h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--fg);margin-bottom:.5rem}
+.checkout-block p{font-size:.875rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300;line-height:1.7}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.product-card{background:var(--bg);padding:1.75rem;cursor:pointer;position:relative;transition:background .3s}
+.product-card:hover{background:var(--bg2)}
+.product-card input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.product-card label{cursor:pointer;display:block}
+.product-card.selected{background:var(--bg2)}
+.product-card.selected::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)}
+.product-card-name{font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;font-weight:700;color:var(--fg);margin-bottom:.4rem}
+.product-card-price{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--accent);line-height:1;margin-bottom:.5rem}
+.product-card-desc{font-size:.78rem;color:var(--muted);line-height:1.55;font-weight:300}
+.sub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.sub-card{background:var(--bg);padding:1.75rem;cursor:pointer;position:relative;transition:background .3s}
+.sub-card:hover{background:var(--bg2)}
+.sub-card input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.sub-card label{cursor:pointer;display:block}
+.sub-card.selected{background:var(--bg2)}
+.sub-card.selected::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)}
+.sub-none-card{background:var(--bg);padding:1.75rem;cursor:pointer;position:relative;transition:background .3s;border-top:1px solid var(--border)}
+.sub-none-card:hover{background:var(--bg2)}
+.sub-none-card input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.sub-none-card label{cursor:pointer;display:flex;align-items:center;gap:.75rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--muted)}
+.sub-none-card.selected label{color:var(--fg)}
+.sub-none-card.selected::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)}
+.checkout-summary{border:1px solid var(--border);padding:2rem;margin-bottom:2.5rem;background:var(--bg2);transition:background .5s,border-color .5s}
+.checkout-summary-title{font-size:.65rem;text-transform:uppercase;letter-spacing:.22em;color:var(--accent);font-weight:600;margin-bottom:1.25rem}
+.checkout-summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.checkout-summary-row:last-child{border-bottom:none;padding-top:1rem;font-weight:700;font-size:1rem}
+.checkout-summary-row span:last-child{font-family:'Playfair Display',serif;color:var(--accent)}
+.checkout-summary-empty{font-size:.85rem;color:var(--muted);font-weight:300;font-style:italic}
+.pay-btn{background:var(--accent);color:#fff;padding:1.1rem 3.5rem;border:none;font-family:'Inter',sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;font-weight:600;cursor:pointer;transition:background .3s;display:inline-block;width:100%}
+.pay-btn:hover{background:var(--accent2)}
+.pay-btn:disabled{opacity:.45;cursor:not-allowed}
+.pay-note{font-size:.72rem;color:var(--muted);margin-top:.75rem;font-weight:300;text-align:center;line-height:1.6}
+.back-link{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);cursor:pointer;border:none;background:transparent;padding:0;margin-bottom:2rem;display:flex;align-items:center;gap:.5rem;transition:color .3s}
+.back-link:hover{color:var(--fg)}
+@media(max-width:680px){
+  .product-grid{grid-template-columns:1fr}
+  .sub-grid{grid-template-columns:1fr}
+}
 
 /* FOOTER */
 footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;background:var(--bg);transition:background .5s,border-color .5s}
@@ -291,7 +356,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     </div>
 
     <!-- SECTION 2: Your Business -->
-    <div class="form-block">
+    <div class="form-block" id="block2">
       <div class="form-block-label">02 — Your business</div>
       <h2>What do you do?</h2>
       <p>Help us understand what you offer and who you serve.</p>
@@ -321,7 +386,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     </div>
 
     <!-- SECTION 3: What You Need -->
-    <div class="form-block">
+    <div class="form-block" id="block3">
       <div class="form-block-label">03 — What you need</div>
       <h2>What are you looking for?</h2>
       <p>Select everything that applies. You can choose more than one.</p>
@@ -394,7 +459,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     </div>
 
     <!-- SECTION 4: Budget -->
-    <div class="form-block">
+    <div class="form-block" id="block4">
       <div class="form-block-label">04 — Budget</div>
       <h2>What's your budget range?</h2>
       <p>Be honest — there's no wrong answer. Knowing your range helps us propose the right scope and plan for your situation.</p>
@@ -440,7 +505,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     </div>
 
     <!-- SECTION 5: Timeline + Story -->
-    <div class="form-block">
+    <div class="form-block" id="block5">
       <div class="form-block-label">05 — Timeline &amp; context</div>
       <h2>A little more context.</h2>
       <p>Help us understand urgency and what success looks like for you.</p>
@@ -578,12 +643,118 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     </div>
 
     <div class="submit-wrap">
-      <button type="submit" class="submit-btn">Send my questionnaire &#8594;</button>
-      <p class="submit-note">We'll review your answers and reach out within 48 hours.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;width:100%">
+        <button type="submit" class="submit-btn">Send my questionnaire &#8594;</button>
+        <button type="button" class="submit-btn" id="goCheckoutBtn" style="background:transparent;border:1px solid var(--muted2);color:var(--fg);" onmouseover="this.style.background='var(--bg2)'" onmouseout="this.style.background='transparent'">Already know what you want? &#8594;</button>
+      </div>
+      <p class="submit-note">Not sure yet? Fill out the questionnaire and we'll guide you. Ready to go? Skip straight to checkout.</p>
     </div>
   </form>
 </section>
 </div><!-- #form-wrapper -->
+<!-- CHECKOUT FLOW -->
+<div id="checkout-wrapper">
+  <div class="checkout-hero">
+    <h1>Choose your<br><em>plan.</em></h1>
+    <p>Select a one-time package, add a monthly subscription if you'd like, and pay securely via Stripe.</p>
+  </div>
+  <div class="checkout-section">
+    <button class="back-link" id="backToFormBtn">&#8592; Back to questionnaire</button>
+
+    <!-- STEP 1: One-time package -->
+    <div class="checkout-block">
+      <div class="checkout-block-label">01 — One-time package</div>
+      <h2>Pick your starting point.</h2>
+      <p>Every project starts here. Choose the package that fits where you are right now.</p>
+      <div class="product-grid">
+
+        <div class="product-card" id="pc-starter">
+          <input type="radio" name="product" id="prod_starter" value="starter">
+          <label for="prod_starter">
+            <div class="product-card-name">Starter Presence</div>
+            <div class="product-card-price checkout-price" data-price-usd="$349" data-price-eur="€700">€700</div>
+            <div class="product-card-desc">One-page site. Mobile responsive, SEO-ready, live within a week.</div>
+          </label>
+        </div>
+
+        <div class="product-card" id="pc-brand">
+          <input type="radio" name="product" id="prod_brand" value="brand">
+          <label for="prod_brand">
+            <div class="product-card-name">Brand + Web Package</div>
+            <div class="product-card-price checkout-price" data-price-usd="$549" data-price-eur="€950">€950</div>
+            <div class="product-card-desc">Up to 5 pages plus full brand identity — logo, colours, typography.</div>
+          </label>
+        </div>
+
+        <div class="product-card" id="pc-advanced">
+          <input type="radio" name="product" id="prod_advanced" value="advanced">
+          <label for="prod_advanced">
+            <div class="product-card-name">Advanced Build</div>
+            <div class="product-card-price checkout-price" data-price-usd="$999" data-price-eur="€1,800">€1,800</div>
+            <div class="product-card-desc">CMS, e-commerce, booking integrations, custom architecture.</div>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 2: Monthly subscription (optional) -->
+    <div class="checkout-block">
+      <div class="checkout-block-label">02 — Monthly subscription <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--muted);font-size:.65rem">(optional)</span></div>
+      <h2>Add ongoing support.</h2>
+      <p>Pair your project with a monthly plan to keep your presence growing after launch.</p>
+      <div class="sub-grid">
+
+        <div class="sub-card" id="sc-seedling">
+          <input type="radio" name="subscription" id="sub_seedling" value="seedling">
+          <label for="sub_seedling">
+            <div class="product-card-name">Seedling</div>
+            <div class="product-card-price checkout-price" data-price-usd="$49/mo" data-price-eur="€50/mo">€50/mo</div>
+            <div class="product-card-desc">Website maintenance · 1 social platform (4 posts/mo) · Monthly report · Email support</div>
+          </label>
+        </div>
+
+        <div class="sub-card" id="sc-grower">
+          <input type="radio" name="subscription" id="sub_grower" value="grower">
+          <label for="sub_grower">
+            <div class="product-card-name">Grower</div>
+            <div class="product-card-price checkout-price" data-price-usd="$99/mo" data-price-eur="€160/mo">€160/mo</div>
+            <div class="product-card-desc">Everything in Seedling · 2 platforms (12 posts/mo) · SEO monitoring · Strategy call</div>
+          </label>
+        </div>
+
+        <div class="sub-card" id="sc-harvest">
+          <input type="radio" name="subscription" id="sub_harvest" value="harvest">
+          <label for="sub_harvest">
+            <div class="product-card-name">Harvest</div>
+            <div class="product-card-price checkout-price" data-price-usd="$199/mo" data-price-eur="€370/mo">€370/mo</div>
+            <div class="product-card-desc">Everything in Grower · 3 platforms · Full SEO campaign · Priority support · Bi-monthly call</div>
+          </label>
+        </div>
+
+      </div>
+      <div class="sub-none-card selected" id="sc-none" style="grid-column:1/-1">
+        <input type="radio" name="subscription" id="sub_none" value="none" checked>
+        <label for="sub_none">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="6"/><line x1="5" y1="7" x2="9" y2="7"/></svg>
+          No subscription — one-time project only
+        </label>
+      </div>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="checkout-block">
+      <div class="checkout-block-label">Summary</div>
+      <div class="checkout-summary">
+        <div class="checkout-summary-title">Your order</div>
+        <div id="summary-body"><p class="checkout-summary-empty">Select a package above to see your summary.</p></div>
+      </div>
+      <button class="pay-btn" id="payBtn" disabled>Proceed to payment &#8594;</button>
+      <p class="pay-note">You'll be taken to Stripe's secure checkout. Mule Digital Group never stores your card details.</p>
+    </div>
+  </div>
+</div>
+
 
 <!-- CONFIRMATION (shown after successful submit) -->
 <section id="confirmation">
@@ -767,7 +938,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Simple. Transparent.<br>Built for real budgets.",
     "pricing.onetime":    "One-time projects",
     "pricing.monthly":    "Monthly subscriptions",
-    "pricing.ot1label":   "Standard Website",
+    "pricing.ot0label":   "Starter Presence",
+    "pricing.ot1label":   "Brand + Web Package",
     "pricing.ot2label":   "Advanced Build",
     "pricing.getstarted": "Get started",
     "demo.tag":     "Not sure where to start?",
@@ -813,7 +985,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Simple. Transparent.<br>Conçu pour de vrais budgets.",
     "pricing.onetime":    "Projets ponctuels",
     "pricing.monthly":    "Abonnements mensuels",
-    "pricing.ot1label":   "Site Web Standard",
+    "pricing.ot0label":   "Présence de base",
+    "pricing.ot1label":   "Pack Marque + Web",
     "pricing.ot2label":   "Développement Avancé",
     "pricing.getstarted": "Commencer",
     "demo.tag":     "Vous ne savez pas par où commencer ?",
@@ -859,7 +1032,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Eenvoudig. Transparant.<br>Gebouwd voor echte budgetten.",
     "pricing.onetime":    "Eenmalige projecten",
     "pricing.monthly":    "Maandelijkse abonnementen",
-    "pricing.ot1label":   "Standaard Website",
+    "pricing.ot0label":   "Starter Aanwezigheid",
+    "pricing.ot1label":   "Merk + Web Pakket",
     "pricing.ot2label":   "Geavanceerde Ontwikkeling",
     "pricing.getstarted": "Aan de slag",
     "demo.tag":     "Weet u niet waar u moet beginnen?",
@@ -963,7 +1137,6 @@ if (demoCheckbox && demoSection) {
   function toggleDemo() {
     if (demoCheckbox.checked) {
       demoSection.classList.add('open');
-      // Scroll to it smoothly
       setTimeout(() => demoSection.scrollIntoView({behavior:'smooth', block:'start'}), 100);
     } else {
       demoSection.classList.remove('open');
@@ -971,6 +1144,185 @@ if (demoCheckbox && demoSection) {
   }
   demoCheckbox.addEventListener('change', toggleDemo);
 }
+
+
+
+// ── CHECKOUT FLOW ──────────────────────────────────────────────────────────
+(function(){
+
+  // ── Stripe Payment Links ─────────────────────────────────────────────────
+  // Create these in your Stripe Dashboard → Payment Links, then paste the
+  // URLs below. Each key is "product_subscription" (or "product_none").
+  // Example: 'starter_none' = Starter Presence, no subscription.
+  // Payment links — keyed by "product_subscription_currency"
+  // Subscription combos can be added here once Payment Links are created in Stripe
+  const PAYMENT_LINKS = {
+    // ── USD (US visitors) ─────────────────────────────────────────────────
+    'starter_none_usd':      'https://buy.stripe.com/14A7sN4Tr7Bm1Pk4BUaEE00',
+    'brand_none_usd':        'https://buy.stripe.com/9B628tgC97Bm9hMd8qaEE01',
+    'advanced_none_usd':     'https://buy.stripe.com/28E28tclT1cY3Xs5FYaEE02',
+    'starter_seedling_usd':  'https://buy.stripe.com/28EbJ3eu14pabpU2tMaEE07',
+    'starter_grower_usd':    'https://buy.stripe.com/aFaaEZ71z08U51w3xQaEE06',
+    'starter_harvest_usd':   'https://buy.stripe.com/8x25kF99H9JualQ5FYaEE08',
+    'brand_seedling_usd':    'https://buy.stripe.com/dRm00l2Ljg7SbpU4BUaEE0a',
+    'brand_grower_usd':      'https://buy.stripe.com/28EaEZ71z5te65A1pIaEE09',
+    'brand_harvest_usd':     'https://buy.stripe.com/6oUaEZfy51cYeC6b0iaEE0b',
+    'advanced_seedling_usd': 'https://buy.stripe.com/9B63cxbhPf3OgKe1pIaEE0d',
+    'advanced_grower_usd':   'https://buy.stripe.com/00w00l0Db3l62To3xQaEE0c',
+    'advanced_harvest_usd':  'https://buy.stripe.com/9B66oJ3PndZKfGafgyaEE0e',
+    // ── EUR (all other visitors) ──────────────────────────────────────────
+    'starter_none_eur':      'https://buy.stripe.com/7sY7sNclT9Ju3Xs4BUaEE03',
+    'brand_none_eur':        'https://buy.stripe.com/bJefZjeu17Bm2To4BUaEE04',
+    'advanced_none_eur':     'https://buy.stripe.com/8x2eVfadL8Fq0Lg7O6aEE05',
+    'starter_seedling_eur':  'https://buy.stripe.com/fZu6oJbhP6xigKe8SaaEE0g',
+    'starter_grower_eur':    'https://buy.stripe.com/bJe5kFbhPbRCgKe5FYaEE0f',
+    'starter_harvest_eur':   'https://buy.stripe.com/eVq9AV85Df3O2To3xQaEE0h',
+    'brand_seedling_eur':    'https://buy.stripe.com/7sYfZj0Db5te3Xs3xQaEE0j',
+    'brand_grower_eur':      'https://buy.stripe.com/7sY00ldpX9JufGa9WeaEE0i',
+    'brand_harvest_eur':     'https://buy.stripe.com/3cI28t3PncVG8dI7O6aEE0k',
+    'advanced_seedling_eur': 'https://buy.stripe.com/cNi8wR0DbaNyfGa0lEaEE0l',
+    'advanced_grower_eur':   'https://buy.stripe.com/dRm7sN4Tr8FqgKegkCaEE0m',
+    'advanced_harvest_eur':  'https://buy.stripe.com/14A5kFfy57BmgKe9WeaEE0n',
+  };
+
+  // ── Price display data ────────────────────────────────────────────────────
+  const PRODUCTS = {
+    starter:  { name: 'Starter Presence',    usd: '$349',     eur: '€700'     },
+    brand:    { name: 'Brand + Web Package',  usd: '$549',     eur: '€950'     },
+    advanced: { name: 'Advanced Build',       usd: '$999',     eur: '€1,800'   },
+  };
+  const SUBS = {
+    seedling: { name: 'Seedling (monthly)',   usd: '$49/mo',   eur: '€50/mo'   },
+    grower:   { name: 'Grower (monthly)',     usd: '$99/mo',   eur: '€160/mo'  },
+    harvest:  { name: 'Harvest (monthly)',    usd: '$199/mo',  eur: '€370/mo'  },
+    none:     null,
+  };
+
+  // ── Currency (read from geo script result in localStorage) ────────────────
+  function getCurrency() {
+    try {
+      const cached = JSON.parse(localStorage.getItem('mule_geo') || 'null');
+      if (cached && cached.data) {
+        return cached.data.country_code === 'US' ? 'USD' : 'EUR';
+      }
+    } catch(e) {}
+    return 'EUR';
+  }
+
+  function fmt(product, sub) {
+    const cur = getCurrency();
+    const pPrice = cur === 'USD' ? product.usd : product.eur;
+    const sPrice = sub ? (cur === 'USD' ? sub.usd : sub.eur) : null;
+    return { pPrice, sPrice };
+  }
+
+  // ── State ─────────────────────────────────────────────────────────────────
+  let selectedProduct = null;
+  let selectedSub = 'none';
+
+  // ── UI helpers ────────────────────────────────────────────────────────────
+  function selectCard(groupSelector, activeId) {
+    document.querySelectorAll(groupSelector).forEach(c => c.classList.remove('selected'));
+    const el = document.getElementById(activeId);
+    if (el) el.classList.add('selected');
+  }
+
+  function applyCheckoutPrices() {
+    const cur = getCurrency();
+    document.querySelectorAll('.checkout-price').forEach(el => {
+      el.textContent = cur === 'USD' ? el.dataset.priceUsd : el.dataset.priceEur;
+    });
+  }
+
+  function updateSummary() {
+    const body = document.getElementById('summary-body');
+    const payBtn = document.getElementById('payBtn');
+    if (!selectedProduct) {
+      body.innerHTML = '<p class="checkout-summary-empty">Select a package above to see your summary.</p>';
+      payBtn.disabled = true;
+      return;
+    }
+    const p = PRODUCTS[selectedProduct];
+    const s = selectedSub !== 'none' ? SUBS[selectedSub] : null;
+    const { pPrice, sPrice } = fmt(p, s);
+    let rows = '';
+    rows += '<div class="checkout-summary-row"><span>' + p.name + '</span><span>' + pPrice + '</span></div>';
+    if (s) {
+      rows += '<div class="checkout-summary-row"><span>' + s.name + '</span><span>' + sPrice + '</span></div>';
+      rows += '<div class="checkout-summary-row"><span>Total due today</span><span>' + pPrice + '</span></div>';
+      rows += '<div style="font-size:.72rem;color:var(--muted);padding-top:.5rem;font-weight:300">Then ' + sPrice + ' billed monthly — cancel anytime.</div>';
+    } else {
+      rows += '<div class="checkout-summary-row"><span>Total</span><span>' + pPrice + '</span></div>';
+    }
+    body.innerHTML = rows;
+    payBtn.disabled = false;
+  }
+
+  // ── Product card selection ────────────────────────────────────────────────
+  ['starter','brand','advanced'].forEach(key => {
+    const card = document.getElementById('pc-' + key);
+    if (!card) return;
+    card.addEventListener('click', () => {
+      selectedProduct = key;
+      document.getElementById('prod_' + key).checked = true;
+      selectCard('.product-card', 'pc-' + key);
+      updateSummary();
+    });
+  });
+
+  // ── Subscription card selection ───────────────────────────────────────────
+  ['seedling','grower','harvest','none'].forEach(key => {
+    const card = document.getElementById('sc-' + key);
+    if (!card) return;
+    card.addEventListener('click', () => {
+      selectedSub = key;
+      const radioId = key === 'none' ? 'sub_none' : 'sub_' + key;
+      const radio = document.getElementById(radioId);
+      if (radio) radio.checked = true;
+      selectCard('.sub-card, .sub-none-card', 'sc-' + key);
+      updateSummary();
+    });
+  });
+
+  // ── Pay button ────────────────────────────────────────────────────────────
+  const payBtn = document.getElementById('payBtn');
+  if (payBtn) {
+    payBtn.addEventListener('click', () => {
+      if (!selectedProduct) return;
+      const cur = getCurrency().toLowerCase();
+      const key = selectedProduct + '_' + selectedSub + '_' + cur;
+      const link = PAYMENT_LINKS[key];
+      if (!link) {
+        alert('Payment link not yet configured for this combination. Please contact us at info@mule-digital.com and we\'ll get you sorted within 24 hours.');
+        return;
+      }
+      window.location.href = link;
+    });
+  }
+
+  // ── Show/hide checkout vs form ────────────────────────────────────────────
+  const goBtn = document.getElementById('goCheckoutBtn');
+  const backBtn = document.getElementById('backToFormBtn');
+  const formWrapper = document.getElementById('form-wrapper');
+  const checkoutWrapper = document.getElementById('checkout-wrapper');
+
+  if (goBtn) {
+    goBtn.addEventListener('click', () => {
+      formWrapper.style.display = 'none';
+      checkoutWrapper.classList.add('show');
+      applyCheckoutPrices();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      checkoutWrapper.classList.remove('show');
+      formWrapper.style.display = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+})();
 
 </script>
 </body>

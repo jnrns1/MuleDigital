@@ -9,7 +9,9 @@
 <title>Students — Start Your Brand — Mule Digital</title>
 <link rel="canonical" href="https://www.mule-digital.com/students">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta property="og:title" content="Students — Start Your Brand — Mule Digital">
 <meta property="og:description" content="Learn how to build a brand, manage your online presence, and use digital tools to launch your own business. A space for ambitious teens and young adults.">
 <meta property="og:type" content="website">
@@ -40,14 +42,14 @@
   --fg:#0a0a0a;--fg2:#1a1a1a;
   --muted:#888;--muted2:#ccc;--border:#d6d0c8;
   --accent:#e8445a;--accent2:#C68642;
-  --logo-filter:brightness(0);
+  --logo-filter:invert(1);
 }
 [data-theme="dark"]{
   --bg:#080808;--bg2:#0f0f0f;--bg3:#141414;
   --fg:#f2f0eb;--fg2:#dddbd5;
   --muted:#666;--muted2:#2e2e2e;--border:#1c1c1c;
   --accent:#e8445a;--accent2:#C68642;
-  --logo-filter:brightness(0) invert(1);
+  --logo-filter:none;
 }
 html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
 body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .5s,color .5s}
@@ -392,7 +394,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Simple. Transparent.<br>Built for real budgets.",
     "pricing.onetime":    "One-time projects",
     "pricing.monthly":    "Monthly subscriptions",
-    "pricing.ot1label":   "Standard Website",
+    "pricing.ot0label":   "Starter Presence",
+    "pricing.ot1label":   "Brand + Web Package",
     "pricing.ot2label":   "Advanced Build",
     "pricing.getstarted": "Get started",
     "demo.tag":     "Not sure where to start?",
@@ -438,7 +441,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Simple. Transparent.<br>Conçu pour de vrais budgets.",
     "pricing.onetime":    "Projets ponctuels",
     "pricing.monthly":    "Abonnements mensuels",
-    "pricing.ot1label":   "Site Web Standard",
+    "pricing.ot0label":   "Présence de base",
+    "pricing.ot1label":   "Pack Marque + Web",
     "pricing.ot2label":   "Développement Avancé",
     "pricing.getstarted": "Commencer",
     "demo.tag":     "Vous ne savez pas par où commencer ?",
@@ -484,7 +488,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Eenvoudig. Transparant.<br>Gebouwd voor echte budgetten.",
     "pricing.onetime":    "Eenmalige projecten",
     "pricing.monthly":    "Maandelijkse abonnementen",
-    "pricing.ot1label":   "Standaard Website",
+    "pricing.ot0label":   "Starter Aanwezigheid",
+    "pricing.ot1label":   "Merk + Web Pakket",
     "pricing.ot2label":   "Geavanceerde Ontwikkeling",
     "pricing.getstarted": "Aan de slag",
     "demo.tag":     "Weet u niet waar u moet beginnen?",

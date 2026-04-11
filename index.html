@@ -11,7 +11,9 @@
 <title>Mule — Digital Solutions for Real Communities</title>
 <link rel="canonical" href="https://www.mule-digital.com/">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta property="og:image" content="https://www.mule-digital.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -64,7 +66,7 @@
   --fg:#f2f0eb;--fg2:#dddbd5;
   --muted:#666;--muted2:#2e2e2e;--border:#1c1c1c;
   --accent:#e8445a;--accent2:#C68642;
-  --logo-filter:brightness(0) invert(1);
+  --logo-filter:none;
   --client-filter:brightness(0) invert(1);
   --client-color:#f2f0eb;
 }
@@ -73,7 +75,7 @@
   --fg:#0a0a0a;--fg2:#1a1a1a;
   --muted:#888;--muted2:#ccc;--border:#d6d0c8;
   --accent:#e8445a;--accent2:#C68642;
-  --logo-filter:brightness(0);
+  --logo-filter:invert(1);
   --client-filter:brightness(0);
   --client-color:#0a0a0a;
 }
@@ -86,11 +88,6 @@ a{color:inherit;text-decoration:none}
 /* GRAIN */
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.026;pointer-events:none;z-index:9998}
 
-/* CURSOR */
-.cursor{position:fixed;z-index:10000;pointer-events:none;mix-blend-mode:difference}
-.cursor-ring{width:40px;height:40px;border:1px solid var(--fg);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s;opacity:.5}
-.cursor-dot-inner{width:5px;height:5px;background:var(--fg);border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
-.cursor.hover .cursor-ring{width:72px;height:72px;opacity:1;border-color:var(--accent)}
 
 /* LOADER */
 .loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity 1s ease,visibility 1s ease}
@@ -278,7 +275,7 @@ nav ul li a:hover{color:var(--fg)}
 .clients-header .section-tag::before{display:none}
 .clients-header p{font-size:.875rem;color:var(--muted);font-weight:300;margin-top:.5rem}
 .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-@media(max-width:800px){.clients-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.clients-grid{grid-template-columns:repeat(3,1fr)}}
 .client-card{background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2.5rem;transition:background .5s;min-height:160px;gap:1rem;position:relative;overflow:hidden;text-decoration:none;cursor:pointer}
 .client-card::before{content:'';position:absolute;inset:0;background:var(--accent);opacity:0;transition:opacity .4s}
 .client-card:hover::before{opacity:.06}
@@ -304,8 +301,8 @@ nav ul li a:hover{color:var(--fg)}
 /* PRICING */
 #pricing{padding:clamp(5rem,10vw,10rem) clamp(2rem,5vw,6rem);position:relative}
 .pricing-intro{max-width:700px;margin-bottom:5rem}
-.pricing-one-time{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-bottom:6rem}
-@media(max-width:640px){.pricing-one-time{grid-template-columns:1fr}}
+.pricing-one-time{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:6rem}
+@media(max-width:760px){.pricing-one-time{grid-template-columns:1fr}}
 .ot-card{background:var(--bg);padding:clamp(2rem,3vw,3.5rem);transition:background .5s;position:relative;overflow:hidden}
 .ot-card:hover{background:var(--bg2)}
 .ot-card-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-bottom:1rem}
@@ -388,8 +385,10 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   .tiers-label{margin-bottom:1.5rem}
   .pricing-intro{margin-bottom:3rem}
   /* Clients */
-  .clients-grid{grid-template-columns:repeat(2,1fr)}
-  .client-card{padding:2rem 1rem;min-height:120px}
+  .clients-grid{grid-template-columns:repeat(3,1fr)}
+  .client-card{padding:1.25rem .5rem;min-height:100px}
+  .client-logo-img{width:50px!important;height:50px!important}
+  .client-name{font-size:.6rem}
   /* Watermark */
   .jr-watermark{right:-2rem;top:-1rem}
   /* Nav */
@@ -412,7 +411,6 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
 <body>
 <!-- Made by Justin -->
 
-<div class="cursor" id="cursor"><div class="cursor-ring"></div><div class="cursor-dot-inner"></div></div>
 
 <!-- LOADER -->
 <div class="loader" id="loader">
@@ -516,9 +514,9 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat reveal"><div class="stat-num"><span class="count-num" data-target="400">0</span><span class="unit currency-stat-sym">$</span></div><div class="stat-label" data-i18n="stats.price">Website starting price</div></div>
+  <div class="stat reveal"><div class="stat-num"><span class="count-num" data-target="700" data-target-usd="349" data-target-eur="700">0</span><span class="unit currency-stat-sym">€</span></div><div class="stat-label" data-i18n="stats.price">Website starting price</div></div>
   <div class="stat reveal rd1"><div class="stat-num"><span class="count-num" data-target="3">0</span></div><div class="stat-label" data-i18n="stats.tiers">Subscription tiers</div></div>
-  <div class="stat reveal rd2"><div class="stat-num"><span class="count-num" data-target="50">0</span><span class="unit currency-stat-sym">$</span></div><div class="stat-label" data-i18n="stats.monthly">Monthly plan from</div></div>
+  <div class="stat reveal rd2"><div class="stat-num"><span class="count-num" data-target="50" data-target-usd="49" data-target-eur="50">0</span><span class="unit currency-stat-sym">€</span></div><div class="stat-label" data-i18n="stats.monthly">Monthly plan from</div></div>
   <div class="stat reveal rd3"><div class="stat-num"><span class="count-num" data-target="100">0</span><span class="unit">%</span></div><div class="stat-label" data-i18n="stats.community">Community focused</div></div>
 </div>
 
@@ -624,13 +622,14 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
       </div>
     </a>
 
-    <!-- MORE STORIES -->
-    <div class="client-card reveal rd3" style="cursor:default;grid-column:1/-1">
-      <div class="client-logo-wrap" style="opacity:.35;flex-direction:column;align-items:center;gap:.75rem">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--accent)"><circle cx="7" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><circle cx="25" cy="16" r="2.5"/></svg>
-        <span class="client-name" data-i18n="clients.more" style="letter-spacing:.18em">More stories coming</span>
+    <!-- SEE ALL WORK -->
+    <a href="/work" class="client-card reveal rd3" style="grid-column:1/-1;background:linear-gradient(135deg,var(--bg2) 0%,var(--bg) 60%);padding:3.5rem 2.5rem;min-height:180px;text-decoration:none">
+      <div class="client-logo-wrap" style="flex-direction:column;align-items:center;gap:1rem;opacity:1">
+        <svg width="36" height="36" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--accent)"><path d="M6 16h20M18 10l8 6-8 6"/></svg>
+        <span class="client-name" style="letter-spacing:.22em;font-size:.8rem;color:var(--fg2)">See all our work</span>
+        <span style="font-size:.72rem;color:var(--muted);letter-spacing:.06em;font-weight:300">11 projects &nbsp;·&nbsp; View the full portfolio</span>
       </div>
-    </div>
+    </a>
 
 
 
@@ -659,14 +658,15 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   </div>
   <div class="tiers-label reveal" data-i18n="pricing.onetime">One-time projects</div>
   <div class="pricing-one-time reveal rd1">
-    <div class="ot-card"><div class="ot-card-label" data-i18n="pricing.ot1label">Standard Website</div><h3>Website</h3><div class="ot-price" data-usd="400">$400</div><p>Up to 5 pages, mobile responsive, SEO-ready. Custom design built around your story. Two rounds of revisions and full handoff — ready to launch.</p></div>
-    <div class="ot-card"><div class="ot-card-label" data-i18n="pricing.ot2label">Advanced Build</div><h3>Website + Advanced Development</h3><div class="ot-price" data-usd="800">$800</div><p>Comprehensive web development for businesses that need more than a brochure site. CMS, booking integrations, e-commerce, and custom back-end architecture — scoped and delivered with the same attention to craft as everything else we build.</p></div>
+    <div class="ot-card"><div class="ot-card-label" data-i18n="pricing.ot0label">Starter Presence</div><h3>Get Online, Fast</h3><div class="ot-price"><span class="price" data-price-usd="$349" data-price-eur="€700">€700</span></div><p>A clean, focused one-page site to establish your online presence. Mobile responsive, SEO-ready, custom designed — your story, live within a week.</p></div>
+    <div class="ot-card"><div class="ot-card-label" data-i18n="pricing.ot1label">Brand + Web Package</div><h3>Website &amp; Identity</h3><div class="ot-price"><span class="price" data-price-usd="$549" data-price-eur="€950">€950</span></div><p>Up to 5 pages plus a complete brand identity — logo, colours, typography. Everything you need to launch with a consistent, professional look.</p></div>
+    <div class="ot-card"><div class="ot-card-label" data-i18n="pricing.ot2label">Advanced Build</div><h3>Website + Development</h3><div class="ot-price"><span class="price" data-price-usd="$999" data-price-eur="€1,800">€1,800</span></div><p>Comprehensive web development for businesses that need more — CMS, booking integrations, e-commerce, and custom back-end architecture, delivered with the same craft.</p></div>
   </div>
   <div class="tiers-label reveal" data-i18n="pricing.monthly">Monthly subscriptions</div>
   <div class="tiers">
-    <div class="tier reveal"><div class="tier-name">Seedling</div><div class="tier-price"><sup class="currency-sym">$</sup><span class="price-val" data-usd="50">50</span><sub>/mo</sub></div><div class="tier-desc">For businesses just starting their digital journey.</div><ul class="tier-features"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Monthly website maintenance</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>1 social platform (4 posts/mo)</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Monthly performance report</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Email support (2-day response)</li></ul><a href="/project" title="Start your project questionnaire" class="tier-btn page-link" data-i18n="pricing.getstarted">Get started</a></div>
-    <div class="tier featured reveal rd1"><div class="tier-badge">Most popular</div><div class="tier-name">Grower</div><div class="tier-price"><sup class="currency-sym">$</sup><span class="price-val" data-usd="175">175</span><sub>/mo</sub></div><div class="tier-desc">For established businesses ready to build a consistent presence.</div><ul class="tier-features"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Everything in Seedling</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>2 platforms (12 posts/mo)</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>1 original content piece/month</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>SEO monitoring &amp; adjustments</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Google Business Profile mgmt</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Monthly strategy call (30 min)</li></ul><a href="/project" title="Start your project questionnaire" class="tier-btn page-link" data-i18n="pricing.getstarted">Get started</a></div>
-    <div class="tier reveal rd2"><div class="tier-name">Harvest</div><div class="tier-price"><sup class="currency-sym">$</sup><span class="price-val" data-usd="400">400</span><sub>/mo</sub></div><div class="tier-desc">For businesses serious about owning their full digital story.</div><ul class="tier-features"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Everything in Grower</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>3 platforms (20 posts/mo)</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>2 content pieces/month</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Full SEO campaign &amp; link building</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Quarterly branding review</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Priority same-day support</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Bi-monthly strategy call (60 min)</li></ul><a href="/project" title="Start your project questionnaire" class="tier-btn page-link" data-i18n="pricing.getstarted">Get started</a></div>
+    <div class="tier reveal"><div class="tier-name">Seedling</div><div class="tier-price"><span class="price" data-price-usd="$49" data-price-eur="€50">€50</span><sub>/mo</sub></div><div class="tier-desc">For businesses just starting their digital journey.</div><ul class="tier-features"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Monthly website maintenance</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>1 social platform (4 posts/mo)</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Monthly performance report</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Email support (2-day response)</li></ul><a href="/project" title="Start your project questionnaire" class="tier-btn page-link" data-i18n="pricing.getstarted">Get started</a></div>
+    <div class="tier featured reveal rd1"><div class="tier-badge">Most popular</div><div class="tier-name">Grower</div><div class="tier-price"><span class="price" data-price-usd="$99" data-price-eur="€160">€160</span><sub>/mo</sub></div><div class="tier-desc">For established businesses ready to build a consistent presence.</div><ul class="tier-features"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Everything in Seedling</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>2 platforms (12 posts/mo)</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>1 original content piece/month</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>SEO monitoring &amp; adjustments</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Google Business Profile mgmt</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Monthly strategy call (30 min)</li></ul><a href="/project" title="Start your project questionnaire" class="tier-btn page-link" data-i18n="pricing.getstarted">Get started</a></div>
+    <div class="tier reveal rd2"><div class="tier-name">Harvest</div><div class="tier-price"><span class="price" data-price-usd="$199" data-price-eur="€370">€370</span><sub>/mo</sub></div><div class="tier-desc">For businesses serious about owning their full digital story.</div><ul class="tier-features"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Everything in Grower</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>3 platforms (20 posts/mo)</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>2 content pieces/month</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Full SEO campaign &amp; link building</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Quarterly branding review</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Priority same-day support</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>Bi-monthly strategy call (60 min)</li></ul><a href="/project" title="Start your project questionnaire" class="tier-btn page-link" data-i18n="pricing.getstarted">Get started</a></div>
   </div>
 </section>
 
@@ -796,15 +796,6 @@ document.querySelectorAll('.drawer-link').forEach(link=>{
   });
 });
 
-// CURSOR
-const curEl=document.getElementById('cursor');
-let mx=0,my=0,cx=0,cy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function a(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;curEl.style.left=cx+'px';curEl.style.top=cy+'px';requestAnimationFrame(a)})();
-document.querySelectorAll('a,button,.svc-card,.tier,.ot-card,.stat,.client-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>curEl.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>curEl.classList.remove('hover'));
-});
 
 // HERO CANVAS
 const canvas=document.getElementById('hero-canvas');
@@ -889,34 +880,52 @@ window.addEventListener('scroll',()=>{
   bgText.style.transform=`translateX(${(rect.top/window.innerHeight)*60}px)`;
 });
 
-// CURRENCY DETECTION — show EUR for European visitors
+// GEO-BASED PRICING
 (function(){
-  const EU_COUNTRIES = new Set([
-    'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU',
-    'IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES',
-    'SE','NO','CH','IS','LI','AL','BA','ME','MK','RS','XK','MD','UA',
-    'BY','GE','AM','AZ','TR','GB','AD','SM','MC','LI','VA'
-  ]);
-  function applyEUR() {
-    // Same numbers, just swap symbol to €
-    document.querySelectorAll('.currency-sym').forEach(el => { el.textContent = '\u20ac'; });
-    document.querySelectorAll('.ot-price[data-usd]').forEach(el => {
-      el.textContent = '\u20ac' + el.dataset.usd;
+  const CACHE_KEY = 'mule_geo';
+  const CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+  function applyPricing(currency) {
+    // Swap all .price elements
+    document.querySelectorAll('.price[data-price-usd][data-price-eur]').forEach(el => {
+      el.textContent = currency === 'USD' ? el.dataset.priceUsd : el.dataset.priceEur;
     });
-    document.querySelectorAll('.currency-stat-sym').forEach(el => { el.textContent = '\u20ac'; });
-    const pricingIntro = document.querySelector('.pricing-intro');
-    if (pricingIntro && !document.getElementById('currency-note')) {
-      const note = document.createElement('p');
-      note.id = 'currency-note';
-      note.style.cssText = 'font-size:.7rem;color:var(--muted);margin-top:.75rem;letter-spacing:.08em;text-transform:uppercase';
-      note.textContent = 'Prices shown in EUR \u00b7 Based on your location';
-      pricingIntro.appendChild(note);
-    }
+    // Swap stat counter currency symbols and targets
+    document.querySelectorAll('.currency-stat-sym').forEach(el => {
+      el.textContent = currency === 'USD' ? '$' : '\u20ac';
+    });
+    document.querySelectorAll('.count-num[data-target-usd]').forEach(el => {
+      el.dataset.target = currency === 'USD' ? el.dataset.targetUsd : el.dataset.targetEur;
+    });
   }
-  fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) })
+
+  function resolve(data) {
+    const cc = (data && data.country_code) || '';
+    const cont = (data && data.continent_code) || '';
+    const isUSD = cc === 'US';
+    applyPricing(isUSD ? 'USD' : 'EUR');
+  }
+
+  // Check cache first
+  try {
+    const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && (Date.now() - cached.ts) < CACHE_TTL) {
+      resolve(cached.data);
+      return;
+    }
+  } catch(e) {}
+
+  // Fetch with 2s timeout, default EUR on failure
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 2000);
+  fetch('https://ipapi.co/json/', { signal: ctrl.signal })
     .then(r => r.json())
-    .then(data => { if (data && EU_COUNTRIES.has(data.country_code)) applyEUR(); })
-    .catch(() => {});
+    .then(data => {
+      clearTimeout(timer);
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch(e) {}
+      resolve(data);
+    })
+    .catch(() => { applyPricing('EUR'); });
 })();
 
 // ─── LANGUAGE SWITCHER ───────────────────────
@@ -960,7 +969,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Simple. Transparent.<br>Built for real budgets.",
     "pricing.onetime":    "One-time projects",
     "pricing.monthly":    "Monthly subscriptions",
-    "pricing.ot1label":   "Standard Website",
+    "pricing.ot0label":   "Starter Presence",
+    "pricing.ot1label":   "Brand + Web Package",
     "pricing.ot2label":   "Advanced Build",
     "pricing.getstarted": "Get started",
     "demo.tag":     "Not sure where to start?",
@@ -1006,7 +1016,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Simple. Transparent.<br>Conçu pour de vrais budgets.",
     "pricing.onetime":    "Projets ponctuels",
     "pricing.monthly":    "Abonnements mensuels",
-    "pricing.ot1label":   "Site Web Standard",
+    "pricing.ot0label":   "Présence de base",
+    "pricing.ot1label":   "Pack Marque + Web",
     "pricing.ot2label":   "Développement Avancé",
     "pricing.getstarted": "Commencer",
     "demo.tag":     "Vous ne savez pas par où commencer ?",
@@ -1052,7 +1063,8 @@ const TRANSLATIONS = {
     "pricing.heading":    "Eenvoudig. Transparant.<br>Gebouwd voor echte budgetten.",
     "pricing.onetime":    "Eenmalige projecten",
     "pricing.monthly":    "Maandelijkse abonnementen",
-    "pricing.ot1label":   "Standaard Website",
+    "pricing.ot0label":   "Starter Aanwezigheid",
+    "pricing.ot1label":   "Merk + Web Pakket",
     "pricing.ot2label":   "Geavanceerde Ontwikkeling",
     "pricing.getstarted": "Aan de slag",
     "demo.tag":     "Weet u niet waar u moet beginnen?",
