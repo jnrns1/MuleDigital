@@ -1,4 +1,109 @@
+# ============================================================
+#  MULE DIGITAL GROUP — robots.txt
+#  mule-digital.com
+#  Built for real communities.
+# ============================================================
+#
+#  Hey. You found our robots.txt.
+#  That either means you're a search engine crawler,
+#  a developer, or someone who really knows their way
+#  around a website. Respect.
+#
+#  If you're a crawler: welcome. Index everything.
+#  If you're a human: hi. We build websites for
+#  small-town and rural businesses. If that sounds
+#  like something you need, go to /project.
+#
+# ============================================================
+#  CRAWL RULES
+# ============================================================
+
+# All well-behaved crawlers — full access
 User-agent: *
 Allow: /
 
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Slack link previews
+User-agent: Slackbot
+Allow: /
+
+# Twitter/X cards
+User-agent: Twitterbot
+Allow: /
+
+# Facebook/Meta
+User-agent: facebookexternalhit
+Allow: /
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+
+# ============================================================
+#  THE BAD GUYS
+#  (scrapers, AI training crawlers we'd rather not feed)
+# ============================================================
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# ============================================================
+#  SITEMAP
+# ============================================================
+
 Sitemap: https://www.mule-digital.com/sitemap.xml
+
+# ============================================================
+#  FIND US
+#
+#  Web:       https://www.mule-digital.com
+#  LinkedIn:  https://www.linkedin.com/company/mule-digital-group
+#  Instagram: https://www.instagram.com/muledigitalgroup
+#  Email:     hello@mule-digital.com
+# ============================================================
