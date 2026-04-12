@@ -192,7 +192,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 
     <h2>What you are actually paying</h2>
 
-    <p>Squarespace costs around $23 per month on their basic business plan. Over three years that is about $830. Wix is similar. GoDaddy charges extra for almost every meaningful feature. By year three you have spent close to a thousand dollars on a website that ranks poorly, looks like everyone else, and you have spent dozens of hours maintaining it yourself instead of running your business.</p>
+    <p>Squarespace costs around <span class="price" data-price-usd="$23" data-price-eur="€21">€21</span> per month on their basic business plan. Over three years that is about <span class="price" data-price-usd="$830" data-price-eur="€770">€770</span>. Wix is similar. GoDaddy charges extra for almost every meaningful feature. By year three you have spent close to a thousand dollars on a website that ranks poorly, looks like everyone else, and you have spent dozens of hours maintaining it yourself instead of running your business.</p>
 
     <p>A properly built custom website, optimized for your specific business and location, costs more upfront. But it works harder, ranks better, and does not require you to become a part-time web manager. For most rural businesses I have worked with, the return difference is not even close.</p>
 
@@ -210,7 +210,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 
   <div class="post-cta">
     <h3>Ready to build something that actually works?</h3>
-    <p>We build custom websites for rural and small-town businesses that rank, convert, and represent you the right way. Packages start at $349.</p>
+    <p>We build custom websites for rural and small-town businesses that rank, convert, and represent you the right way. Packages start at <span class="price" data-price-usd="$349" data-price-eur="€700">€700</span>.</p>
     <a href="/project">Start a project</a>
   </div>
 </div>
@@ -241,6 +241,34 @@ hamburgerBtn.addEventListener('click', () => {
 });
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+// GEO-BASED PRICING
+(function(){
+  const CACHE_KEY = 'mule_geo';
+  const CACHE_TTL = 60 * 60 * 1000;
+  function applyPricing(currency) {
+    document.querySelectorAll('.price[data-price-usd][data-price-eur]').forEach(el => {
+      el.textContent = currency === 'USD' ? el.dataset.priceUsd : el.dataset.priceEur;
+    });
+  }
+  function resolve(data) {
+    const cc = (data && data.country_code) || '';
+    applyPricing(cc === 'US' ? 'USD' : 'EUR');
+  }
+  try {
+    const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && (Date.now() - cached.ts) < CACHE_TTL) { resolve(cached.data); return; }
+  } catch(e) {}
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 2000);
+  fetch('https://ipapi.co/json/', { signal: ctrl.signal })
+    .then(r => r.json())
+    .then(data => {
+      clearTimeout(timer);
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch(e) {}
+      resolve(data);
+    })
+    .catch(() => { applyPricing('EUR'); });
+})();
 </script>
 </body>
 </html>

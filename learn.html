@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Explore Mule Digital's comprehensive services and transparent pricing. From website design to full digital strategy—discover our service offerings and pricing tiers.">
+<meta name="description" content="Meet the team behind Mule Digital and explore our services and transparent pricing. Web design, branding, content, and digital strategy for rural and small-town businesses.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#e8445a">
-<title>Learn — Services & Pricing — Mule Digital</title>
+<title>About & Services — Mule Digital</title>
 <link rel="canonical" href="https://www.mule-digital.com/learn">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<meta property="og:title" content="Services & Pricing — Mule Digital">
-<meta property="og:description" content="Explore Mule Digital's comprehensive services and transparent pricing. Web design, branding, content production, social media, and digital strategy.">
+<meta property="og:title" content="About & Services — Mule Digital">
+<meta property="og:description" content="Meet the team behind Mule Digital and explore our services. Web design, branding, content, and digital strategy for rural and small-town businesses.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mule-digital.com/learn">
 <meta property="og:image" content="https://www.mule-digital.com/og-image.png">
 <meta property="og:site_name" content="Mule Digital">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Services & Pricing — Mule Digital">
-<meta name="twitter:description" content="Explore Mule Digital's comprehensive services and transparent pricing.">
+<meta name="twitter:title" content="About & Services — Mule Digital">
+<meta name="twitter:description" content="Meet the Mule Digital team and explore our services for rural and small-town businesses.">
 <meta name="twitter:image" content="https://www.mule-digital.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -172,6 +172,21 @@ nav ul li a:hover{color:var(--fg)}
 .tier.featured .tier-btn{background:var(--accent);border-color:var(--accent);color:#fff}
 .tier.featured .tier-btn:hover{background:var(--fg);border-color:var(--fg);color:var(--bg)}
 
+/* FOUNDERS */
+#founders{padding:clamp(5rem,10vw,9rem) clamp(2rem,5vw,6rem);border-bottom:1px solid var(--border)}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3.5rem}
+@media(max-width:768px){.founders-grid{grid-template-columns:1fr}}
+.founder-card{border:1px solid var(--border);padding:2.5rem;background:var(--bg2);transition:background .5s,border-color .5s;display:flex;gap:1.75rem;align-items:flex-start}
+.founder-card:hover{background:var(--bg3);border-color:var(--muted)}
+.founder-photo{width:72px;height:72px;border-radius:50%;border:2px solid var(--border);overflow:hidden;flex-shrink:0;transition:border-color .5s}
+.founder-photo img{width:100%;height:100%;object-fit:cover;object-position:center 68%}
+.founder-photo img[alt="Emile Holemans"]{object-position:center 15%}
+.founder-body h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.2rem;color:var(--fg)}
+.founder-role{font-size:.68rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:600;margin-bottom:.85rem}
+.founder-body p{font-size:.875rem;color:var(--muted);line-height:1.8;font-weight:300}
+.founder-email{font-size:.72rem;color:var(--muted);margin-top:.85rem;text-transform:uppercase;letter-spacing:.1em}
+@media(max-width:560px){.founder-card{flex-direction:column;gap:1.25rem}.founder-photo{width:56px;height:56px}}
+
 /* FAQ */
 #faq{padding:clamp(5rem,10vw,9rem) clamp(2rem,5vw,6rem);background:var(--bg2);transition:background .5s;border-bottom:1px solid var(--border)}
 .faq-grid{margin-top:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
@@ -242,21 +257,15 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <span class="nav-logo-name">Mule</span>
   </a>
   <ul>
-    <li><a href="/" class="page-link">Home</a></li>
-    <li><a href="/project" class="page-link">Start a project</a></li>
+    <li><a href="/#about" class="page-link">About</a></li>
+    <li><a href="/#services" class="page-link">Services</a></li>
+    <li><a href="/work" class="page-link">Work</a></li>
+    <li><a href="/#pricing" class="page-link">Pricing</a></li>
+    <li><a href="/blog" class="page-link">Blog</a></li>
   </ul>
   <div class="nav-right">
     <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9790;</button>
-    <a href="/project" title="Start your project questionnaire" class="nav-cta page-link" data-i18n="nav.cta">Start a project</a>
-  
-    <div class="lang-switcher" id="langSwitcher">
-      <button class="lang-btn" id="langBtn" aria-label="Select language">EN</button>
-      <div class="lang-dropdown" id="langDropdown">
-        <button class="lang-option active" data-lang="en">English</button>
-        <button class="lang-option" data-lang="fr">Français</button>
-        <button class="lang-option" data-lang="nl">Nederlands</button>
-      </div>
-    </div>
+    <a href="/project" class="nav-cta page-link">Start a project</a>
     <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -265,17 +274,20 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
 <!-- MOBILE DRAWER -->
 <div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <ul>
-    <li><a href="/" class="drawer-link page-link">Home</a></li>
-    <li><a href="/project" class="drawer-link page-link">Start a project</a></li>
+    <li><a href="/#about" class="drawer-link page-link">About</a></li>
+    <li><a href="/#services" class="drawer-link page-link">Services</a></li>
+    <li><a href="/work" class="drawer-link page-link">Work</a></li>
+    <li><a href="/#pricing" class="drawer-link page-link">Pricing</a></li>
+    <li><a href="/blog" class="drawer-link page-link">Blog</a></li>
   </ul>
   <a href="/project" class="nav-drawer-cta page-link">Start a project</a>
 </div>
 
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-tag">Deep dive</div>
+  <div class="page-hero-tag">About & Services</div>
   <h1>What <em>Mule</em><br>actually does.</h1>
-  <p>No buzzwords. No templates. Here's a transparent look at our process, every service we offer, and exactly what it costs — so you can decide if we're the right fit for your business.</p>
+  <p>No buzzwords. No templates. Here's who we are, how we work, every service we offer, and exactly what it costs — so you can decide if we're the right fit for your business.</p>
 </section>
 
 <!-- HOW WE WORK -->
@@ -302,6 +314,32 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
       <div class="step-num">04</div>
       <h3>Launch &amp; Grow</h3>
       <p>We don't disappear after launch. Ongoing clients get continued support, monthly reporting, and a partner who's genuinely invested in their long-term growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section id="founders">
+  <div class="section-tag reveal">The people behind the mule</div>
+  <h2 class="section-heading reveal rd1">Two founders.<br>One stubborn commitment to small business.</h2>
+  <div class="founders-grid">
+    <div class="founder-card reveal rd2">
+      <div class="founder-photo"><img src="public/justin-reynolds.png" alt="Justin Reynolds"></div>
+      <div class="founder-body">
+        <h3>Justin Reynolds</h3>
+        <div class="founder-role">Founder &amp; Creative Director</div>
+        <p>Raised in Detroit. Trained in Applied Computer Science and Multimedia Creative Technologies. Now based in Antwerp, Belgium — because apparently running a rural-focused digital agency from Europe is a personality trait. Built Mule because every small-town business deserves an online presence that doesn't look like a 2008 Wix experiment.</p>
+        <div class="founder-email">&#9993; info@mule-digital.com</div>
+      </div>
+    </div>
+    <div class="founder-card reveal rd3">
+      <div class="founder-photo"><img src="public/emile-holemans.JPG" alt="Emile Holemans"></div>
+      <div class="founder-body">
+        <h3>Emile Holemans</h3>
+        <div class="founder-role">Co-Founder &amp; Creative Technologist</div>
+        <p>Trained in Multimedia Creative Technologies with a focus on UX, interactive systems, and digital product design. Builds websites and experience-driven systems that go from raw concept to high-impact execution. If Justin's job is the voice, Emile's job is making sure it actually loads in under two seconds.</p>
+        <div class="founder-email">&#9993; emile@mule-digital.com</div>
+      </div>
     </div>
   </div>
 </section>
@@ -400,7 +438,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <div class="ot">
       <div class="ot-label">Essential</div>
       <h3>Starter Presence</h3>
-      <div class="ot-price">From $400</div>
+      <div class="ot-price"><span class="price" data-price-usd="$349" data-price-eur="€700">€700</span></div>
       <p>A clean, professional web presence for a business just getting started online. Built to grow with you.</p>
       <ul>
         <li>Up to 5 custom pages</li>
@@ -414,7 +452,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <div class="ot">
       <div class="ot-label">Full Brand</div>
       <h3>Brand + Web Package</h3>
-      <div class="ot-price">From $950</div>
+      <div class="ot-price"><span class="price" data-price-usd="$549" data-price-eur="€950">€950</span></div>
       <p>Identity and website together, designed to feel like a single, cohesive expression of who you are.</p>
       <ul>
         <li>Everything in Starter Presence</li>
@@ -431,7 +469,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   <div class="tiers">
     <div class="tier reveal">
       <div class="tier-name">Seedling</div>
-      <div class="tier-price"><sup>$</sup>50<sub>/mo</sub></div>
+      <div class="tier-price"><span class="price" data-price-usd="$49" data-price-eur="€50">€50</span><sub>/mo</sub></div>
       <div class="tier-desc">For businesses just starting their digital journey.</div>
       <ul class="tier-features">
         <li>Monthly website maintenance</li>
@@ -444,7 +482,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <div class="tier featured reveal rd1">
       <div class="tier-badge">Most popular</div>
       <div class="tier-name">Grower</div>
-      <div class="tier-price"><sup>$</sup>175<sub>/mo</sub></div>
+      <div class="tier-price"><span class="price" data-price-usd="$99" data-price-eur="€160">€160</span><sub>/mo</sub></div>
       <div class="tier-desc">For established businesses ready to build a consistent presence.</div>
       <ul class="tier-features">
         <li>Everything in Seedling</li>
@@ -458,7 +496,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     </div>
     <div class="tier reveal rd2">
       <div class="tier-name">Harvest</div>
-      <div class="tier-price"><sup>$</sup>400<sub>/mo</sub></div>
+      <div class="tier-price"><span class="price" data-price-usd="$199" data-price-eur="€370">€370</span><sub>/mo</sub></div>
       <div class="tier-desc">For businesses serious about owning their full digital story.</div>
       <ul class="tier-features">
         <li>Everything in Grower</li>
@@ -826,6 +864,40 @@ const TRANSLATIONS = {
   } else {
     init();
   }
+})();
+
+// GEO-BASED PRICING
+(function(){
+  const CACHE_KEY = 'mule_geo';
+  const CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+  function applyPricing(currency) {
+    document.querySelectorAll('.price[data-price-usd][data-price-eur]').forEach(el => {
+      el.textContent = currency === 'USD' ? el.dataset.priceUsd : el.dataset.priceEur;
+    });
+  }
+
+  function resolve(data) {
+    const cc = (data && data.country_code) || '';
+    const isUSD = cc === 'US';
+    applyPricing(isUSD ? 'USD' : 'EUR');
+  }
+
+  try {
+    const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && (Date.now() - cached.ts) < CACHE_TTL) { resolve(cached.data); return; }
+  } catch(e) {}
+
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 2000);
+  fetch('https://ipapi.co/json/', { signal: ctrl.signal })
+    .then(r => r.json())
+    .then(data => {
+      clearTimeout(timer);
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch(e) {}
+      resolve(data);
+    })
+    .catch(() => { applyPricing('EUR'); });
 })();
 
 </script>
