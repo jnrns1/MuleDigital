@@ -189,11 +189,18 @@ nav ul li a:hover{color:var(--fg)}
 
 /* FAQ */
 #faq{padding:clamp(5rem,10vw,9rem) clamp(2rem,5vw,6rem);background:var(--bg2);transition:background .5s;border-bottom:1px solid var(--border)}
-.faq-grid{margin-top:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-@media(max-width:768px){.faq-grid{grid-template-columns:1fr}}
-.faq-item{border-bottom:1px solid var(--border);padding-bottom:2rem}
-.faq-q{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.75rem;color:var(--fg)}
-.faq-a{font-size:.875rem;color:var(--muted);line-height:1.8;font-weight:300}
+.faq-list{margin-top:3.5rem;max-width:780px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--fg);gap:1.5rem;user-select:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:1.2rem;color:var(--accent);flex-shrink:0;transition:transform .25s;font-weight:300;font-family:'Inter',sans-serif}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .faq-a{font-size:.875rem;color:var(--muted);line-height:1.8;font-weight:300;padding-bottom:1.1rem;padding-right:2.5rem}
+.faq-more-btn{display:flex;align-items:center;gap:.4rem;margin-top:1.5rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;color:var(--accent);cursor:pointer;background:none;border:none;padding:0;font-family:'Inter',sans-serif}
+.faq-more-btn::after{content:'›';font-size:1.1rem;transition:transform .2s}
+.faq-more-btn.open::after{transform:rotate(90deg)}
+.faq-extra{display:none}
+.faq-extra.visible{display:block}
 
 /* CTA BAND */
 .cta-band{padding:clamp(5rem,10vw,9rem) clamp(2rem,5vw,6rem);text-align:center;background:var(--bg)}
@@ -223,7 +230,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   .services-deep-grid{grid-template-columns:1fr}
   .one-time-grid{grid-template-columns:1fr}
   .tiers{grid-template-columns:1fr}
-  .faq-grid{grid-template-columns:1fr}
+
   .cta-band{padding:3rem 1.25rem;flex-direction:column;align-items:center}
   .cta-band h2{font-size:clamp(2rem,10vw,3.5rem)}
   footer{flex-direction:column;align-items:flex-start;gap:1.5rem}
@@ -516,31 +523,72 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
 <section id="faq">
   <div class="section-tag reveal">FAQ</div>
   <h2 class="section-heading reveal rd1">Common questions.</h2>
-  <div class="faq-grid">
-    <div class="faq-item reveal">
-      <div class="faq-q">Do I need to be based somewhere specific to work with you?</div>
-      <div class="faq-a">No. Mule works with clients globally. All communication happens via video calls, email, and shared project tools. Time zones are manageable — we make it work.</div>
+  <div class="faq-list reveal">
+
+    <details class="faq-item">
+      <summary>Do I need to be based somewhere specific to work with you?</summary>
+      <p class="faq-a">No. Mule works with clients globally. All communication happens via video calls, email, and shared project tools. Time zones are manageable and we make it work.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How long does a website take to build?</summary>
+      <p class="faq-a">A typical Starter Presence takes 2 to 3 weeks. A full Brand + Web Package takes 4 to 6 weeks. Timelines depend on content readiness and revision rounds.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Do I need to be on a monthly plan?</summary>
+      <p class="faq-a">No. Monthly plans are entirely optional. Many clients do a one-time project and manage things themselves afterward. We are happy either way.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>What if I just need one small thing fixed?</summary>
+      <p class="faq-a">Reach out. We don't require contracts for small jobs. If we can help quickly, we will. If the scope is larger, we'll recommend the right package.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I upgrade or downgrade my monthly plan?</summary>
+      <p class="faq-a">Yes, anytime. We operate on month-to-month agreements. Upgrade when you're ready to grow, scale back when you need to. No penalties.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>What do you need from me to get started?</summary>
+      <p class="faq-a">Mostly your time and trust. A discovery call, any existing brand assets you have (logos, colours, photos), and your thoughts on what you love and hate about your current presence. We handle the rest.</p>
+    </details>
+
+    <div class="faq-extra" id="learnFaqExtra">
+      <details class="faq-item">
+        <summary>Do you work with businesses that have no website at all?</summary>
+        <p class="faq-a">Yes, and it's one of our favourite starting points. No bad habits to unlearn. We build from scratch and get it right from the beginning.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How much input do I need to provide during the project?</summary>
+        <p class="faq-a">You'll be involved in a discovery call at the start, a review round in the middle, and a final sign-off at the end. We keep things efficient and don't ask for more than we need.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens if I don't like the design?</summary>
+        <p class="faq-a">Every package includes revision rounds. We also do thorough discovery upfront so we're building toward your vision, not guessing. Major direction changes after work is underway may affect scope.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Will my website work on phones and tablets?</summary>
+        <p class="faq-a">Every site we build is mobile-first. It gets tested across screen sizes before it ever goes live. This is not optional, it's standard.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do you help with SEO?</summary>
+        <p class="faq-a">Yes. Every site we build includes basic on-page SEO: structured headings, meta descriptions, image alt text, schema markup, and a clean URL structure. Advanced SEO strategy is available as part of the Advanced Digital Presence package.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I see examples of your work before committing?</summary>
+        <p class="faq-a">Yes. Visit the <a href="/work" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">Work page</a> to see what we've built. You can also ask on the project questionnaire and we'll share relevant examples directly.</p>
+      </details>
     </div>
-    <div class="faq-item reveal rd1">
-      <div class="faq-q">How long does a website take to build?</div>
-      <div class="faq-a">A typical Starter Presence takes 2–3 weeks. A full Brand + Web Package takes 4–6 weeks. Timelines depend on content readiness and revision rounds.</div>
-    </div>
-    <div class="faq-item reveal rd2">
-      <div class="faq-q">Do I need to be on a monthly plan?</div>
-      <div class="faq-a">No. Monthly plans are entirely optional. Many clients do a one-time project and manage things themselves afterward. We're happy either way.</div>
-    </div>
-    <div class="faq-item reveal rd3">
-      <div class="faq-q">What if I just need one small thing fixed?</div>
-      <div class="faq-a">Reach out. We don't require contracts for small jobs. If we can help quickly, we will. If the scope is larger, we'll recommend the right package.</div>
-    </div>
-    <div class="faq-item reveal rd4">
-      <div class="faq-q">Can I upgrade or downgrade my monthly plan?</div>
-      <div class="faq-a">Yes, anytime. We operate on month-to-month agreements. Upgrade when you're ready to grow, scale back when you need to — no penalties.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">What do you need from me to get started?</div>
-      <div class="faq-a">Mostly your time and trust. A discovery call, any existing brand assets you have (logos, colours, photos), and your thoughts on what you love and hate about your current presence. We handle the rest.</div>
-    </div>
+
+    <button class="faq-more-btn" id="learnFaqBtn" onclick="(function(){var e=document.getElementById('learnFaqExtra'),b=document.getElementById('learnFaqBtn');e.classList.toggle('visible');b.classList.toggle('open');b.firstChild.textContent=e.classList.contains('visible')?'Fewer questions\u00a0':'More questions\u00a0'})()">More questions&nbsp;</button>
+
   </div>
 </section>
 
