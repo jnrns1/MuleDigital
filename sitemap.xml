@@ -9,6 +9,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.mule-digital.com/learn</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.mule-digital.com/work</loc>
     <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -60,19 +66,19 @@
   </url>
   <url>
     <loc>https://www.mule-digital.com/blog/what-a-website-actually-costs</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.mule-digital.com/blog/why-we-started-mule</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.mule-digital.com/blog/website-builders-cost-more</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
