@@ -185,18 +185,20 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     <div class="highlight">"The right question is not how much does a website cost. It is how much business am I losing without a good one."</div>
 
     <table class="price-table">
-      <thead><tr><th>Route</th><th>Upfront cost</th><th>3-year real cost</th></tr></thead>
+      <thead><tr><th>Route</th><th>What you pay upfront</th><th>True 3-year cost</th><th>What you actually get</th></tr></thead>
       <tbody>
-        <tr><td>DIY builder</td><td>€0</td><td><span class="price" data-price-usd="$2,000+" data-price-eur="€1,850+">€1,850+</span></td></tr>
-        <tr><td>Cheap freelancer</td><td><span class="price" data-price-usd="$200–$800" data-price-eur="€185–€740">€185–€740</span></td><td><span class="price" data-price-usd="$800–$2,000" data-price-eur="€740–€1,850">€740–€1,850</span></td></tr>
-        <tr><td>City agency</td><td><span class="price" data-price-usd="$5,000+" data-price-eur="€4,600+">€4,600+</span></td><td><span class="price" data-price-usd="$5,000+" data-price-eur="€4,600+">€4,600+</span></td></tr>
-        <tr><td>Mule Digital Starter</td><td><span class="price" data-price-usd="$349" data-price-eur="€700">€700</span></td><td><span class="price" data-price-usd="$349" data-price-eur="€700">€700</span> + optional monthly</td></tr>
+        <tr><td>DIY builder</td><td>€0</td><td><span class="price" data-price-usd="$2,000+" data-price-eur="€1,850+">€1,850+</span> (subscriptions + your time)</td><td>Template site, hard to rank, you manage it yourself</td></tr>
+        <tr><td>Cheap freelancer</td><td><span class="price" data-price-usd="$200–$800" data-price-eur="€185–€740">€185–€740</span></td><td><span class="price" data-price-usd="$800–$2,000" data-price-eur="€740–€1,850">€740–€1,850</span> (fixes, rebuilds, lost business)</td><td>Usually a template with your logo swapped in. No SEO. No support after delivery.</td></tr>
+        <tr><td>City agency</td><td><span class="price" data-price-usd="$5,000+" data-price-eur="€4,600+">€4,600+</span></td><td><span class="price" data-price-usd="$5,000+" data-price-eur="€4,600+">€4,600+</span></td><td>Built for corporate clients, not small towns. Priced accordingly.</td></tr>
+        <tr><td><strong>Mule Digital Starter</strong></td><td><strong><span class="price" data-price-usd="$349" data-price-eur="€700">€700</span> — one time</strong></td><td><strong><span class="price" data-price-usd="$349" data-price-eur="€700">€700</span> (no ongoing platform fees)</strong></td><td><strong>Custom site, built properly, SEO-ready, yours to keep</strong></td></tr>
       </tbody>
     </table>
 
     <p>I put Mule Digital in that table not to sell you something but to show you what we think the right price point is for a small business getting a professional result. The <span class="price" data-price-usd="$349" data-price-eur="€700">€700</span> Starter package is a real website, built properly, not a template with your name pasted over it. We can do it at that price because we keep our overhead low and we focus specifically on this type of client.</p>
 
-    <p>You do not need to spend five figures to have a website that works. But you also cannot expect nothing to cost nothing. The sweet spot for most rural businesses is somewhere between <span class="price" data-price-usd="$300" data-price-eur="€280">€280</span> and <span class="price" data-price-usd="$1,500" data-price-eur="€1,390">€1,390</span> depending on complexity, and that should buy you something that is built right, ranks in your area, and represents your business the way it deserves.</p>
+    <p class="eu-only" style="display:none">That <span class="price" data-price-usd="$349" data-price-eur="€700">€700</span> is a one-time payment — no monthly platform fee eating into your margins, no subscription you have to cancel when things get tight. Compare that to three years of a DIY builder: somewhere north of <span class="price" data-price-usd="$2,000" data-price-eur="€1,850">€1,850</span> once you count subscriptions and your own time, on a site that ranks poorly and looks like the one the next business over built. The maths are not close.</p>
+
+    <p>You do not need to spend five figures to have a website that works. But you also cannot expect nothing to cost nothing. The sweet spot for most rural businesses is a one-time custom build — something that is done right, ranks in your area, and does not require you to become a part-time web manager.</p>
   </div>
   <div class="related-posts">
     <h3>Keep reading</h3>
@@ -231,6 +233,10 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').classList.t
   function applyPricing(currency) {
     document.querySelectorAll('.price[data-price-usd][data-price-eur]').forEach(el => {
       el.textContent = currency === 'USD' ? el.dataset.priceUsd : el.dataset.priceEur;
+    });
+    // Show EU-specific comparison paragraphs only for non-US visitors
+    document.querySelectorAll('.eu-only').forEach(el => {
+      el.style.display = currency === 'USD' ? 'none' : '';
     });
   }
   function resolve(data) {

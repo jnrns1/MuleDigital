@@ -192,9 +192,9 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 
     <h2>What you are actually paying</h2>
 
-    <p>Squarespace costs around <span class="price" data-price-usd="$23" data-price-eur="€21">€21</span> per month on their basic business plan. Over three years that is about <span class="price" data-price-usd="$830" data-price-eur="€770">€770</span>. Wix is similar. GoDaddy charges extra for almost every meaningful feature. By year three you have spent close to a thousand dollars on a website that ranks poorly, looks like everyone else, and you have spent dozens of hours maintaining it yourself instead of running your business.</p>
+    <p>Squarespace costs around <span class="price" data-price-usd="$23" data-price-eur="€21">€21</span> per month on their basic business plan. Over three years that is about <span class="price" data-price-usd="$830" data-price-eur="€770">€770</span> — and that subscription never stops. Wix is similar. GoDaddy charges extra for almost every meaningful feature. By year three you have spent close to a thousand euros on a website that ranks poorly, looks like everyone else's, and you have clocked dozens of hours maintaining it instead of running your business.</p>
 
-    <p>A properly built custom website, optimized for your specific business and location, costs more upfront. But it works harder, ranks better, and does not require you to become a part-time web manager. For most rural businesses I have worked with, the return difference is not even close.</p>
+    <p class="eu-only" style="display:none">A custom website from Mule costs <span class="price" data-price-usd="$349" data-price-eur="€700">€700</span> — once. No monthly fee. No platform you rent forever. No annual price hikes. You pay once, you own it, and it is built to actually rank in your area. Over three years, a Squarespace site costs you <em>more</em> and delivers less. That is not a knock on Squarespace — it is a reasonable tool for someone testing a side project. It is just not a substitute for a real website for a real business.</p>
 
     <p>I am not against these tools in every situation. If you are testing an idea before you commit, a quick Wix site is fine. But if your business is real and your customers are real, your website should be too.</p>
   </div>
@@ -210,7 +210,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 
   <div class="post-cta">
     <h3>Ready to build something that actually works?</h3>
-    <p>We build custom websites for rural and small-town businesses that rank, convert, and represent you the right way. Packages start at <span class="price" data-price-usd="$349" data-price-eur="€700">€700</span>.</p>
+    <p>We build custom websites for rural and small-town businesses that rank, convert, and represent you the right way. Packages start at <span class="price" data-price-usd="$349" data-price-eur="€700">€700</span> — one-time, no ongoing platform fees.</p>
     <a href="/project">Start a project</a>
   </div>
 </div>
@@ -248,6 +248,10 @@ window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', windo
   function applyPricing(currency) {
     document.querySelectorAll('.price[data-price-usd][data-price-eur]').forEach(el => {
       el.textContent = currency === 'USD' ? el.dataset.priceUsd : el.dataset.priceEur;
+    });
+    // Show EU-specific comparison paragraphs only for non-US visitors
+    document.querySelectorAll('.eu-only').forEach(el => {
+      el.style.display = currency === 'USD' ? 'none' : '';
     });
   }
   function resolve(data) {
