@@ -438,7 +438,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <div class="ot">
       <div class="ot-label">Essential</div>
       <h3>Starter Presence</h3>
-      <div class="ot-price"><span class="price" data-price-usd="$349" data-price-eur="€700">€700</span></div>
+      <div class="ot-price"><span class="price" data-price-usd="$349" data-price-eur="€700">$349</span></div>
       <p>A clean, professional web presence for a business just getting started online. Built to grow with you.</p>
       <ul>
         <li>Up to 5 custom pages</li>
@@ -452,7 +452,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <div class="ot">
       <div class="ot-label">Full Brand</div>
       <h3>Brand + Web Package</h3>
-      <div class="ot-price"><span class="price" data-price-usd="$549" data-price-eur="€950">€950</span></div>
+      <div class="ot-price"><span class="price" data-price-usd="$549" data-price-eur="€950">$549</span></div>
       <p>Identity and website together, designed to feel like a single, cohesive expression of who you are.</p>
       <ul>
         <li>Everything in Starter Presence</li>
@@ -469,7 +469,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   <div class="tiers">
     <div class="tier reveal">
       <div class="tier-name">Seedling</div>
-      <div class="tier-price"><span class="price" data-price-usd="$49" data-price-eur="€50">€50</span><sub>/mo</sub></div>
+      <div class="tier-price"><span class="price" data-price-usd="$49" data-price-eur="€50">$49</span><sub>/mo</sub></div>
       <div class="tier-desc">For businesses just starting their digital journey.</div>
       <ul class="tier-features">
         <li>Monthly website maintenance</li>
@@ -482,7 +482,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     <div class="tier featured reveal rd1">
       <div class="tier-badge">Most popular</div>
       <div class="tier-name">Grower</div>
-      <div class="tier-price"><span class="price" data-price-usd="$99" data-price-eur="€160">€160</span><sub>/mo</sub></div>
+      <div class="tier-price"><span class="price" data-price-usd="$99" data-price-eur="€160">$99</span><sub>/mo</sub></div>
       <div class="tier-desc">For established businesses ready to build a consistent presence.</div>
       <ul class="tier-features">
         <li>Everything in Seedling</li>
@@ -496,7 +496,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
     </div>
     <div class="tier reveal rd2">
       <div class="tier-name">Harvest</div>
-      <div class="tier-price"><span class="price" data-price-usd="$199" data-price-eur="€370">€370</span><sub>/mo</sub></div>
+      <div class="tier-price"><span class="price" data-price-usd="$199" data-price-eur="€370">$199</span><sub>/mo</sub></div>
       <div class="tier-desc">For businesses serious about owning their full digital story.</div>
       <ul class="tier-features">
         <li>Everything in Grower</li>
@@ -897,7 +897,7 @@ const TRANSLATIONS = {
       try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch(e) {}
       resolve(data);
     })
-    .catch(() => { applyPricing('EUR'); });
+    .catch(() => { applyPricing('USD'); });
 })();
 
 </script>

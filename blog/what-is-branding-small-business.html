@@ -205,7 +205,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 
   <div class="post-cta">
     <h3>Want a brand that looks like it was built on purpose?</h3>
-    <p>We build brand identities for rural and small-town businesses. Logo, colors, fonts, and the assets you actually need — starting from <span class="price" data-price-usd="$950" data-price-eur="€950">€950</span> as part of our Brand + Web Package.</p>
+    <p>We build brand identities for rural and small-town businesses. Logo, colors, fonts, and the assets you actually need — starting from <span class="price" data-price-usd="$950" data-price-eur="€950">$950</span> as part of our Brand + Web Package.</p>
     <a href="/project">Start a project</a>
   </div>
 </div>
@@ -246,7 +246,7 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').classList.t
       try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch(e) {}
       resolve(data);
     })
-    .catch(() => { applyPricing('EUR'); });
+    .catch(() => { applyPricing('USD'); });
 })();
 </script>
 </body>

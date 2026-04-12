@@ -204,7 +204,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 
   <div class="post-cta">
     <h3>Ready to show up where your customers are looking?</h3>
-    <p>We help rural and small-town businesses build digital presence that actually works. Websites, branding, strategy — starting at <span class="price" data-price-usd="$349" data-price-eur="€700">€700</span>.</p>
+    <p>We help rural and small-town businesses build digital presence that actually works. Websites, branding, strategy — starting at <span class="price" data-price-usd="$349" data-price-eur="€700">$349</span>.</p>
     <a href="/project">Start a project</a>
   </div>
 </div>
@@ -245,7 +245,7 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').classList.t
       try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch(e) {}
       resolve(data);
     })
-    .catch(() => { applyPricing('EUR'); });
+    .catch(() => { applyPricing('USD'); });
 })();
 </script>
 </body>
