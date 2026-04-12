@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Mule Digital blog. Honest takes on web design, branding, and digital strategy for rural and small-town businesses from the people building it.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#e8445a">
+<title>Blog — Mule Digital</title>
+<link rel="canonical" href="https://www.mule-digital.com/blog">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta property="og:title" content="Blog — Mule Digital">
+<meta property="og:description" content="Honest takes on web design, branding, and digital strategy for rural and small-town businesses.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.mule-digital.com/blog">
+<meta property="og:image" content="https://www.mule-digital.com/og-image.png">
+<meta property="og:site_name" content="Mule Digital">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root,[data-theme="light"]{
+  --bg:#f7f4ef;--bg2:#edeae3;--bg3:#e3dfd8;
+  --fg:#0a0a0a;--fg2:#1a1a1a;
+  --muted:#888;--muted2:#ccc;--border:#d6d0c8;
+  --accent:#e8445a;--accent2:#C68642;
+  --logo-filter:invert(1);
+}
+[data-theme="dark"]{
+  --bg:#080808;--bg2:#0f0f0f;--bg3:#141414;
+  --fg:#f2f0eb;--fg2:#dddbd5;
+  --muted:#666;--muted2:#2e2e2e;--border:#1c1c1c;
+  --accent:#e8445a;--accent2:#C68642;
+  --logo-filter:none;
+}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .5s,color .5s}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.026;pointer-events:none;z-index:9998}
+a{color:inherit;text-decoration:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,border-color .4s}
+nav.scrolled{background:var(--bg);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:.65rem}
+.nav-logo img{width:28px;height:28px;filter:var(--logo-filter)}
+.nav-logo-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--fg)}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav ul li a{font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;color:var(--muted);transition:color .3s}
+nav ul li a:hover,nav ul li a.active{color:var(--fg)}
+.nav-right{display:flex;align-items:center;gap:1.25rem}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--muted2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .3s;color:var(--fg)}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.nav-cta{border:1px solid var(--muted2);color:var(--fg);padding:.5rem 1.3rem;font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;white-space:nowrap;background:transparent}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:transparent;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--fg);transition:all .3s}
+.nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;transition:background .5s}
+.nav-drawer.open{display:flex}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.nav-drawer ul li a{font-size:1.1rem;text-transform:uppercase;letter-spacing:.2em;font-weight:500;color:var(--muted);transition:color .3s}
+.nav-drawer ul li a:hover{color:var(--fg)}
+.nav-drawer-cta{border:1px solid var(--muted2);color:var(--fg);padding:.85rem 2.5rem;font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;transition:all .3s;background:transparent}
+.nav-drawer-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(max-width:768px){nav{padding:1rem 1.5rem}nav ul,.nav-cta{display:none}.nav-hamburger{display:flex}}
+
+/* HERO */
+.blog-hero{padding:clamp(8rem,14vw,11rem) clamp(1.5rem,5vw,6rem) 3rem}
+.blog-hero-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.28em;color:var(--accent);font-weight:600;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.blog-hero-label::before{content:'';display:block;width:20px;height:1px;background:var(--accent)}
+.blog-hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,6rem);font-weight:700;line-height:.95;letter-spacing:-.04em;color:var(--fg)}
+.blog-hero h1 em{font-style:italic;color:var(--accent)}
+.blog-hero-sub{font-size:1rem;color:var(--muted);margin-top:1.5rem;max-width:480px;line-height:1.75;font-weight:300}
+
+/* GRID */
+.blog-grid-wrap{max-width:1200px;margin:0 auto;padding:0 clamp(1.5rem,5vw,6rem) 8rem}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.blog-grid{grid-template-columns:1fr}}
+
+/* CARD */
+.blog-card{display:flex;flex-direction:column;border:1px solid var(--border);background:var(--bg2);transition:border-color .3s,transform .3s}
+.blog-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.blog-card-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--bg3);position:relative}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.08) brightness(.92);transition:filter .8s}
+.blog-card:hover .blog-card-img img{filter:grayscale(0%) contrast(1) brightness(1)}
+.blog-card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3);color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.15em}
+.blog-card-body{padding:1.75rem;display:flex;flex-direction:column;flex:1}
+.blog-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.blog-card-date{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-weight:500}
+.blog-card-tag{font-size:.63rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:600;border:1px solid var(--accent);padding:.15rem .5rem}
+.blog-card h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;line-height:1.25;color:var(--fg);margin-bottom:.85rem;letter-spacing:-.02em}
+.blog-card-excerpt{font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300;flex:1}
+.blog-card-author{display:flex;align-items:center;gap:.65rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.blog-card-author img{width:32px;height:32px;border-radius:50%;object-fit:cover}
+.blog-card-author-name{font-size:.75rem;font-weight:600;color:var(--fg2)}
+.blog-card-author-role{font-size:.68rem;color:var(--muted);font-weight:300}
+.blog-card-read{display:inline-flex;align-items:center;gap:.4rem;font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;color:var(--accent);margin-top:1.25rem;transition:gap .2s}
+.blog-card-read:hover{gap:.7rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted);transition:border-color .5s}
+.footer-logo{display:flex;align-items:center;gap:.6rem}
+.footer-logo img{width:22px;height:22px;filter:var(--logo-filter)}
+.footer-logo span{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--fg)}
+@media(max-width:560px){footer{flex-direction:column;gap:1.5rem;text-align:center}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="logo-nav.png" alt="Mule logo">
+    <span class="nav-logo-name">Mule</span>
+  </a>
+  <ul>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/work">Work</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/blog" class="active">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9790;</button>
+    <a href="/project" class="nav-cta">Start a project</a>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/work">Work</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/blog">Blog</a></li>
+  </ul>
+  <a href="/project" class="nav-drawer-cta">Start a project</a>
+</div>
+
+<section class="blog-hero">
+  <div class="blog-hero-label">From the team</div>
+  <h1>Straight talk on<br><em>digital for small towns</em></h1>
+  <p class="blog-hero-sub">No fluff. No agency speak. Just honest opinions on web design, branding, and what it actually takes to build a digital presence in a community that matters.</p>
+</section>
+
+<div class="blog-grid-wrap">
+  <div class="blog-grid">
+
+    <!-- Post 6 -->
+    <a href="/blog/google-business-profile.html" class="blog-card">
+      <div class="blog-card-img">
+        <div class="blog-card-img-placeholder">Image coming soon</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-card-date">Apr 10, 2026</span>
+          <span class="blog-card-tag">Strategy</span>
+        </div>
+        <h2>Your Google Business Profile is worth more than a billboard</h2>
+        <p class="blog-card-excerpt">There are still businesses paying hundreds of dollars a month for a roadside billboard in 2026. I get it. It worked for 50 years. But here is what no one is telling them about what sits in their pocket.</p>
+        <span class="blog-card-read">Read more &rarr;</span>
+        <div class="blog-card-author">
+          <img src="public/justin-reynolds.png" alt="Justin Reynolds">
+          <div>
+            <div class="blog-card-author-name">Justin Reynolds</div>
+            <div class="blog-card-author-role">Founder</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 5 -->
+    <a href="/blog/social-media-mistakes.html" class="blog-card">
+      <div class="blog-card-img">
+        <div class="blog-card-img-placeholder">Image coming soon</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-card-date">Mar 28, 2026</span>
+          <span class="blog-card-tag">Social Media</span>
+        </div>
+        <h2>What every small town business gets wrong about social media</h2>
+        <p class="blog-card-excerpt">Posting three times a week with no strategy is not a plan. It is digital busy work. And I have seen too many good businesses waste months on it before realizing nothing was moving.</p>
+        <span class="blog-card-read">Read more &rarr;</span>
+        <div class="blog-card-author">
+          <img src="public/emile-holemans.JPG" alt="Emile Holemans">
+          <div>
+            <div class="blog-card-author-name">Emile Holemans</div>
+            <div class="blog-card-author-role">Co-Founder</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 4 -->
+    <a href="/blog/rural-businesses-online-advantage.html" class="blog-card">
+      <div class="blog-card-img">
+        <div class="blog-card-img-placeholder">Image coming soon</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-card-date">Mar 20, 2026</span>
+          <span class="blog-card-tag">Perspective</span>
+        </div>
+        <h2>Rural businesses are more competitive online than anyone tells them</h2>
+        <p class="blog-card-excerpt">Everyone assumes the city businesses have the advantage online. Bigger budgets, bigger teams, bigger brand recognition. But I have watched small-town businesses outrank them with a fraction of the resources.</p>
+        <span class="blog-card-read">Read more &rarr;</span>
+        <div class="blog-card-author">
+          <img src="public/justin-reynolds.png" alt="Justin Reynolds">
+          <div>
+            <div class="blog-card-author-name">Justin Reynolds</div>
+            <div class="blog-card-author-role">Founder</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 3 -->
+    <a href="/blog/what-a-website-actually-costs.html" class="blog-card">
+      <div class="blog-card-img">
+        <div class="blog-card-img-placeholder">Image coming soon</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-card-date">Mar 14, 2026</span>
+          <span class="blog-card-tag">Pricing</span>
+        </div>
+        <h2>The truth about what a website actually costs a small business</h2>
+        <p class="blog-card-excerpt">There is a huge gap between what people think a website costs and what they actually end up paying. Both directions. Some pay too little and get nothing. Some pay too much and still get nothing.</p>
+        <span class="blog-card-read">Read more &rarr;</span>
+        <div class="blog-card-author">
+          <img src="public/emile-holemans.JPG" alt="Emile Holemans">
+          <div>
+            <div class="blog-card-author-name">Emile Holemans</div>
+            <div class="blog-card-author-role">Co-Founder</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 2 -->
+    <a href="/blog/why-we-started-mule.html" class="blog-card">
+      <div class="blog-card-img">
+        <div class="blog-card-img-placeholder">Image coming soon</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-card-date">Mar 7, 2026</span>
+          <span class="blog-card-tag">About Us</span>
+        </div>
+        <h2>Why we started a digital agency for small towns nobody else wanted</h2>
+        <p class="blog-card-excerpt">The honest answer is that it was not some grand mission statement moment. It started with a frustration. A really specific, personal frustration about watching good businesses get ignored.</p>
+        <span class="blog-card-read">Read more &rarr;</span>
+        <div class="blog-card-author">
+          <img src="public/justin-reynolds.png" alt="Justin Reynolds">
+          <div>
+            <div class="blog-card-author-name">Justin Reynolds</div>
+            <div class="blog-card-author-role">Founder</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 1 -->
+    <a href="/blog/website-builders-cost-more.html" class="blog-card">
+      <div class="blog-card-img">
+        <div class="blog-card-img-placeholder">Image coming soon</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-card-date">Mar 2, 2026</span>
+          <span class="blog-card-tag">Web Design</span>
+        </div>
+        <h2>Why cheap website builders are costing rural businesses more than they think</h2>
+        <p class="blog-card-excerpt">Wix. Squarespace. GoDaddy website builder. They all promise you a professional website in an afternoon. And technically, they deliver. But there is a cost nobody puts on the pricing page.</p>
+        <span class="blog-card-read">Read more &rarr;</span>
+        <div class="blog-card-author">
+          <img src="public/emile-holemans.JPG" alt="Emile Holemans">
+          <div>
+            <div class="blog-card-author-name">Emile Holemans</div>
+            <div class="blog-card-author-role">Co-Founder</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="logo-nav.png" alt="Mule logo">
+    <span>Mule Digital</span>
+  </div>
+  <span>&copy; 2026 Mule Digital. Built for real communities.</span>
+</footer>
+
+<script>
+const themeBtn = document.getElementById('themeBtn');
+const html = document.documentElement;
+const saved = localStorage.getItem('mule-theme');
+if(saved) html.setAttribute('data-theme', saved);
+themeBtn.addEventListener('click', () => {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('mule-theme', next);
+});
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navDrawer = document.getElementById('navDrawer');
+hamburgerBtn.addEventListener('click', () => {
+  hamburgerBtn.classList.toggle('open');
+  navDrawer.classList.toggle('open');
+});
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+</script>
+</body>
+</html>
