@@ -99,27 +99,34 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 </head>
 <body>
 <nav id="nav">
-  <a href="/" class="nav-logo"><img src="../logo-nav.png" alt="Mule logo"><span class="nav-logo-name">Mule</span></a>
+  <a href="/" class="nav-logo page-link">
+    <img src="../logo-nav.png" alt="Mule logo">
+    <span class="nav-logo-name">Mule</span>
+  </a>
   <ul>
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#services">Services</a></li>
-    <li><a href="/work">Work</a></li>
-    <li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/blog" class="active">Blog</a></li>
+    <li><a href="/#about" class="page-link">About</a></li>
+    <li><a href="/#services" class="page-link">Services</a></li>
+    <li><a href="/work" class="page-link">Work</a></li>
+    <li><a href="/#pricing" class="page-link">Pricing</a></li>
+    <li><a href="/blog" class="active page-link">Blog</a></li>
   </ul>
   <div class="nav-right">
     <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9790;</button>
-    <a href="/project" class="nav-cta">Start a project</a>
-    <button class="nav-hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+    <a href="/project" class="nav-cta page-link">Start a project</a>
+    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
-<div class="nav-drawer" id="navDrawer">
+<div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <ul>
-    <li><a href="/#about">About</a></li><li><a href="/#services">Services</a></li>
-    <li><a href="/work">Work</a></li><li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/blog">Blog</a></li>
+    <li><a href="/#about" class="page-link">About</a></li>
+    <li><a href="/#services" class="page-link">Services</a></li>
+    <li><a href="/work" class="page-link">Work</a></li>
+    <li><a href="/#pricing" class="page-link">Pricing</a></li>
+    <li><a href="/blog" class="page-link">Blog</a></li>
   </ul>
-  <a href="/project" class="nav-drawer-cta">Start a project</a>
+  <a href="/project" class="nav-drawer-cta page-link">Start a project</a>
 </div>
 
 <div class="post-wrap">
