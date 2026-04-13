@@ -418,14 +418,14 @@ nav ul li a:hover{color:var(--fg)}
 .about-heading em{font-style:italic;color:var(--accent)}
 .about-body{font-size:clamp(.93rem,1.4vw,1.1rem);line-height:1.9;color:var(--muted);font-weight:300;margin-bottom:1.5rem}
 .about-rule{width:48px;height:2px;background:var(--accent);margin:2.5rem 0}
-.about-founder{display:flex;align-items:flex-start;gap:2rem;padding:2rem;border:1px solid var(--border);margin-top:2.5rem;background:var(--bg2);position:relative;overflow:hidden;transition:background .5s,border-color .5s}
+.about-founder{display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem 1.5rem;border:1px solid var(--border);margin-top:1.25rem;background:var(--bg2);position:relative;overflow:hidden;transition:background .5s,border-color .5s}
 .founder-avatar{width:56px;height:56px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;background:var(--bg3);color:var(--accent);transition:background .5s,border-color .5s;overflow:hidden}
 .founder-avatar img{width:100%;height:100%;object-fit:cover;object-position:center center;border-radius:50%}
 .founder-avatar img[alt="Justin Reynolds"]{object-position:center 68%}
 .founder-avatar img[alt="Emile Holemans"]{object-position:center 15%}
 .founder-avatar img[alt="Floris Brugman"]{object-position:center 35%}
 .founder-info h4{font-size:.95rem;font-weight:600;margin-bottom:.3rem;color:var(--fg)}
-.founder-info p{font-size:.875rem;color:var(--muted);line-height:1.7;font-weight:300}
+.founder-info p{font-size:.875rem;color:var(--muted);line-height:1.6;font-weight:300;margin-top:.25rem}
 .founder-loc{font-size:.7rem;color:var(--muted);margin-top:.6rem;text-transform:uppercase;letter-spacing:.1em}
 
 /* ABOUT floating accents */
@@ -551,7 +551,7 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
   .stats{grid-template-columns:1fr 1fr}
   .stat{padding:2rem 1.25rem}
   /* About */
-  .about-founder{flex-direction:column;gap:1rem;padding:1.5rem}
+  .about-founder{flex-direction:column;gap:.75rem;padding:1rem 1.25rem}
   .founder-avatar{width:48px;height:48px}
   .about-heading{font-size:clamp(1.8rem,8vw,3rem)}
   /* Pull quote */
@@ -718,10 +718,10 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
         <div class="founder-info">
           <h4>Justin Reynolds &mdash; Founder &amp; Creative Director</h4>
           <p>Raised in Detroit. Trained in Applied Computer Science and Multimedia Creative Technologies. Currently based in Antwerp, Belgium. Built Mule to give businesses around the world the same digital voice that big-city brands take for granted.</p>
-          <div class="founder-loc">&#9993; info@mule-digital.com</div>
+          <div class="founder-loc">&#9993; justin@mule-digital.com</div>
         </div>
       </div>
-      <div class="about-founder reveal rd6" style="margin-top:1rem">
+      <div class="about-founder reveal rd6">
         <div class="founder-avatar"><img src="public/emile-holemans.JPG" alt="Emile Holemans"></div>
         <div class="founder-info">
           <h4>Emile Holemans &mdash; Co-Founder &amp; Creative Technologist</h4>
@@ -729,11 +729,12 @@ footer{padding:2.5rem clamp(2rem,5vw,6rem);border-top:1px solid var(--border);di
           <div class="founder-loc">&#9993; emile@mule-digital.com</div>
         </div>
       </div>
-      <div class="about-founder reveal rd6" style="margin-top:1rem">
+      <div class="about-founder reveal rd6">
         <div class="founder-avatar"><img src="public/floris-brugman.jpg" alt="Floris Brugman"></div>
         <div class="founder-info">
-          <h4>Floris Brugman &mdash; Director of Sales</h4>
+          <h4>Floris Brugman &mdash; Chief Sales Officer</h4>
           <p>International Business graduate from Windesheim University of Applied Sciences in Zwolle, Netherlands. Bridges the gap between what businesses need and what Mule Digital builds, bringing a sharp commercial instinct and a genuinely international perspective to every client relationship.</p>
+          <div class="founder-loc">&#9993; info@mule-digital.com</div>
         </div>
       </div>
     </div>
