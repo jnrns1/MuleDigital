@@ -144,7 +144,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     <span class="nav-logo-name">Mule</span>
   </a>
   <ul>
-    <li><a href="/learn" class="page-link">Studio</a></li>
+    <li><a href="/learn" class="page-link" data-i18n="nav.studio">Studio</a></li>
     <li><a href="/work" class="page-link">Work</a></li>
     <li><a href="/#pricing" class="page-link">Pricing</a></li>
     <li><a href="/blog" class="active page-link">Blog</a></li>
@@ -161,7 +161,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
         <button class="lang-option" data-lang="de">Deutsch</button>
       </div>
     </div>
-    <a href="/project" class="nav-cta page-link">Start a project</a>
+    <a href="/project" class="nav-cta page-link" data-i18n="nav.cta">Start a project</a>
     <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -170,34 +170,34 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 
 <div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <ul>
-    <li><a href="/learn" class="page-link">Studio</a></li>
+    <li><a href="/learn" class="page-link" data-i18n="nav.studio">Studio</a></li>
     <li><a href="/work" class="page-link">Work</a></li>
     <li><a href="/#pricing" class="page-link">Pricing</a></li>
     <li><a href="/blog" class="page-link">Blog</a></li>
   </ul>
-  <a href="/project" class="nav-drawer-cta page-link">Start a project</a>
+  <a href="/project" class="nav-drawer-cta page-link" data-i18n="nav.cta">Start a project</a>
 </div>
 
 <section class="blog-hero">
-  <div class="blog-hero-label">From the team</div>
-  <h1>Straight talk on<br><em>digital for small towns</em></h1>
-  <p class="blog-hero-sub">No fluff. No agency speak. Just honest opinions on web design, branding, and what it actually takes to build a digital presence in a community that matters.</p>
+  <div class="blog-hero-label" data-i18n="blog.herolabel">From the team</div>
+  <h1 data-i18n-html="blog.heroh1">Straight talk on<br><em>digital for small towns</em></h1>
+  <p class="blog-hero-sub" data-i18n="blog.herosub">No fluff. No agency speak. Just honest opinions on web design, branding, and what it actually takes to build a digital presence in a community that matters.</p>
 </section>
 
 <div class="blog-controls">
   <div class="blog-filter-group" id="filterGroup">
-    <button class="blog-filter-btn active" data-filter="all">All</button>
-    <button class="blog-filter-btn" data-filter="cat:Strategy">Strategy</button>
-    <button class="blog-filter-btn" data-filter="cat:Web Design">Web Design</button>
+    <button class="blog-filter-btn active" data-filter="all" data-i18n="blog.filter.all">All</button>
+    <button class="blog-filter-btn" data-filter="cat:Strategy" data-i18n="blog.filter.strategy">Strategy</button>
+    <button class="blog-filter-btn" data-filter="cat:Web Design" data-i18n="blog.filter.webdesign">Web Design</button>
     <button class="blog-filter-more" id="filterMoreBtn" aria-expanded="false">+</button>
     <div class="blog-filter-extra" id="filterExtra">
-      <button class="blog-filter-btn" data-filter="cat:Branding">Branding</button>
-      <button class="blog-filter-btn" data-filter="cat:Social Media">Social Media</button>
-      <button class="blog-filter-btn" data-filter="cat:Marketing">Marketing</button>
-      <button class="blog-filter-btn" data-filter="cat:Local Markets">Local Markets</button>
-      <button class="blog-filter-btn" data-filter="cat:Perspective">Perspective</button>
-      <button class="blog-filter-btn" data-filter="author:Justin Reynolds">Justin</button>
-      <button class="blog-filter-btn" data-filter="author:Emile Holemans">Emile</button>
+      <button class="blog-filter-btn" data-filter="cat:Branding" data-i18n="blog.filter.branding">Branding</button>
+      <button class="blog-filter-btn" data-filter="cat:Social Media" data-i18n="blog.filter.social">Social Media</button>
+      <button class="blog-filter-btn" data-filter="cat:Marketing" data-i18n="blog.filter.marketing">Marketing</button>
+      <button class="blog-filter-btn" data-filter="cat:Local Markets" data-i18n="blog.filter.local">Local Markets</button>
+      <button class="blog-filter-btn" data-filter="cat:Perspective" data-i18n="blog.filter.perspective">Perspective</button>
+      <button class="blog-filter-btn" data-filter="author:Justin Reynolds" data-i18n="blog.filter.justin">Justin</button>
+      <button class="blog-filter-btn" data-filter="author:Emile Holemans" data-i18n="blog.filter.emile">Emile</button>
     </div>
   </div>
   <div class="blog-sort-wrap">
@@ -738,7 +738,631 @@ document.getElementById('filterGroup').addEventListener('click', e => {
 sortSelect.addEventListener('change', applyFilterSort);
 applyFilterSort();
 
-// ─── LANGUAGE SWITCHER (persistent cache) ────────────────────────
+// ─── LANGUAGE SWITCHER ───────────────────────
+// ─────────────────────────────────────────────
+//  Mule Digital — i18n translation engine
+//  Supports: en (English), fr (French), nl (Dutch), da (Danish), de (German)
+//  Persists via localStorage key: "mule_lang"
+// ─────────────────────────────────────────────
+
+const TRANSLATIONS = {
+
+  en: {
+    // Nav
+    "nav.studio":   "Studio",
+    "nav.pricing":  "Pricing",
+    "nav.contact":  "Contact",
+    "nav.cta":      "Start a project",
+    // Hero
+    "hero.sub":     "Digital solutions for real communities.<br>We build your presence. We tell your story.",
+    "hero.learn":   "Learn more",
+    "hero.students":"Students",
+    "hero.scroll":  "Scroll",
+    // Stats
+    "stats.price":    "Website starting price",
+    "stats.tiers":    "Subscription tiers",
+    "stats.monthly":  "Monthly plan from",
+    "stats.community":"Community focused",
+    // About
+    "about.tag":     "Who we are",
+    "about.heading": "Every business has a story.<br>We make sure it&#39;s <em>heard.</em>",
+    // Services
+    "services.tag":     "What we do",
+    "services.heading": "Everything your business needs to own the web.",
+    "svc0.title": "Web Design &amp; Development",
+    "svc0.desc":  "Beautiful, fast, mobile-first websites that actually represent who you are. Custom design, clean code, a product that works as hard as you do.",
+    "svc0.arrow": "Start a project &#8594;",
+    "svc1.title": "Social Media Management",
+    "svc1.desc":  "Consistent, authentic content across the platforms your audience uses. Strategy, posting, engagement — handled so you can focus on your business.",
+    "svc2.title": "Content Production",
+    "svc2.desc":  "Photography direction, video, copywriting — real content that captures the humanity of your business. Not stock. Not generic. Yours.",
+    "svc3.title": "Branding &amp; Strategy",
+    "svc3.desc":  "Identity systems built around your story — logos, colour, voice, guidelines that make you immediately recognisable and deeply memorable.",
+    "svc4.title": "SEO &amp; Search Visibility",
+    "svc4.desc":  "When someone searches for what you do, they should find you first. Audits, local SEO, keyword strategy, and monthly reporting.",
+    "svc5.title": "Marketing Strategy",
+    "svc5.desc":  "Big-picture thinking sized for small-business reality. Plans you can actually execute — real budgets, real timelines, measurable outcomes.",
+    "svc.learnmore": "Learn more &#8594;",
+    // Marquee
+    "marquee.webdesign":  "Web Design",
+    "marquee.social":     "Social Media",
+    "marquee.brand":      "Brand Strategy",
+    "marquee.content":    "Content Production",
+    "marquee.seo":        "SEO",
+    "marquee.community":  "Community Stories",
+    "marquee.marketing":  "Marketing",
+    // Clients
+    "clients.tag":       "Previous work",
+    "clients.brands":    "Brands we&#39;ve had the privilege of working with.",
+    "clients.more":      "More stories coming",
+    "clients.seeall":    "See all our work",
+    "clients.portfolio": "11 projects &nbsp;&#183;&nbsp; View the full portfolio",
+    // Quote
+    "quote.text": "We don&#39;t just build brands.<br>We build <em>voices.</em>",
+    // Pricing
+    "pricing.heading":    "Simple. Transparent.<br>Built for real budgets.",
+    "pricing.sub":        "Start with a one-time project. Grow with a subscription. Every plan gets the same care — because your story deserves it at any level.",
+    "pricing.onetime":    "One-time projects",
+    "pricing.monthly":    "Monthly subscriptions",
+    "pricing.ot0label":   "Starter Presence",
+    "pricing.ot0title":   "Get Online, Fast",
+    "pricing.ot0desc":    "A clean, focused one-page site to establish your online presence. Mobile responsive, SEO-ready, custom designed — your story, live within a week.",
+    "pricing.ot1label":   "Brand + Web Package",
+    "pricing.ot1title":   "Website &amp; Identity",
+    "pricing.ot1desc":    "Up to 5 pages plus a complete brand identity — logo, colours, typography. Everything you need to launch with a consistent, professional look.",
+    "pricing.ot2label":   "Advanced Build",
+    "pricing.ot2title":   "Website + Development",
+    "pricing.ot2desc":    "Comprehensive web development for businesses that need more — CMS, booking integrations, e-commerce, and custom back-end architecture, delivered with the same craft.",
+    "pricing.popular":    "Most popular",
+    "pricing.mo":         "/mo",
+    "pricing.tier0name":  "Seedling",
+    "pricing.tier0desc":  "For businesses just starting their digital journey.",
+    "pricing.tier0f0":    "Monthly website maintenance",
+    "pricing.tier0f1":    "1 social platform (4 posts/mo)",
+    "pricing.tier0f2":    "Monthly performance report",
+    "pricing.tier0f3":    "Email support (2-day response)",
+    "pricing.tier1name":  "Grower",
+    "pricing.tier1desc":  "For established businesses ready to build a consistent presence.",
+    "pricing.tier1f0":    "Everything in Seedling",
+    "pricing.tier1f1":    "2 platforms (12 posts/mo)",
+    "pricing.tier1f2":    "1 original content piece/month",
+    "pricing.tier1f3":    "SEO monitoring &amp; adjustments",
+    "pricing.tier1f4":    "Google Business Profile mgmt",
+    "pricing.tier1f5":    "Monthly strategy call (30 min)",
+    "pricing.tier2name":  "Harvest",
+    "pricing.tier2desc":  "For businesses serious about owning their full digital story.",
+    "pricing.tier2f0":    "Everything in Grower",
+    "pricing.tier2f1":    "3 platforms (20 posts/mo)",
+    "pricing.tier2f2":    "2 content pieces/month",
+    "pricing.tier2f3":    "Full SEO campaign &amp; link building",
+    "pricing.tier2f4":    "Quarterly branding review",
+    "pricing.tier2f5":    "Priority same-day support",
+    "pricing.tier2f6":    "Bi-monthly strategy call (60 min)",
+    "pricing.getstarted": "Get started",
+    // Demo
+    "demo.tag":     "Not sure where to start?",
+    "demo.heading": "Request a free website demo.",
+    "demo.sub":     "Tell us about your business and we&#39;ll mock up what your site could look like — no commitment, no cost.",
+    "demo.cta":     "Request a demo",
+    // Contact
+    "contact.tag":     "Let&#39;s talk",
+    "contact.heading": "Ready to be<br><em style=\"font-style:italic;color:var(--accent)\">heard?</em>",
+    "contact.note":    "Drop us a line for a free 30-minute discovery call. No pressure. Just a real conversation about your business and your story.",
+    "contact.loc":     "Available Worldwide",
+    // Footer
+    "footer.copy":  "&#169; 2026 Mule. All rights reserved.",
+    "footer.email": "Email",
+
+    // Blog
+    "blog.herolabel": "From the team",
+    "blog.heroh1": "Straight talk on<br><em>digital for small towns</em>",
+    "blog.herosub": "No fluff. No agency speak. Just honest opinions on web design, branding, and what it actually takes to build something that lasts.",
+    "blog.filter.all": "All",
+    "blog.filter.strategy": "Strategy",
+    "blog.filter.webdesign": "Web Design",
+    "blog.filter.branding": "Branding",
+    "blog.filter.social": "Social Media",
+    "blog.filter.marketing": "Marketing",
+    "blog.filter.local": "Local Markets",
+    "blog.filter.perspective": "Perspective",
+    "blog.filter.justin": "Justin",
+    "blog.filter.emile": "Emile",
+  },
+
+
+  fr: {
+    // Nav
+    "nav.studio":   "Studio",
+    "nav.pricing":  "Tarifs",
+    "nav.contact":  "Contact",
+    "nav.cta":      "D&#233;marrer un projet",
+    // Hero
+    "hero.sub":     "Solutions num&#233;riques pour les vraies communaut&#233;s.<br>On b&#226;tit votre pr&#233;sence. On raconte votre histoire.",
+    "hero.learn":   "En savoir plus",
+    "hero.students":"&#201;tudiants",
+    "hero.scroll":  "D&#233;filer",
+    // Stats
+    "stats.price":    "Prix de d&#233;part site web",
+    "stats.tiers":    "Forfaits d&#39;abonnement",
+    "stats.monthly":  "Forfait mensuel &#224; partir de",
+    "stats.community":"Ax&#233; sur la communaut&#233;",
+    // About
+    "about.tag":     "Qui sommes-nous",
+    "about.heading": "Chaque entreprise a une histoire.<br>On s&#39;assure qu&#39;elle soit <em>entendue.</em>",
+    // Services
+    "services.tag":     "Ce que nous faisons",
+    "services.heading": "Tout ce dont votre entreprise a besoin pour dominer le web.",
+    "svc0.title": "Conception &amp; D&#233;veloppement Web",
+    "svc0.desc":  "Des sites beaux, rapides et adapt&#233;s aux mobiles qui vous repr&#233;sentent vraiment. Design sur mesure, code propre, un produit qui travaille aussi dur que vous.",
+    "svc0.arrow": "D&#233;marrer un projet &#8594;",
+    "svc1.title": "Gestion des R&#233;seaux Sociaux",
+    "svc1.desc":  "Du contenu coh&#233;rent et authentique sur les plateformes utilis&#233;es par votre audience. Strat&#233;gie, publication, engagement — g&#233;r&#233;s pour que vous puissiez vous concentrer.",
+    "svc2.title": "Production de Contenu",
+    "svc2.desc":  "Direction photo, vid&#233;o, copywriting — du vrai contenu qui capture l&#39;humanit&#233; de votre entreprise. Pas de stock. Pas de g&#233;n&#233;rique. Le v&#244;tre.",
+    "svc3.title": "Branding &amp; Strat&#233;gie",
+    "svc3.desc":  "Des syst&#232;mes d&#39;identit&#233; construits autour de votre histoire — logos, couleurs, voix, directives qui vous rendent imm&#233;diatement reconnaissable.",
+    "svc4.title": "R&#233;f&#233;rencement &amp; Visibilit&#233;",
+    "svc4.desc":  "Quand quelqu&#39;un cherche ce que vous faites, il devrait vous trouver en premier. Audits, SEO local, strat&#233;gie de mots-cl&#233;s et rapports mensuels.",
+    "svc5.title": "Strat&#233;gie Marketing",
+    "svc5.desc":  "Une r&#233;flexion globale adapt&#233;e &#224; la r&#233;alit&#233; des petites entreprises. Des plans r&#233;ellement ex&#233;cutables — vrais budgets, vrais d&#233;lais, r&#233;sultats mesurables.",
+    "svc.learnmore": "En savoir plus &#8594;",
+    // Marquee
+    "marquee.webdesign":  "Conception Web",
+    "marquee.social":     "R&#233;seaux Sociaux",
+    "marquee.brand":      "Strat&#233;gie de Marque",
+    "marquee.content":    "Production de Contenu",
+    "marquee.seo":        "R&#233;f&#233;rencement",
+    "marquee.community":  "Histoires Locales",
+    "marquee.marketing":  "Marketing",
+    // Clients
+    "clients.tag":       "Travaux pr&#233;c&#233;dents",
+    "clients.brands":    "Les marques avec lesquelles nous avons eu le privil&#232;ge de travailler.",
+    "clients.more":      "D&#39;autres histoires &#224; venir",
+    "clients.seeall":    "Voir tout notre travail",
+    "clients.portfolio": "11 projets &nbsp;&#183;&nbsp; Voir le portfolio complet",
+    // Quote
+    "quote.text": "On ne construit pas seulement des marques.<br>On construit des <em>voix.</em>",
+    // Pricing
+    "pricing.heading":    "Simple. Transparent.<br>Con&#231;u pour de vrais budgets.",
+    "pricing.sub":        "Commencez par un projet ponctuel. Grandissez avec un abonnement. Chaque formule b&#233;n&#233;ficie du m&#234;me soin — parce que votre histoire le m&#233;rite &#224; tous les niveaux.",
+    "pricing.onetime":    "Projets ponctuels",
+    "pricing.monthly":    "Abonnements mensuels",
+    "pricing.ot0label":   "Pr&#233;sence de base",
+    "pricing.ot0title":   "En ligne, rapidement",
+    "pricing.ot0desc":    "Un site d&#39;une page, propre et cibl&#233;, pour &#233;tablir votre pr&#233;sence en ligne. Responsive, pr&#234;t pour le SEO, con&#231;u sur mesure — votre histoire, en ligne en une semaine.",
+    "pricing.ot1label":   "Pack Marque + Web",
+    "pricing.ot1title":   "Site Web &amp; Identit&#233;",
+    "pricing.ot1desc":    "Jusqu&#39;&#224; 5 pages et une identit&#233; de marque compl&#232;te — logo, couleurs, typographie. Tout pour lancer avec un look coh&#233;rent et professionnel.",
+    "pricing.ot2label":   "D&#233;veloppement Avanc&#233;",
+    "pricing.ot2title":   "Site Web + D&#233;veloppement",
+    "pricing.ot2desc":    "D&#233;veloppement web complet pour les entreprises qui ont besoin de plus — CMS, int&#233;grations, e-commerce et architecture back-end personnalis&#233;e.",
+    "pricing.popular":    "Le plus populaire",
+    "pricing.mo":         "/mois",
+    "pricing.tier0name":  "Germe",
+    "pricing.tier0desc":  "Pour les entreprises qui d&#233;butent leur aventure num&#233;rique.",
+    "pricing.tier0f0":    "Maintenance mensuelle du site",
+    "pricing.tier0f1":    "1 plateforme sociale (4 publications/mois)",
+    "pricing.tier0f2":    "Rapport de performance mensuel",
+    "pricing.tier0f3":    "Support par e-mail (r&#233;ponse en 2 jours)",
+    "pricing.tier1name":  "Croissance",
+    "pricing.tier1desc":  "Pour les entreprises &#233;tablies pr&#234;tes &#224; construire une pr&#233;sence coh&#233;rente.",
+    "pricing.tier1f0":    "Tout dans Germe",
+    "pricing.tier1f1":    "2 plateformes (12 publications/mois)",
+    "pricing.tier1f2":    "1 contenu original/mois",
+    "pricing.tier1f3":    "Suivi SEO &amp; ajustements",
+    "pricing.tier1f4":    "Gestion Google Business Profile",
+    "pricing.tier1f5":    "Appel strat&#233;gie mensuel (30 min)",
+    "pricing.tier2name":  "R&#233;colte",
+    "pricing.tier2desc":  "Pour les entreprises s&#233;rieuses dans la ma&#238;trise de leur histoire num&#233;rique.",
+    "pricing.tier2f0":    "Tout dans Croissance",
+    "pricing.tier2f1":    "3 plateformes (20 publications/mois)",
+    "pricing.tier2f2":    "2 contenus/mois",
+    "pricing.tier2f3":    "Campagne SEO compl&#232;te &amp; netlinking",
+    "pricing.tier2f4":    "Revue trimestrielle de marque",
+    "pricing.tier2f5":    "Support prioritaire le jour m&#234;me",
+    "pricing.tier2f6":    "Appel strat&#233;gie bimensuel (60 min)",
+    "pricing.getstarted": "Commencer",
+    // Demo
+    "demo.tag":     "Vous ne savez pas par o&#249; commencer&#160;?",
+    "demo.heading": "Demandez une d&#233;mo gratuite.",
+    "demo.sub":     "Parlez-nous de votre entreprise et nous cr&#233;erons une maquette de votre site — sans engagement, sans frais.",
+    "demo.cta":     "Demander une d&#233;mo",
+    // Contact
+    "contact.tag":     "Parlons-en",
+    "contact.heading": "Pr&#234;t &#224; &#234;tre<br><em style=\"font-style:italic;color:var(--accent)\">entendu&#160;?</em>",
+    "contact.note":    "Envoyez-nous un message pour un appel d&#233;couverte gratuit de 30 minutes. Sans pression. Juste une vraie conversation sur votre entreprise et votre histoire.",
+    "contact.loc":     "Disponible dans le monde entier",
+    // Footer
+    "footer.copy":  "&#169; 2026 Mule. Tous droits r&#233;serv&#233;s.",
+    "footer.email": "E-mail",
+
+    // Blog
+    "blog.herolabel": "De l&#39;&#233;quipe",
+    "blog.heroh1": "Parler franchement du<br><em>num&#233;rique pour les petites villes</em>",
+    "blog.herosub": "Sans fioritures. Sans jargon d&#39;agence. Juste des opinions honn&#234;tes sur le web design, le branding et ce qu&#39;il faut vraiment pour construire quelque chose qui dure.",
+    "blog.filter.all": "Tout",
+    "blog.filter.strategy": "Strat&#233;gie",
+    "blog.filter.webdesign": "Conception Web",
+    "blog.filter.branding": "Branding",
+    "blog.filter.social": "R&#233;seaux Sociaux",
+    "blog.filter.marketing": "Marketing",
+    "blog.filter.local": "March&#233;s Locaux",
+    "blog.filter.perspective": "Perspective",
+    "blog.filter.justin": "Justin",
+    "blog.filter.emile": "Emile",
+  },
+
+
+  nl: {
+    // Nav
+    "nav.studio":   "Studio",
+    "nav.pricing":  "Prijzen",
+    "nav.contact":  "Contact",
+    "nav.cta":      "Start een project",
+    // Hero
+    "hero.sub":     "Digitale oplossingen voor echte gemeenschappen.<br>Wij bouwen uw aanwezigheid. Wij vertellen uw verhaal.",
+    "hero.learn":   "Meer weten",
+    "hero.students":"Studenten",
+    "hero.scroll":  "Scrollen",
+    // Stats
+    "stats.price":    "Startprijs website",
+    "stats.tiers":    "Abonnementen",
+    "stats.monthly":  "Maandplan vanaf",
+    "stats.community":"Gemeenschapsgericht",
+    // About
+    "about.tag":     "Wie wij zijn",
+    "about.heading": "Elk bedrijf heeft een verhaal.<br>Wij zorgen dat het <em>gehoord</em> wordt.",
+    // Services
+    "services.tag":     "Wat wij doen",
+    "services.heading": "Alles wat uw bedrijf nodig heeft om het web te domineren.",
+    "svc0.title": "Webdesign &amp; Ontwikkeling",
+    "svc0.desc":  "Mooie, snelle, mobielvriendelijke websites die echt weergeven wie u bent. Op maat ontworpen, schone code, een product dat even hard werkt als u.",
+    "svc0.arrow": "Start een project &#8594;",
+    "svc1.title": "Social Media Beheer",
+    "svc1.desc":  "Consistente, authentieke content op de platforms die uw doelgroep gebruikt. Strategie, plaatsing, betrokkenheid — zodat u zich kunt richten op uw bedrijf.",
+    "svc2.title": "Contentproductie",
+    "svc2.desc":  "Fotoregie, video, copywriting — echte content die de menselijkheid van uw bedrijf weergeeft. Niet generiek. Van u.",
+    "svc3.title": "Branding &amp; Strategie",
+    "svc3.desc":  "Identiteitssystemen gebouwd rond uw verhaal — logo&#39;s, kleuren, stem, richtlijnen die u direct herkenbaar en onvergetelijk maken.",
+    "svc4.title": "SEO &amp; Zichtbaarheid",
+    "svc4.desc":  "Wanneer iemand zoekt wat u doet, moeten ze u als eerste vinden. Audits, lokale SEO, zoekwoordstrategie en maandelijkse rapportage.",
+    "svc5.title": "Marketingstrategie",
+    "svc5.desc":  "Groot denken op maat van kleine bedrijven. Plannen die echt uitvoerbaar zijn — echte budgetten, echte tijdlijnen, meetbare resultaten.",
+    "svc.learnmore": "Meer weten &#8594;",
+    // Marquee
+    "marquee.webdesign":  "Webdesign",
+    "marquee.social":     "Social Media",
+    "marquee.brand":      "Merkstrategie",
+    "marquee.content":    "Contentproductie",
+    "marquee.seo":        "SEO",
+    "marquee.community":  "Lokale Verhalen",
+    "marquee.marketing":  "Marketing",
+    // Clients
+    "clients.tag":       "Eerder werk",
+    "clients.brands":    "Merken waarmee wij het voorrecht hebben gehad samen te werken.",
+    "clients.more":      "Meer verhalen komen eraan",
+    "clients.seeall":    "Bekijk al ons werk",
+    "clients.portfolio": "11 projecten &nbsp;&#183;&nbsp; Bekijk het volledige portfolio",
+    // Quote
+    "quote.text": "Wij bouwen niet alleen merken.<br>Wij bouwen <em>stemmen.</em>",
+    // Pricing
+    "pricing.heading":    "Eenvoudig. Transparant.<br>Gebouwd voor echte budgetten.",
+    "pricing.sub":        "Begin met een eenmalig project. Groei met een abonnement. Elk plan krijgt dezelfde zorg — want uw verhaal verdient het op elk niveau.",
+    "pricing.onetime":    "Eenmalige projecten",
+    "pricing.monthly":    "Maandelijkse abonnementen",
+    "pricing.ot0label":   "Starter Aanwezigheid",
+    "pricing.ot0title":   "Snel Online",
+    "pricing.ot0desc":    "Een schone, gerichte &#233;&#233;npagina-website om uw online aanwezigheid te vestigen. Mobielvriendelijk, SEO-klaar, op maat ontworpen — uw verhaal, live binnen een week.",
+    "pricing.ot1label":   "Merk + Web Pakket",
+    "pricing.ot1title":   "Website &amp; Identiteit",
+    "pricing.ot1desc":    "Tot 5 pagina&#39;s plus een volledige merkidentiteit — logo, kleuren, typografie. Alles wat u nodig heeft voor een consistente, professionele lancering.",
+    "pricing.ot2label":   "Geavanceerde Ontwikkeling",
+    "pricing.ot2title":   "Website + Ontwikkeling",
+    "pricing.ot2desc":    "Uitgebreide webontwikkeling voor bedrijven die meer nodig hebben — CMS, boekingsintegraties, e-commerce en aangepaste back-endarchitectuur.",
+    "pricing.popular":    "Meest populair",
+    "pricing.mo":         "/mnd",
+    "pricing.tier0name":  "Zaailing",
+    "pricing.tier0desc":  "Voor bedrijven die net beginnen aan hun digitale reis.",
+    "pricing.tier0f0":    "Maandelijks websiteonderhoud",
+    "pricing.tier0f1":    "1 sociaal platform (4 berichten/mnd)",
+    "pricing.tier0f2":    "Maandelijks prestatierapport",
+    "pricing.tier0f3":    "E-mailondersteuning (reactie binnen 2 dagen)",
+    "pricing.tier1name":  "Groeier",
+    "pricing.tier1desc":  "Voor gevestigde bedrijven die een consistente aanwezigheid willen opbouwen.",
+    "pricing.tier1f0":    "Alles in Zaailing",
+    "pricing.tier1f1":    "2 platforms (12 berichten/mnd)",
+    "pricing.tier1f2":    "1 origineel contentstuk/maand",
+    "pricing.tier1f3":    "SEO-monitoring &amp; aanpassingen",
+    "pricing.tier1f4":    "Google Business Profile-beheer",
+    "pricing.tier1f5":    "Maandelijks strategiegesprek (30 min)",
+    "pricing.tier2name":  "Oogst",
+    "pricing.tier2desc":  "Voor bedrijven die serieus zijn over het bezitten van hun volledige digitale verhaal.",
+    "pricing.tier2f0":    "Alles in Groeier",
+    "pricing.tier2f1":    "3 platforms (20 berichten/mnd)",
+    "pricing.tier2f2":    "2 contentstukken/maand",
+    "pricing.tier2f3":    "Volledige SEO-campagne &amp; linkbuilding",
+    "pricing.tier2f4":    "Kwartaalse merkbeoordeling",
+    "pricing.tier2f5":    "Prioritaire support op dezelfde dag",
+    "pricing.tier2f6":    "Tweemaandelijks strategiegesprek (60 min)",
+    "pricing.getstarted": "Aan de slag",
+    // Demo
+    "demo.tag":     "Weet u niet waar u moet beginnen?",
+    "demo.heading": "Vraag een gratis website demo aan.",
+    "demo.sub":     "Vertel ons over uw bedrijf en wij maken een schets van hoe uw site eruit kan zien — geen verplichting, geen kosten.",
+    "demo.cta":     "Demo aanvragen",
+    // Contact
+    "contact.tag":     "Laten we praten",
+    "contact.heading": "Klaar om<br><em style=\"font-style:italic;color:var(--accent)\">gehoord</em> te worden?",
+    "contact.note":    "Stuur ons een bericht voor een gratis ontdekkingsgesprek van 30 minuten. Geen druk. Gewoon een echt gesprek over uw bedrijf en uw verhaal.",
+    "contact.loc":     "Wereldwijd beschikbaar",
+    // Footer
+    "footer.copy":  "&#169; 2026 Mule. Alle rechten voorbehouden.",
+    "footer.email": "E-mail",
+
+    // Blog
+    "blog.herolabel": "Van het team",
+    "blog.heroh1": "Klare taal over<br><em>digitaal voor kleine steden</em>",
+    "blog.herosub": "Geen opvulling. Geen bureautaal. Gewoon eerlijke meningen over webdesign, branding en wat het echt kost om iets te bouwen dat blijft.",
+    "blog.filter.all": "Alles",
+    "blog.filter.strategy": "Strategie",
+    "blog.filter.webdesign": "Webdesign",
+    "blog.filter.branding": "Branding",
+    "blog.filter.social": "Sociale Media",
+    "blog.filter.marketing": "Marketing",
+    "blog.filter.local": "Lokale Markten",
+    "blog.filter.perspective": "Perspectief",
+    "blog.filter.justin": "Justin",
+    "blog.filter.emile": "Emile",
+  },
+
+
+  da: {
+    // Nav
+    "nav.studio":   "Studio",
+    "nav.pricing":  "Priser",
+    "nav.contact":  "Kontakt",
+    "nav.cta":      "Start et projekt",
+    // Hero
+    "hero.sub":     "Digitale l&#248;sninger for rigtige lokalsamfund.<br>Vi bygger din tilstedev&#230;relse. Vi fort&#230;ller din historie.",
+    "hero.learn":   "L&#230;s mere",
+    "hero.students":"Studerende",
+    "hero.scroll":  "Rul",
+    // Stats
+    "stats.price":    "Startpris hjemmeside",
+    "stats.tiers":    "Abonnementsniveauer",
+    "stats.monthly":  "M&#229;nedlig plan fra",
+    "stats.community":"F&#230;llesskabsfokuseret",
+    // About
+    "about.tag":     "Hvem vi er",
+    "about.heading": "Enhver virksomhed har en historie.<br>Vi s&#248;rger for, at den bliver <em>h&#248;rt.</em>",
+    // Services
+    "services.tag":     "Hvad vi laver",
+    "services.heading": "Alt hvad din virksomhed beh&#248;ver for at dominere nettet.",
+    "svc0.title": "Webdesign &amp; Udvikling",
+    "svc0.desc":  "Smukke, hurtige, mobilvenlige hjemmesider, der virkelig repr&#230;senterer dig. Skr&#230;ddersyet design, ren kode, et produkt der arbejder ligesom dig.",
+    "svc0.arrow": "Start et projekt &#8594;",
+    "svc1.title": "Sociale Medier",
+    "svc1.desc":  "Konsistent, autentisk indhold p&#229; de platforme, din m&#229;lgruppe bruger. Strategi, opslag, engagement — h&#229;ndteret s&#229; du kan fokusere p&#229; din virksomhed.",
+    "svc2.title": "Indholdsproduktion",
+    "svc2.desc":  "Fotografi, video, tekstforfatning — rigtigt indhold der f&#229;nger din virksomheds menneskelighed. Ikke stock. Ikke generisk. Dit.",
+    "svc3.title": "Branding &amp; Strategi",
+    "svc3.desc":  "Identitetssystemer bygget om din historie — logoer, farver, stemme, retningslinjer der g&#248;r dig umiddelbart genkendelig og mindev&#230;rdig.",
+    "svc4.title": "S&#248;gemaskineoptimering",
+    "svc4.desc":  "N&#229;r nogen s&#248;ger efter det du laver, b&#248;r de finde dig f&#248;rst. Audits, lokal SEO, s&#248;geordsstrategi og m&#229;nedlige rapporter.",
+    "svc5.title": "Markedsf&#248;ringsstrategi",
+    "svc5.desc":  "Stort t&#230;nkende tilpasset sm&#229; virksomheders virkelighed. Planer du faktisk kan udf&#248;re — rigtige budgetter, rigtige tidslinjer, m&#229;lbare resultater.",
+    "svc.learnmore": "L&#230;s mere &#8594;",
+    // Marquee
+    "marquee.webdesign":  "Webdesign",
+    "marquee.social":     "Sociale Medier",
+    "marquee.brand":      "M&#230;rkestrategi",
+    "marquee.content":    "Indholdsproduktion",
+    "marquee.seo":        "SEO",
+    "marquee.community":  "Lokale Historier",
+    "marquee.marketing":  "Markedsf&#248;ring",
+    // Clients
+    "clients.tag":       "Tidligere arbejde",
+    "clients.brands":    "M&#230;rker vi har haft f&#248;rnemmelsen af at arbejde med.",
+    "clients.more":      "Flere historier p&#229; vej",
+    "clients.seeall":    "Se alt vores arbejde",
+    "clients.portfolio": "11 projekter &nbsp;&#183;&nbsp; Se den fulde portefl&#248;lje",
+    // Quote
+    "quote.text": "Vi bygger ikke bare m&#230;rker.<br>Vi bygger <em>stemmer.</em>",
+    // Pricing
+    "pricing.heading":    "Enkelt. Transparent.<br>Bygget til rigtige budgetter.",
+    "pricing.sub":        "Start med et engangs-projekt. Voks med et abonnement. Hver plan f&#229;r samme omsorg — fordi din historie fortjener det p&#229; ethvert niveau.",
+    "pricing.onetime":    "Engangs-projekter",
+    "pricing.monthly":    "M&#229;nedlige abonnementer",
+    "pricing.ot0label":   "Starter Tilstedev&#230;relse",
+    "pricing.ot0title":   "Online, Hurtigt",
+    "pricing.ot0desc":    "En ren, fokuseret enkeltsidet hjemmeside for at etablere din online tilstedev&#230;relse. Mobilvenlig, SEO-klar, skr&#230;ddersyet — din historie, live inden for en uge.",
+    "pricing.ot1label":   "M&#230;rke + Web Pakke",
+    "pricing.ot1title":   "Hjemmeside &amp; Identitet",
+    "pricing.ot1desc":    "Op til 5 sider plus en komplet m&#230;rkeidentitet — logo, farver, typografi. Alt du beh&#248;ver for at lancere med et konsistent, professionelt look.",
+    "pricing.ot2label":   "Avanceret Bygning",
+    "pricing.ot2title":   "Hjemmeside + Udvikling",
+    "pricing.ot2desc":    "Omfattende webudvikling til virksomheder der beh&#248;ver mere — CMS, bookingintegrationer, e-handel og skr&#230;ddersyet back-end arkitektur.",
+    "pricing.popular":    "Mest popul&#230;r",
+    "pricing.mo":         "/md",
+    "pricing.tier0name":  "Sp&#230;dplante",
+    "pricing.tier0desc":  "Til virksomheder der lige er begyndt p&#229; deres digitale rejse.",
+    "pricing.tier0f0":    "M&#229;nedlig hjemmesidevedligeholdelse",
+    "pricing.tier0f1":    "1 social platform (4 opslag/md)",
+    "pricing.tier0f2":    "M&#229;nedlig pr&#230;stationsrapport",
+    "pricing.tier0f3":    "E-mailsupport (svar inden 2 dage)",
+    "pricing.tier1name":  "V&#230;kst",
+    "pricing.tier1desc":  "Til etablerede virksomheder klar til at opbygge en konsistent tilstedev&#230;relse.",
+    "pricing.tier1f0":    "Alt i Sp&#230;dplante",
+    "pricing.tier1f1":    "2 platforme (12 opslag/md)",
+    "pricing.tier1f2":    "1 originalt indhold/m&#229;ned",
+    "pricing.tier1f3":    "SEO-overv&#229;gning &amp; justeringer",
+    "pricing.tier1f4":    "Google Business Profile-h&#229;ndtering",
+    "pricing.tier1f5":    "M&#229;nedligt strategiopkald (30 min)",
+    "pricing.tier2name":  "H&#248;st",
+    "pricing.tier2desc":  "Til virksomheder der er seri&#248;se om at eje deres fulde digitale historie.",
+    "pricing.tier2f0":    "Alt i V&#230;kst",
+    "pricing.tier2f1":    "3 platforme (20 opslag/md)",
+    "pricing.tier2f2":    "2 indhold/m&#229;ned",
+    "pricing.tier2f3":    "Fuld SEO-kampagne &amp; linkbygning",
+    "pricing.tier2f4":    "Kvartalvis brandgennomgang",
+    "pricing.tier2f5":    "Prioritetssupport samme dag",
+    "pricing.tier2f6":    "Topm&#229;nedligt strategiopkald (60 min)",
+    "pricing.getstarted": "Kom i gang",
+    // Demo
+    "demo.tag":     "Ved du ikke, hvor du skal starte?",
+    "demo.heading": "Anmod om en gratis hjemmesidedemo.",
+    "demo.sub":     "Fort&#230;l os om din virksomhed, og vi laver et mock-up af, hvad dit websted kunne se ud — ingen forpligtelse, ingen omkostninger.",
+    "demo.cta":     "Anmod om demo",
+    // Contact
+    "contact.tag":     "Lad os tale",
+    "contact.heading": "Klar til at blive<br><em style=\"font-style:italic;color:var(--accent)\">h&#248;rt?</em>",
+    "contact.note":    "Skriv til os for en gratis 30-minutters opdagelsessamtale. Intet pres. Bare en rigtig samtale om din virksomhed og din historie.",
+    "contact.loc":     "Tilg&#230;ngelig verden over",
+    // Footer
+    "footer.copy":  "&#169; 2026 Mule. Alle rettigheder forbeholdt.",
+    "footer.email": "E-mail",
+
+    // Blog
+    "blog.herolabel": "Fra teamet",
+    "blog.heroh1": "Klare ord om<br><em>digital for sm&#229; byer</em>",
+    "blog.herosub": "Ingen fluff. Ingen bureautale. Bare &#230;rlige meninger om webdesign, branding og hvad der faktisk skal til for at bygge noget der varer.",
+    "blog.filter.all": "Alle",
+    "blog.filter.strategy": "Strategi",
+    "blog.filter.webdesign": "Webdesign",
+    "blog.filter.branding": "Branding",
+    "blog.filter.social": "Sociale Medier",
+    "blog.filter.marketing": "Markedsf&#248;ring",
+    "blog.filter.local": "Lokale Markeder",
+    "blog.filter.perspective": "Perspektiv",
+    "blog.filter.justin": "Justin",
+    "blog.filter.emile": "Emile",
+  },
+
+
+  de: {
+    // Nav
+    "nav.studio":   "Studio",
+    "nav.pricing":  "Preise",
+    "nav.contact":  "Kontakt",
+    "nav.cta":      "Projekt starten",
+    // Hero
+    "hero.sub":     "Digitale L&#246;sungen f&#252;r echte Gemeinschaften.<br>Wir bauen Ihre Pr&#228;senz auf. Wir erz&#228;hlen Ihre Geschichte.",
+    "hero.learn":   "Mehr erfahren",
+    "hero.students":"Studenten",
+    "hero.scroll":  "Scrollen",
+    // Stats
+    "stats.price":    "Website ab",
+    "stats.tiers":    "Abonnement-Stufen",
+    "stats.monthly":  "Monatsplan ab",
+    "stats.community":"Gemeinschaftsorientiert",
+    // About
+    "about.tag":     "Wer wir sind",
+    "about.heading": "Jedes Unternehmen hat eine Geschichte.<br>Wir sorgen daf&#252;r, dass sie <em>geh&#246;rt</em> wird.",
+    // Services
+    "services.tag":     "Was wir tun",
+    "services.heading": "Alles, was Ihr Unternehmen braucht, um das Web zu dominieren.",
+    "svc0.title": "Webdesign &amp; Entwicklung",
+    "svc0.desc":  "Sch&#246;ne, schnelle, mobilfreundliche Websites, die wirklich zeigen, wer Sie sind. Ma&#223;geschneidertes Design, sauberer Code, ein Produkt das genauso hart arbeitet wie Sie.",
+    "svc0.arrow": "Projekt starten &#8594;",
+    "svc1.title": "Social-Media-Management",
+    "svc1.desc":  "Konsistente, authentische Inhalte auf den Plattformen Ihrer Zielgruppe. Strategie, Ver&#246;ffentlichung, Engagement — damit Sie sich auf Ihr Gesch&#228;ft konzentrieren k&#246;nnen.",
+    "svc2.title": "Content-Produktion",
+    "svc2.desc":  "Fotografie, Video, Texterstellung — echter Content, der die Menschlichkeit Ihres Unternehmens einfengt. Kein Stock. Kein Generisches. Ihres.",
+    "svc3.title": "Branding &amp; Strategie",
+    "svc3.desc":  "Identit&#228;tssysteme um Ihre Geschichte herum — Logos, Farben, Stimme, Richtlinien, die Sie sofort erkennbar und tief einpr&#228;gsam machen.",
+    "svc4.title": "SEO &amp; Sichtbarkeit",
+    "svc4.desc":  "Wenn jemand nach dem sucht, was Sie tun, sollte er Sie zuerst finden. Audits, lokales SEO, Keyword-Strategie und monatliche Berichte.",
+    "svc5.title": "Marketingstrategie",
+    "svc5.desc":  "Gro&#223;es Denken in der Realit&#228;t kleiner Unternehmen. Pl&#228;ne, die Sie wirklich umsetzen k&#246;nnen — echte Budgets, echte Zeitpl&#228;ne, messbare Ergebnisse.",
+    "svc.learnmore": "Mehr erfahren &#8594;",
+    // Marquee
+    "marquee.webdesign":  "Webdesign",
+    "marquee.social":     "Soziale Medien",
+    "marquee.brand":      "Markenstrategie",
+    "marquee.content":    "Content-Produktion",
+    "marquee.seo":        "SEO",
+    "marquee.community":  "Lokale Geschichten",
+    "marquee.marketing":  "Marketing",
+    // Clients
+    "clients.tag":       "Fr&#252;here Arbeiten",
+    "clients.brands":    "Marken, mit denen wir das Privileg hatten zusammenzuarbeiten.",
+    "clients.more":      "Weitere Geschichten folgen",
+    "clients.seeall":    "Alle unsere Arbeiten sehen",
+    "clients.portfolio": "11 Projekte &nbsp;&#183;&nbsp; Das vollst&#228;ndige Portfolio ansehen",
+    // Quote
+    "quote.text": "Wir bauen nicht nur Marken.<br>Wir bauen <em>Stimmen.</em>",
+    // Pricing
+    "pricing.heading":    "Einfach. Transparent.<br>F&#252;r echte Budgets gemacht.",
+    "pricing.sub":        "Beginnen Sie mit einem Einmalprojekt. Wachsen Sie mit einem Abonnement. Jeder Plan erh&#228;lt die gleiche Sorgfalt — denn Ihre Geschichte verdient es auf jedem Niveau.",
+    "pricing.onetime":    "Einmalprojekte",
+    "pricing.monthly":    "Monatliche Abonnements",
+    "pricing.ot0label":   "Starter-Pr&#228;senz",
+    "pricing.ot0title":   "Schnell Online",
+    "pricing.ot0desc":    "Eine saubere, fokussierte einseitige Website f&#252;r Ihre Online-Pr&#228;senz. Mobilfreundlich, SEO-bereit, individuell gestaltet — Ihre Geschichte, live in einer Woche.",
+    "pricing.ot1label":   "Marke + Web Paket",
+    "pricing.ot1title":   "Website &amp; Identit&#228;t",
+    "pricing.ot1desc":    "Bis zu 5 Seiten plus eine vollst&#228;ndige Markenidentit&#228;t — Logo, Farben, Typografie. Alles f&#252;r einen konsistenten, professionellen Start.",
+    "pricing.ot2label":   "Erweiterter Build",
+    "pricing.ot2title":   "Website + Entwicklung",
+    "pricing.ot2desc":    "Umfassende Webentwicklung f&#252;r Unternehmen, die mehr brauchen — CMS, Buchungsintegrationen, E-Commerce und ma&#223;geschneiderte Back-End-Architektur.",
+    "pricing.popular":    "Am beliebtesten",
+    "pricing.mo":         "/Mo",
+    "pricing.tier0name":  "S&#228;mling",
+    "pricing.tier0desc":  "F&#252;r Unternehmen, die gerade ihre digitale Reise beginnen.",
+    "pricing.tier0f0":    "Monatliche Website-Wartung",
+    "pricing.tier0f1":    "1 soziale Plattform (4 Beitr&#228;ge/Mo)",
+    "pricing.tier0f2":    "Monatlicher Leistungsbericht",
+    "pricing.tier0f3":    "E-Mail-Support (Antwort in 2 Tagen)",
+    "pricing.tier1name":  "Wachstum",
+    "pricing.tier1desc":  "F&#252;r etablierte Unternehmen, die eine konsistente Pr&#228;senz aufbauen wollen.",
+    "pricing.tier1f0":    "Alles im S&#228;mling-Plan",
+    "pricing.tier1f1":    "2 Plattformen (12 Beitr&#228;ge/Mo)",
+    "pricing.tier1f2":    "1 originaler Content/Monat",
+    "pricing.tier1f3":    "SEO-&#220;berwachung &amp; Anpassungen",
+    "pricing.tier1f4":    "Google Business Profile-Verwaltung",
+    "pricing.tier1f5":    "Monatliches Strategiegespr&#228;ch (30 Min)",
+    "pricing.tier2name":  "Ernte",
+    "pricing.tier2desc":  "F&#252;r Unternehmen, die ihre digitale Geschichte vollst&#228;ndig besitzen wollen.",
+    "pricing.tier2f0":    "Alles im Wachstum-Plan",
+    "pricing.tier2f1":    "3 Plattformen (20 Beitr&#228;ge/Mo)",
+    "pricing.tier2f2":    "2 Content-St&#252;cke/Monat",
+    "pricing.tier2f3":    "Vollst&#228;ndige SEO-Kampagne &amp; Linkaufbau",
+    "pricing.tier2f4":    "Viertelj&#228;hrliche Marken&#252;berpr&#252;fung",
+    "pricing.tier2f5":    "Priorit&#228;ts-Support am selben Tag",
+    "pricing.tier2f6":    "Zweimos. Strategiegespr&#228;ch (60 Min)",
+    "pricing.getstarted": "Loslegen",
+    // Demo
+    "demo.tag":     "Nicht sicher, wo Sie anfangen sollen?",
+    "demo.heading": "Kostenloses Website-Demo anfragen.",
+    "demo.sub":     "Erz&#228;hlen Sie uns von Ihrem Unternehmen und wir erstellen einen Entwurf Ihrer Website — kein Engagement, keine Kosten.",
+    "demo.cta":     "Demo anfragen",
+    // Contact
+    "contact.tag":     "Lassen Sie uns sprechen",
+    "contact.heading": "Bereit, <em style=\"font-style:italic;color:var(--accent)\">geh&#246;rt</em><br>zu werden?",
+    "contact.note":    "Schreiben Sie uns f&#252;r ein kostenloses 30-min&#252;tiges Gespr&#228;ch. Kein Druck. Nur ein echtes Gespr&#228;ch &#252;ber Ihr Unternehmen und Ihre Geschichte.",
+    "contact.loc":     "Weltweit verf&#252;gbar",
+    // Footer
+    "footer.copy":  "&#169; 2026 Mule. Alle Rechte vorbehalten.",
+    "footer.email": "E-Mail",
+
+    // Blog
+    "blog.herolabel": "Vom Team",
+    "blog.heroh1": "Klartext &#252;ber<br><em>Digital f&#252;r Kleinstst&#228;dte</em>",
+    "blog.herosub": "Kein Geschwurbel. Keine Agentursprache. Nur ehrliche Meinungen zu Webdesign, Branding und was es wirklich braucht, um etwas Bleibendes aufzubauen.",
+    "blog.filter.all": "Alle",
+    "blog.filter.strategy": "Strategie",
+    "blog.filter.webdesign": "Webdesign",
+    "blog.filter.branding": "Branding",
+    "blog.filter.social": "Soziale Medien",
+    "blog.filter.marketing": "Marketing",
+    "blog.filter.local": "Lokale M&#228;rkte",
+    "blog.filter.perspective": "Perspektive",
+    "blog.filter.justin": "Justin",
+    "blog.filter.emile": "Emile",
+  }
+};
+
+// ─── Engine ───────────────────────────────────
 (function () {
   const STORAGE_KEY = 'mule_lang';
   const SUPPORTED = ['en', 'fr', 'nl', 'da', 'de'];
@@ -750,11 +1374,29 @@ applyFilterSort();
   }
 
   function applyLang(lang) {
+    const t = TRANSLATIONS[lang];
+    if (!t) return;
+
+    // All translations use innerHTML so <br> and <em> render correctly
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    // Update lang button label
     const btn = document.getElementById('langBtn');
-    if (btn) btn.textContent = LABELS[lang] || 'EN';
+    if (btn) btn.textContent = LABELS[lang];
+
+    // Mark active option
     document.querySelectorAll('.lang-option').forEach(opt => {
       opt.classList.toggle('active', opt.dataset.lang === lang);
     });
+
+    // Set html lang attribute
     document.documentElement.lang = lang;
   }
 
@@ -762,6 +1404,7 @@ applyFilterSort();
     if (!SUPPORTED.includes(lang)) return;
     localStorage.setItem(STORAGE_KEY, lang);
     applyLang(lang);
+    // Close dropdown
     const dd = document.getElementById('langDropdown');
     if (dd) dd.classList.remove('open');
   }
@@ -770,17 +1413,24 @@ applyFilterSort();
     const btn = document.getElementById('langBtn');
     const dropdown = document.getElementById('langDropdown');
     if (!btn || !dropdown) return;
+
+    // Toggle dropdown
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       dropdown.classList.toggle('open');
     });
+
+    // Option click
     dropdown.querySelectorAll('.lang-option').forEach(opt => {
       opt.addEventListener('click', () => setLang(opt.dataset.lang));
     });
+
+    // Close on outside click
     document.addEventListener('click', () => dropdown.classList.remove('open'));
     dropdown.addEventListener('click', e => e.stopPropagation());
   }
 
+  // Run on DOM ready
   function init() {
     initSwitcher();
     applyLang(getSavedLang());
@@ -792,6 +1442,7 @@ applyFilterSort();
     init();
   }
 })();
+
 </script>
 </body>
 </html>
