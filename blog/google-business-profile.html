@@ -355,6 +355,8 @@ const TRANSLATIONS = {
     applyLang(lang);
     const dd = document.getElementById('langDropdown');
     if (dd) dd.classList.remove('open');
+    // Auto-translate article body
+    if (typeof window._muleAutoTranslate === 'function') window._muleAutoTranslate(lang);
   }
 
   function initSwitcher() {
@@ -369,7 +371,15 @@ const TRANSLATIONS = {
     dropdown.addEventListener('click', e => e.stopPropagation());
   }
 
-  function init() { initSwitcher(); applyLang(getSavedLang()); }
+  function init() {
+    initSwitcher();
+    const lang = getSavedLang();
+    applyLang(lang);
+    // Auto-translate on load if non-English cached
+    if (lang !== 'en' && typeof window._muleAutoTranslate === 'function') {
+      window._muleAutoTranslate(lang);
+    }
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
@@ -377,6 +387,236 @@ const TRANSLATIONS = {
     init();
   }
 })();
+
+// ─── AUTO-TRANSLATE (MyMemory — free, no key required) ──────────
+(function() {
+  const LANG_MAP = { fr: 'fr', nl: 'nl', da: 'da', de: 'de' };
+  const CACHE_PREFIX = 'mule_tx_';
+  const MAX_CHUNK = 450; // MyMemory safe limit per request
+
+  // Selectors for the article UI chrome (title, tag, date, back link etc.)
+  const UI_SELECTORS = [
+    '.post-title',
+    '.post-tag',
+    '.post-back',
+    '.post-cta h3',
+    '.post-cta p',
+    '.post-cta a',
+    '.related-posts h3',
+  ];
+
+  // Selectors for the article body — we walk text nodes to preserve links
+  const BODY_SELECTORS = [
+    '.post-body p',
+    '.post-body h2',
+    '.post-body h3',
+    '.post-body li',
+    '.post-body .highlight',
+    '.post-body blockquote',
+  ];
+
+  // ── Text node walker ─────────────────────────────────────────
+  function getTextNodes(el) {
+    const nodes = [];
+    const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    let node;
+    while ((node = walk.nextNode())) {
+      if (node.textContent.trim().length > 1) nodes.push(node);
+    }
+    return nodes;
+  }
+
+  // ── Translation via MyMemory ─────────────────────────────────
+  async function translateChunk(text, lang) {
+    if (!text || text.trim().length < 2) return text;
+    try {
+      const url = 'https://api.mymemory.translated.net/get?q='
+        + encodeURIComponent(text.trim())
+        + '&langpair=en|' + lang;
+      const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      if (!res.ok) return text;
+      const data = await res.json();
+      if (data.responseStatus === 200) return data.responseData.translatedText || text;
+    } catch(e) {}
+    return text;
+  }
+
+  // Split long text at sentence boundaries
+  function splitText(text) {
+    if (text.length <= MAX_CHUNK) return [text];
+    const chunks = [];
+    let start = 0;
+    while (start < text.length) {
+      let end = Math.min(start + MAX_CHUNK, text.length);
+      if (end < text.length) {
+        const dot = text.lastIndexOf('. ', end);
+        end = dot > start + 80 ? dot + 2 : end;
+      }
+      chunks.push(text.slice(start, end).trim());
+      start = end;
+    }
+    return chunks.filter(c => c);
+  }
+
+  async function translateText(text, lang) {
+    const chunks = splitText(text);
+    const results = await Promise.all(chunks.map(c => translateChunk(c, lang)));
+    return results.join(' ');
+  }
+
+  // ── Store / restore originals ────────────────────────────────
+  // Store original innerHTML on each translatable element
+  function storeOriginals() {
+    [...UI_SELECTORS, ...BODY_SELECTORS].forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        if (el.dataset.orig === undefined) el.dataset.orig = el.innerHTML;
+      });
+    });
+    // Also store text node values
+    BODY_SELECTORS.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        getTextNodes(el).forEach((tn, i) => {
+          if (tn._origText === undefined) tn._origText = tn.textContent;
+        });
+      });
+    });
+  }
+
+  function restoreOriginals() {
+    [...UI_SELECTORS, ...BODY_SELECTORS].forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        if (el.dataset.orig !== undefined) el.innerHTML = el.dataset.orig;
+      });
+    });
+    // Reset text node originals stored on DOM nodes
+    BODY_SELECTORS.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        getTextNodes(el).forEach(tn => {
+          if (tn._origText !== undefined) tn.textContent = tn._origText;
+        });
+      });
+    });
+  }
+
+  // ── Main translate function ──────────────────────────────────
+  async function translatePage(lang) {
+    const code = LANG_MAP[lang];
+    if (!code) return;
+
+    storeOriginals();
+
+    const cacheKey = CACHE_PREFIX + location.pathname + '_' + lang;
+
+    // Check sessionStorage cache
+    let cached = null;
+    try { cached = JSON.parse(sessionStorage.getItem(cacheKey) || 'null'); } catch(e) {}
+
+    // Fade body while translating
+    const wrap = document.querySelector('.post-wrap');
+    if (wrap) { wrap.style.transition = 'opacity .3s'; wrap.style.opacity = '0.35'; }
+
+    if (cached) {
+      applyCached(cached, lang);
+      if (wrap) wrap.style.opacity = '1';
+      return;
+    }
+
+    // ── Translate UI elements (full innerHTML safe — these have no child links) ──
+    const uiJobs = [];
+    UI_SELECTORS.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        const text = el.innerText || el.textContent;
+        if (text.trim()) uiJobs.push({ el, text: text.trim(), type: 'ui' });
+      });
+    });
+
+    // ── Translate body text nodes (preserves links/spans) ──
+    const tnJobs = [];
+    BODY_SELECTORS.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        getTextNodes(el).forEach(tn => {
+          if (tn.textContent.trim().length > 1) {
+            tnJobs.push({ tn, text: tn.textContent.trim() });
+          }
+        });
+      });
+    });
+
+    // Translate everything concurrently
+    const [uiResults, tnResults] = await Promise.all([
+      Promise.all(uiJobs.map(j => translateText(j.text, code))),
+      Promise.all(tnJobs.map(j => translateText(j.text, code))),
+    ]);
+
+    // Apply UI translations
+    uiJobs.forEach((j, i) => { if (uiResults[i]) j.el.textContent = uiResults[i]; });
+
+    // Apply text node translations (preserves surrounding HTML)
+    tnJobs.forEach((j, i) => {
+      if (tnResults[i]) {
+        // Restore whitespace prefix/suffix
+        const ws = j.tn.textContent.match(/^(\s*)/)[1];
+        const we = j.tn.textContent.match(/(\s*)$/)[1];
+        j.tn.textContent = ws + tnResults[i] + we;
+      }
+    });
+
+    if (wrap) wrap.style.opacity = '1';
+
+    // Cache
+    try {
+      sessionStorage.setItem(cacheKey, JSON.stringify({
+        ui: uiResults,
+        tn: tnResults,
+        uiSelectors: uiJobs.map(j => ({ sel: j.el.className, text: j.el.textContent })),
+      }));
+    } catch(e) {}
+  }
+
+  function applyCached(cached, lang) {
+    // Re-translate using cached strings (fast re-apply)
+    const code = LANG_MAP[lang];
+    if (!code || !cached.tn) return;
+    // Restore originals first, then apply
+    restoreOriginals();
+    storeOriginals();
+
+    let uiIdx = 0, tnIdx = 0;
+    UI_SELECTORS.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        if (cached.ui && cached.ui[uiIdx]) el.textContent = cached.ui[uiIdx];
+        uiIdx++;
+      });
+    });
+    BODY_SELECTORS.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        getTextNodes(el).forEach(tn => {
+          if (tn.textContent.trim().length > 1) {
+            if (cached.tn && cached.tn[tnIdx]) {
+              const ws = tn.textContent.match(/^(\s*)/)[1];
+              const we = tn.textContent.match(/(\s*)$/)[1];
+              tn.textContent = ws + cached.tn[tnIdx] + we;
+            }
+            tnIdx++;
+          }
+        });
+      });
+    });
+    const wrap = document.querySelector('.post-wrap');
+    if (wrap) wrap.style.opacity = '1';
+  }
+
+  // ── Public API ────────────────────────────────────────────────
+  window._muleAutoTranslate = function(lang) {
+    if (lang === 'en') {
+      restoreOriginals();
+    } else {
+      translatePage(lang);
+    }
+  };
+})();
+
+
 </script>
 </body>
 </html>
