@@ -114,6 +114,14 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
 .footer-logo img{width:22px;height:22px;filter:var(--logo-filter)}
 .footer-logo span{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--fg)}
 @media(max-width:560px){footer{flex-direction:column;gap:1.5rem;text-align:center}}
+.lang-switcher{position:relative;display:flex;align-items:center}
+.lang-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--muted2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;transition:all .3s;color:var(--fg);flex-shrink:0;font-family:'Inter',sans-serif}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent)}
+.lang-dropdown{position:absolute;top:calc(100% + .5rem);right:0;background:var(--bg2);border:1px solid var(--border);min-width:110px;display:none;flex-direction:column;z-index:2000;transition:background .5s,border-color .5s}
+.lang-dropdown.open{display:flex}
+.lang-option{padding:.55rem 1rem;font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--muted);cursor:pointer;transition:color .2s,background .2s;white-space:nowrap;border:none;background:transparent;text-align:left;font-family:'Inter',sans-serif}
+.lang-option:hover{color:var(--fg);background:var(--bg3)}
+.lang-option.active{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -130,6 +138,16 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
   </ul>
   <div class="nav-right">
     <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">&#9790;</button>
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn" id="langBtn" aria-label="Select language">EN</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" data-lang="en">English</button>
+        <button class="lang-option" data-lang="fr">Français</button>
+        <button class="lang-option" data-lang="nl">Nederlands</button>
+        <button class="lang-option" data-lang="da">Dansk</button>
+        <button class="lang-option" data-lang="de">Deutsch</button>
+      </div>
+    </div>
     <a href="/project" class="nav-cta page-link">Start a project</a>
     <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -246,6 +264,61 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').classList.t
       resolve(data);
     })
     .catch(() => { applyPricing('USD'); });
+})();
+
+// ─── LANGUAGE SWITCHER (persistent cache) ────────────────────────
+(function () {
+  const STORAGE_KEY = 'mule_lang';
+  const SUPPORTED = ['en', 'fr', 'nl', 'da', 'de'];
+  const LABELS = { en: 'EN', fr: 'FR', nl: 'NL', da: 'DA', de: 'DE' };
+
+  function getSavedLang() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return SUPPORTED.includes(saved) ? saved : 'en';
+  }
+
+  function applyLang(lang) {
+    const btn = document.getElementById('langBtn');
+    if (btn) btn.textContent = LABELS[lang] || 'EN';
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+    document.documentElement.lang = lang;
+  }
+
+  function setLang(lang) {
+    if (!SUPPORTED.includes(lang)) return;
+    localStorage.setItem(STORAGE_KEY, lang);
+    applyLang(lang);
+    const dd = document.getElementById('langDropdown');
+    if (dd) dd.classList.remove('open');
+  }
+
+  function initSwitcher() {
+    const btn = document.getElementById('langBtn');
+    const dropdown = document.getElementById('langDropdown');
+    if (!btn || !dropdown) return;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+    dropdown.querySelectorAll('.lang-option').forEach(opt => {
+      opt.addEventListener('click', () => setLang(opt.dataset.lang));
+    });
+    document.addEventListener('click', () => dropdown.classList.remove('open'));
+    dropdown.addEventListener('click', e => e.stopPropagation());
+  }
+
+  function init() {
+    initSwitcher();
+    applyLang(getSavedLang());
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
 </script>
 </body>
