@@ -104,12 +104,17 @@ nav ul li a:hover,nav ul li a.active{color:var(--fg)}
 
 /* FILTER BAR */
 .blog-controls{max-width:1200px;margin:0 auto 2.5rem;padding:0 clamp(1.5rem,5vw,3rem);display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.blog-controls-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-weight:600;white-space:nowrap}
-.blog-filter-group{display:flex;flex-wrap:wrap;gap:.5rem;flex:1}
+.blog-filter-group{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;flex:1}
 .blog-filter-btn{font-size:.68rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;color:var(--muted);border:1px solid var(--border);background:transparent;padding:.35rem .8rem;cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap}
 .blog-filter-btn:hover{border-color:var(--accent);color:var(--accent)}
 .blog-filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.blog-filter-extra{display:none;flex-wrap:wrap;gap:.5rem;align-items:center}
+.blog-filter-extra.open{display:flex}
+.blog-filter-more{font-size:.68rem;font-weight:700;color:var(--muted);border:1px solid var(--border);background:transparent;padding:.35rem .7rem;cursor:pointer;font-family:inherit;transition:all .2s;line-height:1;letter-spacing:.05em}
+.blog-filter-more:hover{border-color:var(--accent);color:var(--accent)}
+.blog-filter-more.open{border-color:var(--accent);color:var(--accent)}
 .blog-sort-wrap{display:flex;align-items:center;gap:.6rem;margin-left:auto}
+.blog-controls-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-weight:600;white-space:nowrap}
 .blog-sort-select{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--fg);border:1px solid var(--border);background:var(--bg2);padding:.35rem .75rem;cursor:pointer;font-family:inherit;appearance:none;-webkit-appearance:none;padding-right:1.8rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center}
 .blog-sort-select:focus{outline:none;border-color:var(--accent)}
 .blog-no-results{display:none;padding:4rem 0;text-align:center;color:var(--muted);font-size:.9rem;font-weight:300;letter-spacing:.05em}
@@ -168,13 +173,16 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     <button class="blog-filter-btn active" data-filter="all">All</button>
     <button class="blog-filter-btn" data-filter="cat:Strategy">Strategy</button>
     <button class="blog-filter-btn" data-filter="cat:Web Design">Web Design</button>
-    <button class="blog-filter-btn" data-filter="cat:Branding">Branding</button>
-    <button class="blog-filter-btn" data-filter="cat:Social Media">Social Media</button>
-    <button class="blog-filter-btn" data-filter="cat:Marketing">Marketing</button>
-    <button class="blog-filter-btn" data-filter="cat:Local Markets">Local Markets</button>
-    <button class="blog-filter-btn" data-filter="cat:Perspective">Perspective</button>
-    <button class="blog-filter-btn" data-filter="author:Justin Reynolds">Justin</button>
-    <button class="blog-filter-btn" data-filter="author:Emile Holemans">Emile</button>
+    <button class="blog-filter-more" id="filterMoreBtn" aria-expanded="false">+</button>
+    <div class="blog-filter-extra" id="filterExtra">
+      <button class="blog-filter-btn" data-filter="cat:Branding">Branding</button>
+      <button class="blog-filter-btn" data-filter="cat:Social Media">Social Media</button>
+      <button class="blog-filter-btn" data-filter="cat:Marketing">Marketing</button>
+      <button class="blog-filter-btn" data-filter="cat:Local Markets">Local Markets</button>
+      <button class="blog-filter-btn" data-filter="cat:Perspective">Perspective</button>
+      <button class="blog-filter-btn" data-filter="author:Justin Reynolds">Justin</button>
+      <button class="blog-filter-btn" data-filter="author:Emile Holemans">Emile</button>
+    </div>
   </div>
   <div class="blog-sort-wrap">
     <span class="blog-controls-label">Sort</span>
@@ -691,6 +699,16 @@ function applyFilterSort() {
   });
   noResults.style.display = visible === 0 ? 'block' : 'none';
 }
+
+// + toggle
+const filterMoreBtn = document.getElementById('filterMoreBtn');
+const filterExtra = document.getElementById('filterExtra');
+filterMoreBtn.addEventListener('click', () => {
+  const open = filterExtra.classList.toggle('open');
+  filterMoreBtn.classList.toggle('open', open);
+  filterMoreBtn.setAttribute('aria-expanded', open);
+  filterMoreBtn.textContent = open ? '×' : '+';
+});
 
 document.getElementById('filterGroup').addEventListener('click', e => {
   const btn = e.target.closest('.blog-filter-btn');
