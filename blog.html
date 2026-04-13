@@ -102,6 +102,19 @@ nav ul li a:hover,nav ul li a.active{color:var(--fg)}
 .blog-card-read{display:inline-flex;align-items:center;gap:.4rem;font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;color:var(--accent);margin-top:1.25rem;transition:gap .2s}
 .blog-card-read:hover{gap:.7rem}
 
+/* FILTER BAR */
+.blog-controls{max-width:1200px;margin:0 auto 2.5rem;padding:0 clamp(1.5rem,5vw,3rem);display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.blog-controls-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-weight:600;white-space:nowrap}
+.blog-filter-group{display:flex;flex-wrap:wrap;gap:.5rem;flex:1}
+.blog-filter-btn{font-size:.68rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;color:var(--muted);border:1px solid var(--border);background:transparent;padding:.35rem .8rem;cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap}
+.blog-filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.blog-filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.blog-sort-wrap{display:flex;align-items:center;gap:.6rem;margin-left:auto}
+.blog-sort-select{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--fg);border:1px solid var(--border);background:var(--bg2);padding:.35rem .75rem;cursor:pointer;font-family:inherit;appearance:none;-webkit-appearance:none;padding-right:1.8rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center}
+.blog-sort-select:focus{outline:none;border-color:var(--accent)}
+.blog-no-results{display:none;padding:4rem 0;text-align:center;color:var(--muted);font-size:.9rem;font-weight:300;letter-spacing:.05em}
+.blog-card.hidden{display:none}
+@media(max-width:600px){.blog-controls{flex-direction:column;align-items:flex-start}.blog-sort-wrap{margin-left:0}}
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted);transition:border-color .5s}
 .footer-logo{display:flex;align-items:center;gap:.6rem}
@@ -150,11 +163,34 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
   <p class="blog-hero-sub">No fluff. No agency speak. Just honest opinions on web design, branding, and what it actually takes to build a digital presence in a community that matters.</p>
 </section>
 
+<div class="blog-controls">
+  <div class="blog-filter-group" id="filterGroup">
+    <button class="blog-filter-btn active" data-filter="all">All</button>
+    <button class="blog-filter-btn" data-filter="cat:Strategy">Strategy</button>
+    <button class="blog-filter-btn" data-filter="cat:Web Design">Web Design</button>
+    <button class="blog-filter-btn" data-filter="cat:Branding">Branding</button>
+    <button class="blog-filter-btn" data-filter="cat:Social Media">Social Media</button>
+    <button class="blog-filter-btn" data-filter="cat:Marketing">Marketing</button>
+    <button class="blog-filter-btn" data-filter="cat:Local Markets">Local Markets</button>
+    <button class="blog-filter-btn" data-filter="cat:Perspective">Perspective</button>
+    <button class="blog-filter-btn" data-filter="author:Justin Reynolds">Justin</button>
+    <button class="blog-filter-btn" data-filter="author:Emile Holemans">Emile</button>
+  </div>
+  <div class="blog-sort-wrap">
+    <span class="blog-controls-label">Sort</span>
+    <select class="blog-sort-select" id="sortSelect" aria-label="Sort posts">
+      <option value="newest">Newest first</option>
+      <option value="oldest">Oldest first</option>
+    </select>
+  </div>
+</div>
+
 <div class="blog-grid-wrap">
-  <div class="blog-grid">
+  <div class="blog-no-results" id="noResults">No posts match that filter.</div>
+  <div class="blog-grid" id="blogGrid">
 
     <!-- Apr 10, 2026 -->
-    <a href="/blog/google-business-profile.html" class="blog-card">
+    <a href="/blog/google-business-profile.html" class="blog-card" data-date="2026-04-10" data-category="Strategy" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-google-profile.jpg" alt="Rural roadside billboard">
       </div>
@@ -177,7 +213,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Apr 9, 2026 -->
-    <a href="/blog/social-media-consistency" class="blog-card page-link">
+    <a href="/blog/social-media-consistency" class="blog-card page-link" data-date="2026-04-09" data-category="Social Media" data-author="Emile Holemans">
       <div class="blog-card-img">
         <img src="blog/img-social-consistency.jpg" alt="Rural farmers market, showing up consistently builds community trust">
       </div>
@@ -200,7 +236,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Apr 5, 2026 -->
-    <a href="/blog/happy-easter" class="blog-card page-link">
+    <a href="/blog/happy-easter" class="blog-card page-link" data-date="2026-04-05" data-category="From Us" data-author="Justin & Emile">
       <div class="blog-card-img">
         <img src="blog/img-happy-easter.jpg" alt="Easter bunny with a child at a community event">
       </div>
@@ -226,7 +262,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 28, 2026 -->
-    <a href="/blog/social-media-mistakes.html" class="blog-card">
+    <a href="/blog/social-media-mistakes.html" class="blog-card" data-date="2026-03-28" data-category="Social Media" data-author="Emile Holemans">
       <div class="blog-card-img">
         <img src="blog/img-social-media.jpg" alt="Community gathering by a lake">
       </div>
@@ -248,14 +284,14 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
       </div>
     </a>
 
-    <!-- Apr 12, 2026 -->
-    <a href="/blog/beaver-dam-wisconsin-digital-presence" class="blog-card page-link">
+    <!-- Mar 25, 2026 -->
+    <a href="/blog/beaver-dam-wisconsin-digital-presence" class="blog-card page-link" data-date="2026-03-25" data-category="Local Markets" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-beaver-dam-downtown.jpg" alt="Downtown Beaver Dam, Wisconsin looking east down Front Street">
       </div>
       <div class="blog-card-body">
         <div class="blog-card-meta">
-          <span class="blog-card-date">Apr 12, 2026</span>
+          <span class="blog-card-date">Mar 25, 2026</span>
           <span class="blog-card-tag">Local Markets</span>
         </div>
         <h2>Beaver Dam, Wisconsin has a digital presence problem (and a big opportunity)</h2>
@@ -272,7 +308,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 20, 2026 -->
-    <a href="/blog/rural-businesses-online-advantage.html" class="blog-card">
+    <a href="/blog/rural-businesses-online-advantage.html" class="blog-card" data-date="2026-03-20" data-category="Perspective" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-rural-advantage.jpg" alt="Small town community park">
       </div>
@@ -295,7 +331,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 23, 2026 -->
-    <a href="/blog/how-to-write-an-about-page" class="blog-card page-link">
+    <a href="/blog/how-to-write-an-about-page" class="blog-card page-link" data-date="2026-03-23" data-category="Web Design" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-about-page.jpg" alt="People at a community gathering, About pages work best when they tell a human story">
       </div>
@@ -318,7 +354,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 17, 2026 -->
-    <a href="/blog/happy-st-patricks-day" class="blog-card page-link">
+    <a href="/blog/happy-st-patricks-day" class="blog-card page-link" data-date="2026-03-17" data-category="From Us" data-author="Justin & Emile">
       <div class="blog-card-img">
         <img src="blog/img-st-patricks-day.jpg" alt="St. Patrick's Day leprechaun statue at the Bullring Birmingham">
       </div>
@@ -344,7 +380,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 14, 2026 -->
-    <a href="/blog/what-a-website-actually-costs.html" class="blog-card">
+    <a href="/blog/what-a-website-actually-costs.html" class="blog-card" data-date="2026-03-14" data-category="Pricing" data-author="Emile Holemans">
       <div class="blog-card-img">
         <img src="blog/img-website-cost.jpg" alt="Classic American diner counter">
       </div>
@@ -367,7 +403,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 10, 2026 -->
-    <a href="/blog/digital-presence-vs-website" class="blog-card page-link">
+    <a href="/blog/digital-presence-vs-website" class="blog-card page-link" data-date="2026-03-10" data-category="Strategy" data-author="Emile Holemans">
       <div class="blog-card-img">
         <img src="blog/img-digital-presence.jpg" alt="Downtown Zionsville Indiana, a small town main street where businesses compete online and offline">
       </div>
@@ -390,7 +426,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 7, 2026 -->
-    <a href="/blog/why-we-started-mule" class="blog-card page-link">
+    <a href="/blog/why-we-started-mule" class="blog-card page-link" data-date="2026-03-07" data-category="About Us" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-why-we-started.jpg" alt="Small town vegetable stand">
       </div>
@@ -413,7 +449,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 3, 2026 -->
-    <a href="/blog/what-makes-a-good-website" class="blog-card page-link">
+    <a href="/blog/what-makes-a-good-website" class="blog-card page-link" data-date="2026-03-03" data-category="Web Design" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-good-website.jpg" alt="Downtown Niles Ohio main street with local small businesses">
       </div>
@@ -436,7 +472,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 2, 2026 -->
-    <a href="/blog/website-builders-cost-more" class="blog-card page-link">
+    <a href="/blog/website-builders-cost-more" class="blog-card page-link" data-date="2026-03-02" data-category="Web Design" data-author="Emile Holemans">
       <div class="blog-card-img">
         <img src="blog/img-website-builders.jpg" alt="Closed storefront door with seasonal sign">
       </div>
@@ -459,7 +495,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Mar 1, 2026 -->
-    <a href="/blog/email-marketing-small-business" class="blog-card page-link">
+    <a href="/blog/email-marketing-small-business" class="blog-card page-link" data-date="2026-03-01" data-category="Marketing" data-author="Emile Holemans">
       <div class="blog-card-img">
         <img src="blog/img-email-marketing.jpg" alt="Person typing on a laptop, email marketing for small businesses">
       </div>
@@ -482,7 +518,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Feb 25, 2026 -->
-    <a href="/blog/how-to-get-google-reviews" class="blog-card page-link">
+    <a href="/blog/how-to-get-google-reviews" class="blog-card page-link" data-date="2026-02-25" data-category="Strategy" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-google-reviews.jpg" alt="Small town road in Hughesville Pennsylvania, rural businesses depend on reviews">
       </div>
@@ -505,7 +541,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Feb 20, 2026 -->
-    <a href="/blog/what-is-branding-small-business" class="blog-card page-link">
+    <a href="/blog/what-is-branding-small-business" class="blog-card page-link" data-date="2026-02-20" data-category="Branding" data-author="Emile Holemans">
       <div class="blog-card-img">
         <img src="blog/img-branding-small-business.jpg" alt="USDA Rural Development meeting with rural small business owners in Pennsylvania">
       </div>
@@ -528,7 +564,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Feb 14, 2026 -->
-    <a href="/blog/valentines-day-small-business" class="blog-card page-link">
+    <a href="/blog/valentines-day-small-business" class="blog-card page-link" data-date="2026-02-14" data-category="Strategy" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-valentines-day.jpg" alt="Central Floral Company in Valdosta Georgia with giant Valentine's Day decoration on the roof">
       </div>
@@ -551,7 +587,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Feb 9, 2026 -->
-    <a href="/blog/website-speed-rural-businesses" class="blog-card page-link">
+    <a href="/blog/website-speed-rural-businesses" class="blog-card page-link" data-date="2026-02-09" data-category="Web Design" data-author="Emile Holemans">
       <div class="blog-card-img">
         <img src="blog/img-website-speed.jpg" alt="USDA broadband infrastructure project in rural Cranberry Isles Maine">
       </div>
@@ -574,7 +610,7 @@ footer{border-top:1px solid var(--border);padding:3rem clamp(1.5rem,5vw,6rem);di
     </a>
 
     <!-- Feb 4, 2026 -->
-    <a href="/blog/what-a-logo-actually-does" class="blog-card page-link">
+    <a href="/blog/what-a-logo-actually-does" class="blog-card page-link" data-date="2026-02-04" data-category="Branding" data-author="Justin Reynolds">
       <div class="blog-card-img">
         <img src="blog/img-logo-design.jpg" alt="Graphic designer sketching logo concepts for a small business brand identity">
       </div>
@@ -625,6 +661,48 @@ hamburgerBtn.addEventListener('click', () => {
 });
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+// Filter + Sort
+const grid = document.getElementById('blogGrid');
+const noResults = document.getElementById('noResults');
+const sortSelect = document.getElementById('sortSelect');
+let activeFilter = 'all';
+
+function applyFilterSort() {
+  const cards = Array.from(grid.querySelectorAll('.blog-card'));
+  const order = sortSelect.value;
+  cards.sort((a, b) => {
+    const da = a.dataset.date || '', db = b.dataset.date || '';
+    return order === 'newest' ? db.localeCompare(da) : da.localeCompare(db);
+  });
+  cards.forEach(c => grid.appendChild(c));
+  let visible = 0;
+  cards.forEach(card => {
+    let show = false;
+    if (activeFilter === 'all') {
+      show = true;
+    } else if (activeFilter.startsWith('cat:')) {
+      show = card.dataset.category === activeFilter.slice(4);
+    } else if (activeFilter.startsWith('author:')) {
+      show = card.dataset.author === activeFilter.slice(7);
+    }
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  noResults.style.display = visible === 0 ? 'block' : 'none';
+}
+
+document.getElementById('filterGroup').addEventListener('click', e => {
+  const btn = e.target.closest('.blog-filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = btn.dataset.filter;
+  applyFilterSort();
+});
+
+sortSelect.addEventListener('change', applyFilterSort);
+applyFilterSort();
 </script>
 </body>
 </html>
